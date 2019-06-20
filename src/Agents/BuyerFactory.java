@@ -6,7 +6,9 @@ import java.util.Random;
 public class BuyerFactory {
     public static Buyer getBuyer(int type){
         int [][] buyerEndorsmentList;
+        double base;
         if(type==1){
+            base=1.2;
             buyerEndorsmentList=new int [10][2];
             buyerEndorsmentList[0][0]=EndorsmentList.altaSeguridad;;
             buyerEndorsmentList[0][1]=4;
@@ -28,8 +30,9 @@ public class BuyerFactory {
             buyerEndorsmentList[8][1]=-1;
             buyerEndorsmentList[9][0]=EndorsmentList.bajaVeracidad;
             buyerEndorsmentList[9][1]=-4;
-            return new Buyer(buyerEndorsmentList);
+            return new Buyer(buyerEndorsmentList,base);
         }else if (type==2) {
+            base=1.2;
             buyerEndorsmentList=new int [10][2];
             buyerEndorsmentList[0][0]=EndorsmentList.altaSeguridad;;
             buyerEndorsmentList[0][1]=2;
@@ -51,7 +54,7 @@ public class BuyerFactory {
             buyerEndorsmentList[8][1]=-4;
             buyerEndorsmentList[9][0]=EndorsmentList.bajaVeracidad;
             buyerEndorsmentList[9][1]=-1;
-            return new Buyer(buyerEndorsmentList);
+            return new Buyer(buyerEndorsmentList,base);
         }
         return null;
     }
@@ -64,7 +67,7 @@ public class BuyerFactory {
      * @param probList the probabilities of every buyer in order from first to last
      * @return probabilistically created arraylist
      */
-    public static ArrayList<Buyer> getBuyers(int buyerQuantity,double[]probList){
+    public static ArrayList<Buyer> getBuyerList(int buyerQuantity,double[]probList){
         ArrayList<Buyer> buyersList=new ArrayList<>();
 
         int cantProb=probList.length;
@@ -79,7 +82,6 @@ public class BuyerFactory {
             Double prob=randomNum.nextDouble();
             for(int h=0;h<cantProb;h++)
                 if(prob<=intervals[h]) {
-                    System.out.println("Creating type: "+(h+1));
                     buyersList.add(getBuyer(h+1));
                     break;
                 }

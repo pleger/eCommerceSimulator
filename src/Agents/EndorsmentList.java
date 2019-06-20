@@ -11,6 +11,10 @@ public class EndorsmentList {
     public static final int bajaConfianzaVen=8;
     public static final int bajaCalidad=9;
     public static final int bajaVeracidad=10;
+
+    /*relation between numbers above and endorsments list: an element in endorsment list MUST BE
+    in position number-1 eg. altaSeguridad is number 1 and "alta seguridad" is in pos 1-1=0 of list;
+    * */
     private static String [] endorsments={"Alta Seguridad","Alta Variedad","Alta Confianza Vendedor",
             "Alta Calidad","Alta Veracidad","Baja Seguridad","Baja Variedad","Baja Confianza Vendedor",
             "Baja Calidad","Baja Veracidad"};
