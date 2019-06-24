@@ -7,6 +7,7 @@ public class MarketFactory {
     public static int numberOfMarkets=3;
     public static Market getMarket(int type){
         double [][] marketEndorsmentProbabilityList;
+        //PL: type debe tener un nombre ... evitar usar numeros magicos!
         if(type==1){
             marketEndorsmentProbabilityList=new double[5][3];
             marketEndorsmentProbabilityList[0][0]=EndorsmentList.altaVariedad;
