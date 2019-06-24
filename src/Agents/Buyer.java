@@ -1,5 +1,8 @@
 package Agents;
 
+//PL:base debería ser constantes!
+//PL:knownMarket -> market!!
+
 import java.util.ArrayList;
 public class Buyer implements Agent {
     ArrayList<Buyer> friends;
@@ -7,7 +10,9 @@ public class Buyer implements Agent {
     double base;
     int [][] endorsmentList;
     public Buyer(int [][] endorsmentList,double base){
+        
         this.base=base;
+        //PL: por que no se realiza una copia!
         this.endorsmentList=endorsmentList;
     }
     //maybe this won't be needed here. does a buyer add friends after the initialization?
@@ -54,6 +59,7 @@ public class Buyer implements Agent {
     }
 
      //Use this to test the correct assignation of a buyer's endorsments - Brian
+    //PL: toString!
     public void displayEndorsments(){
         for(int i=0;i<endorsmentList.length;i++){
             System.out.print(EndorsmentList.getEndorsment(endorsmentList[i][0]));
