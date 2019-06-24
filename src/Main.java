@@ -2,9 +2,9 @@ import Agents.*;
 
 import java.util.ArrayList;
 
-// Los numeros magicos (0.3, 0.7, 10) convertirlos en constantes para entenderlos
-// formatear el codigo
-// "inNetwork" esta demas, pues siempre son inNetwork
+// PL: Los numeros magicos (0.3, 0.7, 10) convertirlos en constantes para entenderlos
+// PL: formatear el codigo
+// PL: "inNetwork" esta demas, pues siempre son inNetwork
 
 public class Main {
 
