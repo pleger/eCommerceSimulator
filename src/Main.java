@@ -15,7 +15,7 @@ public class Main {
         ArrayList<Buyer> buyersInNetwork= BuyerFactory.getBuyerList(10,probabilities);
         ArrayList<Market> marketsInNetwork= MarketFactory.getMarketList();
 
-        //DONDE ESTA LA COMPRA QUE RELACIONA COMPRADOR Y TIENDA 
+        //PL:DONDE ESTA LA COMPRA QUE RELACIONA COMPRADOR Y TIENDA 
         
         System.out.println("Experiencia generada: ");
         ArrayList<Integer> experienceMarket=marketsInNetwork.get(0).generateExperience();
