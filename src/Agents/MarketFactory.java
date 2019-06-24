@@ -1,6 +1,6 @@
 package Agents;
 
-
+//PL: consejos de BuyerMarket
 import java.util.ArrayList;
 
 public class MarketFactory {
