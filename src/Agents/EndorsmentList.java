@@ -1,6 +1,7 @@
 package Agents;
 
 public class EndorsmentList {
+    //PL: las constantes deben ser mayusculas!!
     public static final int altaSeguridad=1;
     public static final int altaVariedad=2;
     public static final int altaConfianzaVen=3;

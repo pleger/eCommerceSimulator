@@ -1,12 +1,13 @@
 package Agents;
 
-
+//PL: consejos de BuyerMarket
 import java.util.ArrayList;
 
 public class MarketFactory {
     private static int numberOfMarkets=3;
     private static Market getMarket(int type){
         double [][] marketEndorsmentProbabilityList;
+        //PL: type debe tener un nombre ... evitar usar numeros magicos!
         if(type==1){
             marketEndorsmentProbabilityList=new double[5][3];
             marketEndorsmentProbabilityList[0][0]=EndorsmentList.altaVariedad;

@@ -6,10 +6,10 @@ import java.util.Random;
 public class BuyerFactory {
     public static Buyer getBuyer(int type){
         int [][] buyerEndorsmentList;
-        double base;
+        double base; //PL: constante ... aqui?
         if(type==1){
             base=1.2;
-            buyerEndorsmentList=new int [10][2];
+            buyerEndorsmentList=new int [10][2]; //se puede hacer más ordenado
             buyerEndorsmentList[0][0]=EndorsmentList.altaSeguridad;;
             buyerEndorsmentList[0][1]=4;
             buyerEndorsmentList[1][0]=EndorsmentList.altaVariedad;
@@ -68,6 +68,7 @@ public class BuyerFactory {
      * @return probabilistically created arraylist
      */
     public static ArrayList<Buyer> getBuyerList(int buyerQuantity,double[]probList){
+        //PL: retornar List
         ArrayList<Buyer> buyersList=new ArrayList<>();
 
         int cantProb=probList.length;
@@ -77,6 +78,7 @@ public class BuyerFactory {
             intervals[i]=probList[i]+intervals[i-1];
         }
 
+        //PL: separa el random!
         Random randomNum=new Random();
         for(int i=0;i<buyerQuantity;i++){
             Double prob=randomNum.nextDouble();
