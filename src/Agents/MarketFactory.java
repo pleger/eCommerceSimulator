@@ -4,8 +4,8 @@ package Agents;
 import java.util.ArrayList;
 
 public class MarketFactory {
-    public static int numberOfMarkets=3;
-    public static Market getMarket(int type){
+    private static int numberOfMarkets=3;
+    private static Market getMarket(int type){
         double [][] marketEndorsmentProbabilityList;
         if(type==1){
             marketEndorsmentProbabilityList=new double[5][3];

@@ -1,5 +1,5 @@
+package Simulation;
 import Agents.*;
-
 import java.util.ArrayList;
 
 public class Main {
@@ -22,6 +22,5 @@ public class Main {
         System.out.println();
         System.out.println("Evaluacion comprador: ");
         System.out.println(buyersInNetwork.get(0).calculateFormula(experienceMarket));
-
     }
 }
