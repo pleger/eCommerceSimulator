@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class Market implements Agent {
     double[][] endorsmentProbabilityList;//refer to marketFactory for details on this list
+    String name;
 
-    public Market(double[][] endorsmentProbabilityList) {
+    public Market(double[][] endorsmentProbabilityList,String name) {
         this.endorsmentProbabilityList = endorsmentProbabilityList;
+        this.name=name;
     }
 
     public ArrayList<Integer> generateExperience() {
@@ -26,8 +28,9 @@ public class Market implements Agent {
         return experience;
     }
 
-    public void action() {
+    public ArrayList<ArrayList<String>> action() {
         System.out.println("Inside market's action");
+        return null;
     }
 
 }

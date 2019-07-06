@@ -1,5 +1,7 @@
 package Agents; //PL: singular!!
 
+import java.util.ArrayList;
+
 public interface Agent {
-    void action();
+    ArrayList<ArrayList<String>> action();
 }

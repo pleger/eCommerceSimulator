@@ -7,58 +7,69 @@ public class BuyerFactory {
     public static final int TYPE1 = 1;
     public static final int TYPE2 = 2;
 
-    public static Buyer getBuyer(int type) {
+    public static String getBuyerType(int type){
+        switch(type){
+            case TYPE1:
+                return "Type 1";
+            case TYPE2:
+                return "Type 2";
+            default:
+                return "Invalid";
+        }
+    }
+
+    private static Buyer getBuyer(int type) {
         int[][] buyerEndorsmentList;
         if (type == TYPE1) {
             final double base = 1.2;
             buyerEndorsmentList = new int[10][2]; //se puede hacer más ordenado
-            buyerEndorsmentList[0][0] = EndorsmentList.ALTA_SEGURIDAD;
+            buyerEndorsmentList[0][0] = EndorsementList.ALTA_SEGURIDAD;
             ;
             buyerEndorsmentList[0][1] = 4;
-            buyerEndorsmentList[1][0] = EndorsmentList.ALTA_VARIEDAD;
+            buyerEndorsmentList[1][0] = EndorsementList.ALTA_VARIEDAD;
             buyerEndorsmentList[1][1] = 3;
-            buyerEndorsmentList[2][0] = EndorsmentList.ALTA_CONFIANZA_VEN;
+            buyerEndorsmentList[2][0] = EndorsementList.ALTA_CONFIANZA_VEN;
             buyerEndorsmentList[2][1] = 2;
-            buyerEndorsmentList[3][0] = EndorsmentList.ALTA_CALIDAD;
+            buyerEndorsmentList[3][0] = EndorsementList.ALTA_CALIDAD;
             buyerEndorsmentList[3][1] = 1;
-            buyerEndorsmentList[4][0] = EndorsmentList.ALTA_VERACIDAD;
+            buyerEndorsmentList[4][0] = EndorsementList.ALTA_VERACIDAD;
             buyerEndorsmentList[4][1] = 5;
-            buyerEndorsmentList[5][0] = EndorsmentList.BAJA_SEGURIDAD;
+            buyerEndorsmentList[5][0] = EndorsementList.BAJA_SEGURIDAD;
             buyerEndorsmentList[5][1] = -4;
-            buyerEndorsmentList[6][0] = EndorsmentList.BAJA_VARIEDAD;
+            buyerEndorsmentList[6][0] = EndorsementList.BAJA_VARIEDAD;
             buyerEndorsmentList[6][1] = -2;
-            buyerEndorsmentList[7][0] = EndorsmentList.BAJA_CONFIANZA_VEN;
+            buyerEndorsmentList[7][0] = EndorsementList.BAJA_CONFIANZA_VEN;
             buyerEndorsmentList[7][1] = -1;
-            buyerEndorsmentList[8][0] = EndorsmentList.BAJA_CALIDAD;
+            buyerEndorsmentList[8][0] = EndorsementList.BAJA_CALIDAD;
             buyerEndorsmentList[8][1] = -1;
-            buyerEndorsmentList[9][0] = EndorsmentList.BAJA_VERACIDAD;
+            buyerEndorsmentList[9][0] = EndorsementList.BAJA_VERACIDAD;
             buyerEndorsmentList[9][1] = -4;
-            return new Buyer(buyerEndorsmentList, base);
+            return new Buyer(buyerEndorsmentList, base, getBuyerType(TYPE1));
         } else if (type == TYPE2) {
             final double base = 1.2;
             buyerEndorsmentList = new int[10][2];
-            buyerEndorsmentList[0][0] = EndorsmentList.ALTA_SEGURIDAD;
+            buyerEndorsmentList[0][0] = EndorsementList.ALTA_SEGURIDAD;
             ;
             buyerEndorsmentList[0][1] = 2;
-            buyerEndorsmentList[1][0] = EndorsmentList.ALTA_VARIEDAD;
+            buyerEndorsmentList[1][0] = EndorsementList.ALTA_VARIEDAD;
             buyerEndorsmentList[1][1] = 4;
-            buyerEndorsmentList[2][0] = EndorsmentList.ALTA_CONFIANZA_VEN;
+            buyerEndorsmentList[2][0] = EndorsementList.ALTA_CONFIANZA_VEN;
             buyerEndorsmentList[2][1] = 1;
-            buyerEndorsmentList[3][0] = EndorsmentList.ALTA_CALIDAD;
+            buyerEndorsmentList[3][0] = EndorsementList.ALTA_CALIDAD;
             buyerEndorsmentList[3][1] = 5;
-            buyerEndorsmentList[4][0] = EndorsmentList.ALTA_VERACIDAD;
+            buyerEndorsmentList[4][0] = EndorsementList.ALTA_VERACIDAD;
             buyerEndorsmentList[4][1] = 1;
-            buyerEndorsmentList[5][0] = EndorsmentList.BAJA_SEGURIDAD;
+            buyerEndorsmentList[5][0] = EndorsementList.BAJA_SEGURIDAD;
             buyerEndorsmentList[5][1] = -2;
-            buyerEndorsmentList[6][0] = EndorsmentList.BAJA_VARIEDAD;
+            buyerEndorsmentList[6][0] = EndorsementList.BAJA_VARIEDAD;
             buyerEndorsmentList[6][1] = -3;
-            buyerEndorsmentList[7][0] = EndorsmentList.BAJA_CONFIANZA_VEN;
+            buyerEndorsmentList[7][0] = EndorsementList.BAJA_CONFIANZA_VEN;
             buyerEndorsmentList[7][1] = -1;
-            buyerEndorsmentList[8][0] = EndorsmentList.BAJA_CALIDAD;
+            buyerEndorsmentList[8][0] = EndorsementList.BAJA_CALIDAD;
             buyerEndorsmentList[8][1] = -4;
-            buyerEndorsmentList[9][0] = EndorsmentList.BAJA_VERACIDAD;
+            buyerEndorsmentList[9][0] = EndorsementList.BAJA_VERACIDAD;
             buyerEndorsmentList[9][1] = -1;
-            return new Buyer(buyerEndorsmentList, base);
+            return new Buyer(buyerEndorsmentList, base, getBuyerType(TYPE2));
         }
         return null;
     }

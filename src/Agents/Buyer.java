@@ -7,13 +7,19 @@ import java.util.ArrayList;
 public class Buyer implements Agent {
     ArrayList<Buyer> friends;
     ArrayList<Market> knownMarkets;
+    final String type;
     final double base;
-    int[][] endorsmentList;
+    int[][] endorsementList;
+    int iterationTime;
 
-    public Buyer(int[][] endorsmentList, double base) {
+    public Buyer(int[][] endorsmentList, double base,String type) {
         this.base = base;
         //PL: por que no se realiza una copia!
-        this.endorsmentList = endorsmentList;
+        this.endorsementList = endorsmentList;
+        this.type=type;
+        friends=new ArrayList<>();
+        knownMarkets=new ArrayList<>();
+        iterationTime=0;
     }
 
     //maybe this won't be needed here. does a buyer add friends after the initialization?
@@ -26,30 +32,30 @@ public class Buyer implements Agent {
 
     }
 
-    private int getEndorsmentValue(int endorsment) {
-        for (int i = 0; i < endorsmentList.length; i++) {
-            if (endorsmentList[i][0] == endorsment) {
-                return endorsmentList[i][1];
+    private int getEndorsementValue(int endorsement) {
+        for (int i = 0; i < endorsementList.length; i++) {
+            if (endorsementList[i][0] == endorsement) {
+                return endorsementList[i][1];
             }
         }
         throw new IllegalArgumentException("No existe el endoso");
     }
 
-    private boolean existsEndorsment(int endorsment) {
-        for (int i = 0; i < endorsmentList.length; i++) {
-            if (endorsmentList[i][0] == endorsment) {
+    private boolean existsEndorsement(int endorsement) {
+        for (int i = 0; i < endorsementList.length; i++) {
+            if (endorsementList[i][0] == endorsement) {
                 return true;
             }
         }
         return false;
     }
 
-    public double calculateFormula(ArrayList<Integer> experience) {
+    public double calculateWeight(ArrayList<Integer> experience) {
         double positiveValues = 0;
         double negativeValues = 0;
         for (int endorsmentIndex : experience) {
-            if (existsEndorsment(endorsmentIndex)) {
-                int endorsmentValue = getEndorsmentValue(endorsmentIndex);
+            if (existsEndorsement(endorsmentIndex)) {
+                int endorsmentValue = getEndorsementValue(endorsmentIndex);
                 if (endorsmentValue >= 0) {
                     positiveValues += Math.pow(base, endorsmentValue);
                 } else {
@@ -60,21 +66,37 @@ public class Buyer implements Agent {
         return (positiveValues - negativeValues);
     }
 
-    public void action() {
-        double endorsment;
+    public ArrayList<ArrayList<String>> action() {
+        ArrayList<ArrayList<String>>experiences=new ArrayList<>();
+        double endorsementWeight;
         for (Market market : knownMarkets) {
-            endorsment = this.calculateFormula(market.generateExperience());
-
+            ArrayList<Integer> generatedExperience=market.generateExperience();
+            endorsementWeight = this.calculateWeight(generatedExperience);
+            ArrayList<String>experience=new ArrayList<>();
+            experience.add(Integer.toString(this.iterationTime));
+            experience.add(this.type);
+            for(int i=0;i<endorsementList.length;i++){
+                experience.add(EndorsementList.getEndorsement(endorsementList[i][0]));
+                experience.add(Integer.toString(endorsementList[i][1]));
+            }
+            experience.add(market.name);
+            for(int marketEndorsement:generatedExperience){
+                experience.add(EndorsementList.getEndorsement(marketEndorsement));
+            }
+            experience.add(Double.toString(endorsementWeight));
+            experiences.add(experience);
         }
+        iterationTime++;
+        return experiences;
     }
-
     //Use this to test the correct assignation of a buyer's endorsments - Brian
+    @Override
     public String toString() {
         String state = "";
-        for (int i = 0; i < endorsmentList.length; i++) {
-            state += EndorsmentList.getEndorsment((endorsmentList[i][0]));
+        for (int i = 0; i < endorsementList.length; i++) {
+            state += EndorsementList.getEndorsement((endorsementList[i][0]));
             state += " ";
-            state += endorsmentList[i][1];
+            state += endorsementList[i][1];
             state += "\n";
         }
         return state;

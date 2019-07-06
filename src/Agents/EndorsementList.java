@@ -1,6 +1,6 @@
 package Agents;
 
-public class EndorsmentList {
+public class EndorsementList {
     public static final int ALTA_SEGURIDAD = 1;
     public static final int ALTA_VARIEDAD = 2;
     public static final int ALTA_CONFIANZA_VEN = 3;
@@ -24,7 +24,7 @@ public class EndorsmentList {
      *
      * @return "name" of an endorsment
      */
-    public static String getEndorsment(int endorsmentNumber) {
+    public static String getEndorsement(int endorsmentNumber) {
         return endorsments[endorsmentNumber - 1];
     }
 

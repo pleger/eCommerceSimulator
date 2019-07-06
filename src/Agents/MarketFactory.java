@@ -11,63 +11,76 @@ public class MarketFactory {
 
 
     private static int numberOfMarkets = 3;
+    private static String getMarketName(int number){
+        switch(number){
+            case MARKET1:
+                return "Alibaba";
+            case MARKET2:
+                return "DHGate";
+            case MARKET3:
+                return "Banggood";
+            default:
+                return "Invalid";
+        }
+    }
+
 
     private static Market getMarket(int type) {
         double[][] marketEndorsmentProbabilityList;
         if (type == MARKET1) {
             marketEndorsmentProbabilityList = new double[5][3];
-            marketEndorsmentProbabilityList[0][0] = EndorsmentList.ALTA_VARIEDAD;
+            marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
             marketEndorsmentProbabilityList[0][1] = 0.9;
-            marketEndorsmentProbabilityList[0][2] = EndorsmentList.BAJA_VARIEDAD;
-            marketEndorsmentProbabilityList[1][0] = EndorsmentList.ALTA_SEGURIDAD;
+            marketEndorsmentProbabilityList[0][2] = EndorsementList.BAJA_VARIEDAD;
+            marketEndorsmentProbabilityList[1][0] = EndorsementList.ALTA_SEGURIDAD;
             marketEndorsmentProbabilityList[1][1] = 0.5;
-            marketEndorsmentProbabilityList[1][2] = EndorsmentList.BAJA_SEGURIDAD;
-            marketEndorsmentProbabilityList[2][0] = EndorsmentList.ALTA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[1][2] = EndorsementList.BAJA_SEGURIDAD;
+            marketEndorsmentProbabilityList[2][0] = EndorsementList.ALTA_CONFIANZA_VEN;
             marketEndorsmentProbabilityList[2][1] = 0.3;
-            marketEndorsmentProbabilityList[2][2] = EndorsmentList.BAJA_CONFIANZA_VEN;
-            marketEndorsmentProbabilityList[3][0] = EndorsmentList.ALTA_CALIDAD;
+            marketEndorsmentProbabilityList[2][2] = EndorsementList.BAJA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[3][0] = EndorsementList.ALTA_CALIDAD;
             marketEndorsmentProbabilityList[3][1] = 0.3;
-            marketEndorsmentProbabilityList[3][2] = EndorsmentList.BAJA_CALIDAD;
-            marketEndorsmentProbabilityList[4][0] = EndorsmentList.ALTA_VERACIDAD;
+            marketEndorsmentProbabilityList[3][2] = EndorsementList.BAJA_CALIDAD;
+            marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.2;
-            marketEndorsmentProbabilityList[4][2] = EndorsmentList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList);
+            marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
+            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET1));
         } else if (type == MARKET2) {
             marketEndorsmentProbabilityList = new double[5][3];
-            marketEndorsmentProbabilityList[0][0] = EndorsmentList.ALTA_VARIEDAD;
+            marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
             marketEndorsmentProbabilityList[0][1] = 0.3;
-            marketEndorsmentProbabilityList[0][2] = EndorsmentList.BAJA_VARIEDAD;
-            marketEndorsmentProbabilityList[1][0] = EndorsmentList.ALTA_SEGURIDAD;
+            marketEndorsmentProbabilityList[0][2] = EndorsementList.BAJA_VARIEDAD;
+            marketEndorsmentProbabilityList[1][0] = EndorsementList.ALTA_SEGURIDAD;
             marketEndorsmentProbabilityList[1][1] = 0.4;
-            marketEndorsmentProbabilityList[1][2] = EndorsmentList.BAJA_SEGURIDAD;
-            marketEndorsmentProbabilityList[2][0] = EndorsmentList.ALTA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[1][2] = EndorsementList.BAJA_SEGURIDAD;
+            marketEndorsmentProbabilityList[2][0] = EndorsementList.ALTA_CONFIANZA_VEN;
             marketEndorsmentProbabilityList[2][1] = 0.8;
-            marketEndorsmentProbabilityList[2][2] = EndorsmentList.BAJA_CONFIANZA_VEN;
-            marketEndorsmentProbabilityList[3][0] = EndorsmentList.ALTA_CALIDAD;
+            marketEndorsmentProbabilityList[2][2] = EndorsementList.BAJA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[3][0] = EndorsementList.ALTA_CALIDAD;
             marketEndorsmentProbabilityList[3][1] = 0.7;
-            marketEndorsmentProbabilityList[3][2] = EndorsmentList.BAJA_CALIDAD;
-            marketEndorsmentProbabilityList[4][0] = EndorsmentList.ALTA_VERACIDAD;
+            marketEndorsmentProbabilityList[3][2] = EndorsementList.BAJA_CALIDAD;
+            marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.4;
-            marketEndorsmentProbabilityList[4][2] = EndorsmentList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList);
+            marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
+            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET2));
         } else if (type == MARKET3) {
             marketEndorsmentProbabilityList = new double[5][3];
-            marketEndorsmentProbabilityList[0][0] = EndorsmentList.ALTA_VARIEDAD;
+            marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
             marketEndorsmentProbabilityList[0][1] = 0.4;
-            marketEndorsmentProbabilityList[0][2] = EndorsmentList.BAJA_VARIEDAD;
-            marketEndorsmentProbabilityList[1][0] = EndorsmentList.ALTA_SEGURIDAD;
+            marketEndorsmentProbabilityList[0][2] = EndorsementList.BAJA_VARIEDAD;
+            marketEndorsmentProbabilityList[1][0] = EndorsementList.ALTA_SEGURIDAD;
             marketEndorsmentProbabilityList[1][1] = 0.8;
-            marketEndorsmentProbabilityList[1][2] = EndorsmentList.BAJA_SEGURIDAD;
-            marketEndorsmentProbabilityList[2][0] = EndorsmentList.ALTA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[1][2] = EndorsementList.BAJA_SEGURIDAD;
+            marketEndorsmentProbabilityList[2][0] = EndorsementList.ALTA_CONFIANZA_VEN;
             marketEndorsmentProbabilityList[2][1] = 0.5;
-            marketEndorsmentProbabilityList[2][2] = EndorsmentList.BAJA_CONFIANZA_VEN;
-            marketEndorsmentProbabilityList[3][0] = EndorsmentList.ALTA_CALIDAD;
+            marketEndorsmentProbabilityList[2][2] = EndorsementList.BAJA_CONFIANZA_VEN;
+            marketEndorsmentProbabilityList[3][0] = EndorsementList.ALTA_CALIDAD;
             marketEndorsmentProbabilityList[3][1] = 0.5;
-            marketEndorsmentProbabilityList[3][2] = EndorsmentList.BAJA_CALIDAD;
-            marketEndorsmentProbabilityList[4][0] = EndorsmentList.ALTA_VERACIDAD;
+            marketEndorsmentProbabilityList[3][2] = EndorsementList.BAJA_CALIDAD;
+            marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.6;
-            marketEndorsmentProbabilityList[4][2] = EndorsmentList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList);
+            marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
+            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET3));
         }
         return null;
     }
