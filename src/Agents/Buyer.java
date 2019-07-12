@@ -5,24 +5,25 @@ package Agents;
 import java.util.ArrayList;
 
 public class Buyer implements Agent {
-    ArrayList<Buyer> friends;
-    ArrayList<Market> knownMarkets;
-    final String type;
-    final double base;
-    int[][] endorsementList;
-    int iterationTime;
+    private ArrayList<Buyer> friends;
+    private ArrayList<Market> knownMarkets;
+    private ArrayList<Interaction> interactions;
+    private final String type;
+    private final double base;
+    private int[][] endorsementList;
+    private int iterationTime;
 
-    public Buyer(int[][] endorsmentList, double base,String type) {
+    public Buyer(int[][] endorsmentList, double base, String type) {
         this.base = base;
         //PL: por que no se realiza una copia!
         this.endorsementList = endorsmentList;
-        this.type=type;
-        friends=new ArrayList<>();
-        knownMarkets=new ArrayList<>();
-        iterationTime=0;
+        this.type = type;
+        friends = new ArrayList<>();
+        knownMarkets = new ArrayList<>();
+        interactions = new ArrayList<>();
+        iterationTime = 0;
     }
 
-    //maybe this won't be needed here. does a buyer add friends after the initialization?
     public void addFriend(Buyer newFriend) {
         friends.add(newFriend);
     }
@@ -67,32 +68,40 @@ public class Buyer implements Agent {
     }
 
     public ArrayList<ArrayList<String>> action() {
-        ArrayList<ArrayList<String>>experiences=new ArrayList<>();
+        ArrayList<ArrayList<String>> experiences = new ArrayList<>();
         double endorsementWeight;
         for (Market market : knownMarkets) {
-            ArrayList<Integer> generatedExperience=market.generateExperience();
+            //creates a new experience to contain all the data created in one market-buyer interaction
+            ArrayList<String> experience = new ArrayList<>();
+            ArrayList<Integer> generatedExperience = market.generateExperience();
             endorsementWeight = this.calculateWeight(generatedExperience);
-            ArrayList<String>experience=new ArrayList<>();
             experience.add(Integer.toString(this.iterationTime));
             experience.add(this.type);
+            /*
             for(int i=0;i<endorsementList.length;i++){
                 experience.add(EndorsementList.getEndorsement(endorsementList[i][0]));
                 experience.add(Integer.toString(endorsementList[i][1]));
             }
+            */
             experience.add(market.name);
-            for(int marketEndorsement:generatedExperience){
+            for (int marketEndorsement : generatedExperience) {
                 experience.add(EndorsementList.getEndorsement(marketEndorsement));
             }
             experience.add(Double.toString(endorsementWeight));
+            //registers a new interaction
+            interactions.add(new Interaction(market, endorsementWeight, iterationTime));
             experiences.add(experience);
         }
         iterationTime++;
         return experiences;
     }
+
     //Use this to test the correct assignation of a buyer's endorsments - Brian
     @Override
     public String toString() {
         String state = "";
+        state += this.type;
+        state += "\n";
         for (int i = 0; i < endorsementList.length; i++) {
             state += EndorsementList.getEndorsement((endorsementList[i][0]));
             state += " ";

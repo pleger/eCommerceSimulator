@@ -7,8 +7,10 @@ public class BuyerFactory {
     public static final int TYPE1 = 1;
     public static final int TYPE2 = 2;
 
-    public static String getBuyerType(int type){
-        switch(type){
+    public static final int NUMBER_OF_BUYERS = 2;
+
+    public static String getBuyerType(int type) {
+        switch (type) {
             case TYPE1:
                 return "Type 1";
             case TYPE2:
@@ -24,7 +26,6 @@ public class BuyerFactory {
             final double base = 1.2;
             buyerEndorsmentList = new int[10][2]; //se puede hacer más ordenado
             buyerEndorsmentList[0][0] = EndorsementList.ALTA_SEGURIDAD;
-            ;
             buyerEndorsmentList[0][1] = 4;
             buyerEndorsmentList[1][0] = EndorsementList.ALTA_VARIEDAD;
             buyerEndorsmentList[1][1] = 3;
@@ -49,7 +50,6 @@ public class BuyerFactory {
             final double base = 1.2;
             buyerEndorsmentList = new int[10][2];
             buyerEndorsmentList[0][0] = EndorsementList.ALTA_SEGURIDAD;
-            ;
             buyerEndorsmentList[0][1] = 2;
             buyerEndorsmentList[1][0] = EndorsementList.ALTA_VARIEDAD;
             buyerEndorsmentList[1][1] = 4;
@@ -105,5 +105,28 @@ public class BuyerFactory {
                 }
         }
         return buyersList;
+    }
+
+    private static ArrayList<Buyer> getOneByType() {
+        ArrayList<Buyer> oneByType = new ArrayList<>();
+        for (int i = 1; i <= NUMBER_OF_BUYERS; i++) {
+            oneByType.add(getBuyer(i));
+        }
+        return oneByType;
+    }
+
+    public static ArrayList<ArrayList<String>> dumpBuyerInfo() {
+        ArrayList<ArrayList<String>> buyerInfo = new ArrayList<>();
+
+        ArrayList<Buyer> oneByType = getOneByType();
+        for (Buyer buyer : oneByType) {
+            ArrayList<String> singleBuyerInfo = new ArrayList<>();
+            String[] info = buyer.toString().split("\n");
+            for (int i = 0; i < info.length; i++) {
+                singleBuyerInfo.add(info[i]);
+            }
+            buyerInfo.add(singleBuyerInfo);
+        }
+        return buyerInfo;
     }
 }

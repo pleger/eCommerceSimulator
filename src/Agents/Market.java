@@ -7,9 +7,9 @@ public class Market implements Agent {
     double[][] endorsmentProbabilityList;//refer to marketFactory for details on this list
     String name;
 
-    public Market(double[][] endorsmentProbabilityList,String name) {
+    public Market(double[][] endorsmentProbabilityList, String name) {
         this.endorsmentProbabilityList = endorsmentProbabilityList;
-        this.name=name;
+        this.name = name;
     }
 
     public ArrayList<Integer> generateExperience() {
@@ -31,6 +31,20 @@ public class Market implements Agent {
     public ArrayList<ArrayList<String>> action() {
         System.out.println("Inside market's action");
         return null;
+    }
+
+    @Override
+    public String toString() {
+        String state = "";
+        state += this.name;
+        state += "\n";
+        for (int i = 0; i < endorsmentProbabilityList.length; i++) {
+            state += EndorsementList.getEndorsement((int) endorsmentProbabilityList[i][0]);
+            state += "\n";
+            state += Double.toString(endorsmentProbabilityList[i][1]);
+            state += "\n";
+        }
+        return state;
     }
 
 }

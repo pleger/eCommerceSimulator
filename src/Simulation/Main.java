@@ -42,7 +42,7 @@ public class Main {
 
          */
 
-        Simulation simulation=SimulationFactory.getSimulation(SimulationFactory.SIMULATION_TYPE_1);
+        Simulation simulation = SimulationFactory.getSimulation(SimulationFactory.SIMULATION_TYPE_1);
         simulation.runSimulation();
     }
 }

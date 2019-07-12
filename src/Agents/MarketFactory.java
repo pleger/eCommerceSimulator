@@ -10,9 +10,10 @@ public class MarketFactory {
     public static final int MARKET3 = 3;
 
 
-    private static int numberOfMarkets = 3;
-    private static String getMarketName(int number){
-        switch(number){
+    private static int NUMBER_OF_MARKETS = 3;
+
+    private static String getMarketName(int number) {
+        switch (number) {
             case MARKET1:
                 return "Alibaba";
             case MARKET2:
@@ -44,7 +45,7 @@ public class MarketFactory {
             marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.2;
             marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET1));
+            return new Market(marketEndorsmentProbabilityList, getMarketName(MARKET1));
         } else if (type == MARKET2) {
             marketEndorsmentProbabilityList = new double[5][3];
             marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
@@ -62,7 +63,7 @@ public class MarketFactory {
             marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.4;
             marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET2));
+            return new Market(marketEndorsmentProbabilityList, getMarketName(MARKET2));
         } else if (type == MARKET3) {
             marketEndorsmentProbabilityList = new double[5][3];
             marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
@@ -80,16 +81,39 @@ public class MarketFactory {
             marketEndorsmentProbabilityList[4][0] = EndorsementList.ALTA_VERACIDAD;
             marketEndorsmentProbabilityList[4][1] = 0.6;
             marketEndorsmentProbabilityList[4][2] = EndorsementList.BAJA_VERACIDAD;
-            return new Market(marketEndorsmentProbabilityList,getMarketName(MARKET3));
+            return new Market(marketEndorsmentProbabilityList, getMarketName(MARKET3));
         }
         return null;
     }
 
     public static ArrayList<Market> getMarketList() {
         ArrayList<Market> markets = new ArrayList<>();
-        for (int i = 0; i < numberOfMarkets; i++) {
+        for (int i = 0; i < NUMBER_OF_MARKETS; i++) {
             markets.add(getMarket(i + 1));
         }
         return markets;
+    }
+
+    private static ArrayList<Market> getOneByType() {
+        ArrayList<Market> oneByType = new ArrayList<>();
+        for (int i = 1; i <= NUMBER_OF_MARKETS; i++) {
+            oneByType.add(getMarket(i));
+        }
+        return oneByType;
+    }
+
+    public static ArrayList<ArrayList<String>> dumpMarketInfo() {
+        ArrayList<ArrayList<String>> marketInfo = new ArrayList<>();
+
+        ArrayList<Market> oneByType = getOneByType();
+        for (Market market : oneByType) {
+            ArrayList<String> singleMarketInfo = new ArrayList<>();
+            String[] info = market.toString().split("\n");
+            for (int i = 0; i < info.length; i++) {
+                singleMarketInfo.add(info[i]);
+            }
+            marketInfo.add(singleMarketInfo);
+        }
+        return marketInfo;
     }
 }

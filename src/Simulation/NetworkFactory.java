@@ -20,7 +20,7 @@ public class NetworkFactory {
         for (int i = 0; i < numberOfFriends; i++) {
             nextFriendId = randomGenerator.nextInt(buyerQuantity);
             //makes sure a buyer doesn't have itself in it's friend list or a friend is already on list
-            while (nextFriendId<0 || nextFriendId == buyerID || friendID.contains(nextFriendId)) {
+            while (nextFriendId < 0 || nextFriendId == buyerID || friendID.contains(nextFriendId)) {
                 nextFriendId = randomGenerator.nextInt(buyerQuantity);
             }
             friendID.add(nextFriendId);
@@ -34,9 +34,9 @@ public class NetworkFactory {
         ArrayList<Market> buyerMarketList = new ArrayList<>();
         ArrayList<Integer> marketIds = new ArrayList<>();
 
-        randomGenerator=new Random();
+        randomGenerator = new Random();
         //determines a random number of markets to be added to the list
-        int randomNumberOfMarketsBound=maxNumberOfMarkets+1;
+        int randomNumberOfMarketsBound = maxNumberOfMarkets + 1;
         int numberOfMarkets = randomGenerator.nextInt(randomNumberOfMarketsBound);//workaround to exclusive upper bound
         while (numberOfMarkets <= 0) {
             numberOfMarkets = randomGenerator.nextInt(randomNumberOfMarketsBound);
@@ -45,7 +45,7 @@ public class NetworkFactory {
         int nextMarketId;
         for (int i = 0; i < numberOfMarkets; i++) {
             nextMarketId = randomGenerator.nextInt(maxNumberOfMarkets);
-            while (nextMarketId<0 || marketIds.contains(nextMarketId)) {
+            while (nextMarketId < 0 || marketIds.contains(nextMarketId)) {
                 nextMarketId = randomGenerator.nextInt(maxNumberOfMarkets);
             }
             buyerMarketList.add(marketList.get(nextMarketId));
@@ -62,7 +62,7 @@ public class NetworkFactory {
         int buyerQuantity;
         int maxNumberOfMarkets;
 
-            System.out.println("Creando Network...");
+        System.out.println("Creando Network...");
         //fixed number of friends,random friends; random number of markets
         if (networkType == NETWORK_TYPE_1) {
             numberOfFriends = 3;
@@ -78,12 +78,12 @@ public class NetworkFactory {
             //populates every buyer with required parameters
             for (Buyer buyer : buyerList) {
                 //generates and adds friends
-                System.out.println("Creando lista de compradores... "+buyerID);
+                System.out.println("Creando lista de compradores... " + buyerID);
                 friendList = randomBuyerFriendList(buyerList, buyerID, numberOfFriends, randomGenerator, buyerQuantity);
                 for (Buyer friend : friendList) {
                     buyer.addFriend(friend);
                 }
-                System.out.println("Creando lista de mercados... "+buyerID);
+                System.out.println("Creando lista de mercados... " + buyerID);
                 //generates and adds markets
                 knownMarketsList = randomMarketList(marketList, randomGenerator, maxNumberOfMarkets);
                 for (Market knownMarket : knownMarketsList) {
@@ -91,7 +91,7 @@ public class NetworkFactory {
                 }
                 buyerID++;
             }
-            Network network=new Network(marketList, buyerList);
+            Network network = new Network(marketList, buyerList);
             System.out.println("Network creada");
             return network;
         }

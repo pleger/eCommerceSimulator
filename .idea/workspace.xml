@@ -2,18 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/poi.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Log/Loggeable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Log/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Log/Reporter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Agents/Interaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChinaSimulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChinaSimulation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Agent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Agent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Buyer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Buyer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/BuyerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/BuyerFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/EndorsmentList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Market.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Market.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/MarketFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/MarketFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Simulation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Simulation/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Buyer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/EndorsmentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/EndorsementList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/EndorsementList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/EndorsementList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Market.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/MarketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Log/Loggeable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Log/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Log/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Log/Reporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Log/Reporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Network.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" afterDir="false" />
@@ -31,33 +36,12 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="408">
+              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,17 +52,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Agents/MarketFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+            <state relative-caret-position="430">
+              <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Log/Loggeable.java">
+        <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            <state relative-caret-position="107">
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Agents/Market.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="413">
+              <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,10 +83,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/EndorsementList.java">
+        <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="129">
+              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Log/Reporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,27 +109,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Log/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+            <state relative-caret-position="251">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Agents/Interaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
-                <element signature="e#136#137#0" expanded="true" />
-                <element signature="e#174#175#0" expanded="true" />
-                <element signature="e#225#226#0" expanded="true" />
-                <element signature="e#249#250#0" expanded="true" />
-                <element signature="e#290#291#0" expanded="true" />
-                <element signature="e#316#317#0" expanded="true" />
-                <element signature="e#228#229#0" expanded="true" />
-                <element signature="e#247#248#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#464#465#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Log/Reporter.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Simulation/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+            <state relative-caret-position="234">
+              <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,13 +141,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/Buyer.java">
+        <entry file="file://$PROJECT_DIR$/src/Simulation/Network.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+            <state relative-caret-position="132">
+              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
               <folding>
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#585#586#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,8 +158,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Singleton" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -172,26 +176,27 @@
         <option value="$PROJECT_DIR$/src/BuyerFactory.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Agents/EndorsmentList.java" />
+        <option value="$PROJECT_DIR$/src/Agents/Agent.java" />
+        <option value="$PROJECT_DIR$/src/Agents/Buyer.java" />
         <option value="$PROJECT_DIR$/src/Agents/BuyerFactory.java" />
         <option value="$PROJECT_DIR$/src/Agents/EndorsementList.java" />
-        <option value="$PROJECT_DIR$/src/Agents/MarketFactory.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Agent.java" />
+        <option value="$PROJECT_DIR$/src/Agents/Interaction.java" />
         <option value="$PROJECT_DIR$/src/Agents/Market.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/Network.java" />
+        <option value="$PROJECT_DIR$/src/Agents/MarketFactory.java" />
+        <option value="$PROJECT_DIR$/src/Log/Logger.java" />
         <option value="$PROJECT_DIR$/src/Log/Reporter.java" />
         <option value="$PROJECT_DIR$/src/Simulation/Main.java" />
+        <option value="$PROJECT_DIR$/src/Simulation/Network.java" />
         <option value="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Buyer.java" />
-        <option value="$PROJECT_DIR$/src/Log/Logger.java" />
         <option value="$PROJECT_DIR$/src/Simulation/Simulation.java" />
+        <option value="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+    <option name="x" value="-12" />
+    <option name="width" value="981" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -312,7 +317,8 @@
       <workItem from="1561748330730" duration="564000" />
       <workItem from="1561749529193" duration="2172000" />
       <workItem from="1562009155715" duration="598000" />
-      <workItem from="1562427104045" duration="17833000" />
+      <workItem from="1562427104045" duration="19795000" />
+      <workItem from="1562888495861" duration="6097000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -349,11 +355,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562430275941</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="working simulation factory, excel output">
+      <created>1562451226338</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562451226338</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75949000" />
+    <option name="totallyTimeSpent" value="84008000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,7 +381,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15708502" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2194332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -377,7 +390,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3179396" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22735347" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -408,25 +421,36 @@
     <MESSAGE value="Fully functioning buyer factory" />
     <MESSAGE value="Market generates experience and Buyer calculates formula" />
     <MESSAGE value="Code format" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code format" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="working simulation factory, excel output" />
+    <option name="LAST_COMMIT_MESSAGE" value="working simulation factory, excel output" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FactoryBuyer.java" />
     <entry file="file://$PROJECT_DIR$/src/a.java" />
     <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Log/Loggeable.java" />
+    <entry file="file://$PROJECT_DIR$/ChinaSimulation.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="uml://MODULES/mdl-ChinaSimulation">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MODULES</ID>
+          <OriginalElement>mdl-ChinaSimulation</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">mdl-ChinaSimulation</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-163.0" y="-6.0" />
+          <SelectedNodes>
+            <node>mdl-ChinaSimulation</node>
+          </SelectedNodes>
+          <Categories />
+        </state>
+      </provider>
     </entry>
     <entry file="uml://JAVA/">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -454,9 +478,9 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.6784968684759917" x="-102.0" y="375.0" />
+          <settings layout="Hierarchic Group" zoom="1.1" x="38.0" y="214.95454545454544" />
           <SelectedNodes>
-            <node>com</node>
+            <node>Agents</node>
           </SelectedNodes>
           <Categories />
           <SCOPE>All</SCOPE>
@@ -470,72 +494,55 @@
           <ID>JAVA</ID>
           <OriginalElement>Agents</OriginalElement>
           <nodes>
+            <node x="0.0" y="293.0">Agents.Interaction</node>
+            <node x="0.0" y="149.0">Agents.EndorsementList</node>
             <node x="186.0" y="221.0">Agents.BuyerFactory</node>
-            <node x="0.0" y="149.0">Agents.EndorsmentList</node>
+            <node x="102.0" y="77.0">Agents.Market</node>
             <node x="0.0" y="221.0">Agents.MarketFactory</node>
-            <node x="0.0" y="77.0">Agents.Market</node>
-            <node x="57.0" y="0.0">Agents.Agent</node>
-            <node x="110.0" y="77.0">Agents.Buyer</node>
+            <node x="53.0" y="0.0">Agents.Agent</node>
+            <node x="0.0" y="77.0">Agents.Buyer</node>
           </nodes>
           <notes />
           <edges>
             <edge source="Agents.Buyer" target="Agents.Agent">
               <point x="0.0" y="-13.5" />
-              <point x="151.0" y="52.0" />
-              <point x="118.5" y="52.0" />
-              <point x="20.5" y="13.5" />
+              <point x="41.0" y="52.0" />
+              <point x="73.5" y="52.0" />
+              <point x="-20.5" y="13.5" />
             </edge>
             <edge source="Agents.Market" target="Agents.Agent">
               <point x="0.0" y="-13.5" />
-              <point x="45.0" y="52.0" />
-              <point x="77.5" y="52.0" />
-              <point x="-20.5" y="13.5" />
+              <point x="147.0" y="52.0" />
+              <point x="114.5" y="52.0" />
+              <point x="20.5" y="13.5" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-84.0" y="202.0" />
-          <SelectedNodes>
-            <node>Agents.BuyerFactory</node>
-          </SelectedNodes>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-82.0" y="144.0" />
+          <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ChinaSimulation.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Agents/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Agents/Buyer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Agents/BuyerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="25" column="71" lean-forward="true" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+        <state relative-caret-position="319">
+          <caret line="130" column="5" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -544,15 +551,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Agents/EndorsementList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Agents/Interaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Agents/Market.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="413">
+          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -561,77 +579,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Agents/MarketFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/Buyer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
-          <folding>
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Log/Loggeable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="430">
+          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Log/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#136#137#0" expanded="true" />
-            <element signature="e#174#175#0" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="251">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Log/Reporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="129">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulation/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulation/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
