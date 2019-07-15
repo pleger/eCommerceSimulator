@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Agents/Interaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Agent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Buyer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Buyer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/BuyerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/BuyerFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/EndorsmentList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Market.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/Market.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/MarketFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Agents/MarketFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChinaSimulation/Simulation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChinaSimulation/Simulation/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Buyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/EndorsementList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/EndorsementList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Market.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/MarketFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Log/Loggeable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Log/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Log/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Log/Reporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Log/Reporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -318,7 +295,7 @@
       <workItem from="1561749529193" duration="2172000" />
       <workItem from="1562009155715" duration="598000" />
       <workItem from="1562427104045" duration="19795000" />
-      <workItem from="1562888495861" duration="6097000" />
+      <workItem from="1562888495861" duration="6746000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -362,11 +339,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562451226338</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Clearer output, added &quot;memory&quot; to buyers">
+      <created>1562894722094</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1562894722094</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84008000" />
+    <option name="totallyTimeSpent" value="84657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,7 +374,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22735347" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22735347" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -422,7 +406,8 @@
     <MESSAGE value="Market generates experience and Buyer calculates formula" />
     <MESSAGE value="Code format" />
     <MESSAGE value="working simulation factory, excel output" />
-    <option name="LAST_COMMIT_MESSAGE" value="working simulation factory, excel output" />
+    <MESSAGE value="Clearer output, added &quot;memory&quot; to buyers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clearer output, added &quot;memory&quot; to buyers" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FactoryBuyer.java" />
