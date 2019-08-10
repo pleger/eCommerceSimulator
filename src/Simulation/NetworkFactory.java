@@ -66,7 +66,7 @@ public class NetworkFactory {
         //fixed number of friends,random friends; random number of markets
         if (networkType == NETWORK_TYPE_1) {
             numberOfFriends = 3;
-            buyerQuantity = 30;
+            buyerQuantity = 5;
             maxNumberOfMarkets = 3;
 
             Random randomGenerator = new Random();
@@ -78,6 +78,7 @@ public class NetworkFactory {
             //populates every buyer with required parameters
             for (Buyer buyer : buyerList) {
                 //generates and adds friends
+                buyer.setBuyerId(buyerID);
                 System.out.println("Creando lista de compradores... " + buyerID);
                 friendList = randomBuyerFriendList(buyerList, buyerID, numberOfFriends, randomGenerator, buyerQuantity);
                 for (Buyer friend : friendList) {

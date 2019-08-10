@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Market implements Agent {
-    double[][] endorsmentProbabilityList;//refer to marketFactory for details on this list
+    private double[][] endorsmentProbabilityList;//refer to marketFactory for details on this list
     String name;
 
     public Market(double[][] endorsmentProbabilityList, String name) {

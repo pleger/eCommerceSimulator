@@ -3,6 +3,7 @@ package Agents;
 //PL:knownMarket -> market!!
 
 import java.util.ArrayList;
+import GUI.XChartDriver;
 
 public class Buyer implements Agent {
     private ArrayList<Buyer> friends;
@@ -12,10 +13,13 @@ public class Buyer implements Agent {
     private final double base;
     private int[][] endorsementList;
     private int iterationTime;
+    private int buyerId;
+    private int previousPreferredMarket;
+
+
 
     public Buyer(int[][] endorsmentList, double base, String type) {
         this.base = base;
-        //PL: por que no se realiza una copia!
         this.endorsementList = endorsmentList;
         this.type = type;
         friends = new ArrayList<>();
@@ -23,7 +27,12 @@ public class Buyer implements Agent {
         interactions = new ArrayList<>();
         iterationTime = 0;
     }
-
+    public void setBuyerId(int buyerId){
+        this.buyerId=buyerId;
+    }
+    public int getBuyerId(){
+        return this.buyerId;
+    }
     public void addFriend(Buyer newFriend) {
         friends.add(newFriend);
     }
@@ -32,7 +41,13 @@ public class Buyer implements Agent {
         knownMarkets.add(newMarket);
 
     }
-
+    public void registerChartSeries(){
+        ArrayList<Integer> xData=new ArrayList<>();
+        xData.add(-1);
+        ArrayList<Integer> yData=new ArrayList<>();
+        yData.add(-1);
+        XChartDriver.registerNewSeries(buyerId,Integer.toString(this.buyerId),xData,yData);
+    }
     private int getEndorsementValue(int endorsement) {
         for (int i = 0; i < endorsementList.length; i++) {
             if (endorsementList[i][0] == endorsement) {
@@ -54,13 +69,13 @@ public class Buyer implements Agent {
     public double calculateWeight(ArrayList<Integer> experience) {
         double positiveValues = 0;
         double negativeValues = 0;
-        for (int endorsmentIndex : experience) {
-            if (existsEndorsement(endorsmentIndex)) {
-                int endorsmentValue = getEndorsementValue(endorsmentIndex);
-                if (endorsmentValue >= 0) {
-                    positiveValues += Math.pow(base, endorsmentValue);
+        for (int endorsementIndex : experience) {
+            if (existsEndorsement(endorsementIndex)) {
+                int endorsementValue = getEndorsementValue(endorsementIndex);
+                if (endorsementValue >= 0) {
+                    positiveValues += Math.pow(base, endorsementValue);
                 } else {
-                    negativeValues += Math.pow(base, Math.abs(endorsmentValue));
+                    negativeValues += Math.pow(base, Math.abs(endorsementValue));
                 }
             }
         }
@@ -70,6 +85,9 @@ public class Buyer implements Agent {
     public ArrayList<ArrayList<String>> action() {
         ArrayList<ArrayList<String>> experiences = new ArrayList<>();
         double endorsementWeight;
+        double[]individualEndorsements=new double[knownMarkets.size()];
+        int individualEndorsementsIndex=0;
+        double endorsementsSum=0;
         for (Market market : knownMarkets) {
             //creates a new experience to contain all the data created in one market-buyer interaction
             ArrayList<String> experience = new ArrayList<>();
@@ -77,21 +95,48 @@ public class Buyer implements Agent {
             endorsementWeight = this.calculateWeight(generatedExperience);
             experience.add(Integer.toString(this.iterationTime));
             experience.add(this.type);
-            /*
-            for(int i=0;i<endorsementList.length;i++){
-                experience.add(EndorsementList.getEndorsement(endorsementList[i][0]));
-                experience.add(Integer.toString(endorsementList[i][1]));
-            }
-            */
             experience.add(market.name);
             for (int marketEndorsement : generatedExperience) {
                 experience.add(EndorsementList.getEndorsement(marketEndorsement));
             }
+            if(endorsementWeight>0) {
+                endorsementsSum = endorsementsSum + endorsementWeight;
+                individualEndorsements[individualEndorsementsIndex]=endorsementWeight;
+            }else{
+                individualEndorsements[individualEndorsementsIndex]=0;
+            }
+            individualEndorsementsIndex++;
             experience.add(Double.toString(endorsementWeight));
             //registers a new interaction
-            interactions.add(new Interaction(market, endorsementWeight, iterationTime));
+            interactions.add(new Interaction(market, generatedExperience,endorsementWeight, iterationTime));
             experiences.add(experience);
         }
+
+        //now for the probability
+        individualEndorsementsIndex=0;
+        int interactionsIndex=interactions.size()-knownMarkets.size();
+        double preferredMarketProbability=-1;
+        int preferredMarket=-1;
+        for(ArrayList<String> experience: experiences){
+            double probability;
+            if(endorsementsSum>0){
+                probability=individualEndorsements[individualEndorsementsIndex]/endorsementsSum;
+                if(probability>preferredMarketProbability) {
+                    preferredMarketProbability=probability;
+                    preferredMarket=MarketFactory.getMarketNumber(experience.get(2));
+                }
+            }
+            else{
+                probability=0;
+            }
+            experience.add(Double.toString(probability));
+            interactions.get(interactionsIndex).setProbability(probability);
+            individualEndorsementsIndex++;
+            interactionsIndex++;
+        }
+        if(endorsementsSum==0) preferredMarket=previousPreferredMarket; //ATENCIÓN!!! si no hay nueva eleccion, elige lo anterior
+        XChartDriver.addSeriesData(this.buyerId,iterationTime,preferredMarket);
+        previousPreferredMarket=preferredMarket;
         iterationTime++;
         return experiences;
     }

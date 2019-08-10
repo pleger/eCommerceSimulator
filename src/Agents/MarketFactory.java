@@ -12,7 +12,7 @@ public class MarketFactory {
 
     private static int NUMBER_OF_MARKETS = 3;
 
-    private static String getMarketName(int number) {
+    public static String getMarketName(int number) {
         switch (number) {
             case MARKET1:
                 return "Alibaba";
@@ -25,7 +25,18 @@ public class MarketFactory {
         }
     }
 
-
+    public static int getMarketNumber(String name){
+        switch(name){
+            case "Alibaba":
+                return MARKET1;
+            case "DHGate":
+                return MARKET2;
+            case "Banggood":
+                return MARKET3;
+            default:
+                return -1;
+        }
+    }
     private static Market getMarket(int type) {
         double[][] marketEndorsmentProbabilityList;
         if (type == MARKET1) {

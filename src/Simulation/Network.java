@@ -20,10 +20,21 @@ public class Network {
             ArrayList<ArrayList<String>> experiences = buyer.action();
             for (ArrayList<String> singleExperience : experiences) {
                 //adds the id of the buyer
-                singleExperience.add(Integer.toString(buyers.indexOf(buyer)));
+                singleExperience.add(Integer.toString(buyer.getBuyerId()));
                 allExperiences.add(singleExperience);
             }
         }
         return allExperiences;
+    }
+    public void registerBuyersOnChart(){
+        for(Buyer buyer: buyers){
+            buyer.registerChartSeries();
+        }
+    }
+    public int getBuyersSize(){
+        return buyers.size();
+    }
+    public int getMarketsSize(){
+        return markets.size();
     }
 }

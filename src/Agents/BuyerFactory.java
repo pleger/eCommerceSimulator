@@ -19,6 +19,16 @@ public class BuyerFactory {
                 return "Invalid";
         }
     }
+    public static int getBuyerNumber(String type){
+        switch(type){
+            case "Type 1":
+                return TYPE1;
+            case "Type 2":
+                return TYPE2;
+            default:
+                return -1;
+        }
+    }
 
     private static Buyer getBuyer(int type) {
         int[][] buyerEndorsmentList;
@@ -100,7 +110,8 @@ public class BuyerFactory {
             Double prob = randomNum.nextDouble();
             for (int h = 0; h < cantProb; h++)
                 if (prob <= intervals[h]) {
-                    buyersList.add(getBuyer(h + 1));
+                    Buyer newBuyer=getBuyer(h+1);
+                    buyersList.add(newBuyer);
                     break;
                 }
         }
