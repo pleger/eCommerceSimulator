@@ -3,6 +3,8 @@ package Agents;
 //PL:knownMarket -> market!!
 
 import java.util.ArrayList;
+
+import GUI.InformationPanel;
 import GUI.XChartDriver;
 
 public class Buyer implements Agent {
@@ -25,6 +27,7 @@ public class Buyer implements Agent {
         friends = new ArrayList<>();
         knownMarkets = new ArrayList<>();
         interactions = new ArrayList<>();
+        previousPreferredMarket=0;
         iterationTime = 0;
     }
     public void setBuyerId(int buyerId){
@@ -136,6 +139,7 @@ public class Buyer implements Agent {
         }
         if(endorsementsSum==0) preferredMarket=previousPreferredMarket; //ATENCIÓN!!! si no hay nueva eleccion, elige lo anterior
         XChartDriver.addSeriesData(this.buyerId,iterationTime,preferredMarket);
+        InformationPanel.addInfo(preferredMarket,Integer.toString(this.buyerId));
         previousPreferredMarket=preferredMarket;
         iterationTime++;
         return experiences;

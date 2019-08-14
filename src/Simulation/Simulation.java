@@ -1,5 +1,6 @@
 package Simulation;
 
+import GUI.InformationPanel;
 import GUI.XChartDriver;
 import Log.Logger;
 
@@ -16,6 +17,7 @@ public class Simulation {
         network = NetworkFactory.getNetwork(NetworkFactory.NETWORK_TYPE_1, probabilitiesBuyer);
         XChartDriver.createXChartDriver(network.getBuyersSize());
         network.registerBuyersOnChart();
+        InformationPanel.createInformationPanel(network.getMarketsSize());
         this.maxTime = maxTime;
     }
 
@@ -29,9 +31,15 @@ public class Simulation {
             for (ArrayList<String> record : experiences) {
                 logger.addLog(record);
             }
-            if(iterationTime==0) XChartDriver.drawChart();
-            else XChartDriver.updateChart();
-            Thread.sleep(500);
+            if(iterationTime==0) {
+                XChartDriver.drawChart();
+                InformationPanel.displayPanel();
+            }
+            else {
+                XChartDriver.updateChart();
+                InformationPanel.updatePanel();
+            }
+            Thread.sleep(1000);
             iterationTime++;
         }
         logger.writeLog();

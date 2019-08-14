@@ -10,8 +10,9 @@ public class XChartDriver {
     static ArrayList<DataSeries> dataSeries;
     static SwingWrapper<XYChart> sw;
     public static void createXChartDriver(int dataSeriesSize){
-        chart=new XYChartBuilder().width(800).height(600).title("Simulación")
+        chart=new XYChartBuilder().width(800).height(600).title("Simulation")
                 .xAxisTitle("Iteration time").yAxisTitle("Market").build();
+        chart.getStyler().setYAxisDecimalPattern("#0");
         dataSeries=new ArrayList<>(dataSeriesSize);
         sw=new SwingWrapper<XYChart>(chart);
     }

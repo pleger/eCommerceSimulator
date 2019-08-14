@@ -14,6 +14,10 @@ public class DataSeries {
     public void addData(int x,int y){
         xData.add(x);
         yData.add(y);
+        if(xData.get(0)==-1 && yData.get(0)==-1){
+            xData.remove(0);
+            yData.remove(0);
+        }
         /*
         if(xData.size()>20){
             xData.remove(0);
