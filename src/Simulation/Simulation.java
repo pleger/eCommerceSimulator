@@ -17,7 +17,7 @@ public class Simulation {
         network = NetworkFactory.getNetwork(NetworkFactory.NETWORK_TYPE_1, probabilitiesBuyer);
         XChartDriver.createXChartDriver(network.getBuyersSize());
         network.registerBuyersOnChart();
-        InformationPanel.createInformationPanel(network.getMarketsSize());
+        InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);
         this.maxTime = maxTime;
     }
 
@@ -31,11 +31,10 @@ public class Simulation {
             for (ArrayList<String> record : experiences) {
                 logger.addLog(record);
             }
-            if(iterationTime==0) {
+            if (iterationTime == 0) {
                 XChartDriver.drawChart();
                 InformationPanel.displayPanel();
-            }
-            else {
+            } else {
                 XChartDriver.updateChart();
                 InformationPanel.updatePanel();
             }

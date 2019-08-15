@@ -6,15 +6,17 @@ public class DataSeries {
     private String seriesName;
     private ArrayList<Integer> xData;
     private ArrayList<Integer> yData;
-    public DataSeries(String seriesName,ArrayList<Integer> xData,ArrayList<Integer> yData){
-        this.seriesName=seriesName;
-        this.xData=xData;
-        this.yData=yData;
+
+    public DataSeries(String seriesName, ArrayList<Integer> xData, ArrayList<Integer> yData) {
+        this.seriesName = seriesName;
+        this.xData = xData;
+        this.yData = yData;
     }
-    public void addData(int x,int y){
+
+    public void addData(int x, int y) {
         xData.add(x);
         yData.add(y);
-        if(xData.get(0)==-1 && yData.get(0)==-1){
+        if (xData.get(0) == -1 && yData.get(0) == -1) {
             xData.remove(0);
             yData.remove(0);
         }
@@ -25,13 +27,16 @@ public class DataSeries {
         }
          */
     }
-    public ArrayList<Integer> getXData(){
+
+    public ArrayList<Integer> getXData() {
         return xData;
     }
-    public ArrayList<Integer> getYData(){
+
+    public ArrayList<Integer> getYData() {
         return yData;
     }
-    public String getSeriesName(){
+
+    public String getSeriesName() {
         return seriesName;
     }
 }

@@ -26,15 +26,18 @@ public class Network {
         }
         return allExperiences;
     }
-    public void registerBuyersOnChart(){
-        for(Buyer buyer: buyers){
+
+    public void registerBuyersOnChart() {
+        for (Buyer buyer : buyers) {
             buyer.registerChartSeries();
         }
     }
-    public int getBuyersSize(){
+
+    public int getBuyersSize() {
         return buyers.size();
     }
-    public int getMarketsSize(){
+
+    public int getMarketsSize() {
         return markets.size();
     }
 }

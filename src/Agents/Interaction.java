@@ -9,11 +9,11 @@ public class Interaction {
     private final ArrayList<Integer> generatedExperience;
     private double probability;
 
-    public Interaction(Market market, ArrayList<Integer> generatedExperience,double weight, int time) {
+    public Interaction(Market market, ArrayList<Integer> generatedExperience, double weight, int time) {
         this.market = market;
         this.weight = weight;
         this.time = time;
-        this.generatedExperience=generatedExperience;
+        this.generatedExperience = generatedExperience;
     }
 
     public Market getMarket() {
@@ -23,13 +23,16 @@ public class Interaction {
     public double getWeight() {
         return this.weight;
     }
+
     public int getTime() {
         return this.time;
     }
-    public void setProbability(double probability){
-        this.probability=probability;
+
+    public void setProbability(double probability) {
+        this.probability = probability;
     }
-    public ArrayList<Integer> getGeneratedExperience(){
+
+    public ArrayList<Integer> getGeneratedExperience() {
         return this.generatedExperience;
     }
 }

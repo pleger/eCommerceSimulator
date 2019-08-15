@@ -19,8 +19,9 @@ public class BuyerFactory {
                 return "Invalid";
         }
     }
-    public static int getBuyerNumber(String type){
-        switch(type){
+
+    public static int getBuyerNumber(String type) {
+        switch (type) {
             case "Type 1":
                 return TYPE1;
             case "Type 2":
@@ -110,7 +111,7 @@ public class BuyerFactory {
             Double prob = randomNum.nextDouble();
             for (int h = 0; h < cantProb; h++)
                 if (prob <= intervals[h]) {
-                    Buyer newBuyer=getBuyer(h+1);
+                    Buyer newBuyer = getBuyer(h + 1);
                     buyersList.add(newBuyer);
                     break;
                 }
