@@ -90,7 +90,7 @@ public class InformationPanel {
                 iterationTable.setValueAt("Market " + (i + 1), iterationTime, Integer.parseInt(info) + 1);
                 display += "Buyer " + info + ", ";
             }
-            System.out.println(display);
+            //System.out.println(display);
             label.setText(display);
         }
         iterationTime++;

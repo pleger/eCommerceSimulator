@@ -95,7 +95,6 @@ public class BuyerFactory {
      * @return probabilistically created arraylist
      */
     public static ArrayList<Buyer> getBuyerList(int buyerQuantity, double[] probList) {
-        //PL: retornar List
         ArrayList<Buyer> buyersList = new ArrayList<>();
 
         int cantProb = probList.length;

@@ -38,7 +38,7 @@ public class Simulation {
                 XChartDriver.updateChart();
                 InformationPanel.updatePanel();
             }
-            Thread.sleep(1000);
+            Thread.sleep(0);
             iterationTime++;
         }
         logger.writeLog();

@@ -16,9 +16,7 @@ public class SimulationFactory {
             int maxTime = 30;
             double[] probabilities = {probabilityType1, probabilityType2};
             simulation = new Simulation(probabilities, maxTime);
-            ArrayList<String> headers = new ArrayList<>(Arrays.asList("Iteration Time", "Buyer Type", "Market",
-                    "Endorsement1", "Endorsement2", "Endorsment3", "Endorsement4", "Endorsement5", "Calculated Weight"
-                    , "Probability", "Buyer ID"));
+            ArrayList<String> headers = new ArrayList<>(Arrays.asList("Iteration Time", "Buyer Type", "Market"));
             simulation.enableLog(headers);
             System.out.println("Simulacion creada");
             return simulation;
