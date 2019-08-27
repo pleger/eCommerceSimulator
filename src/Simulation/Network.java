@@ -6,8 +6,8 @@ import Agents.Market;
 import java.util.ArrayList;
 
 public class Network {
-    ArrayList<Buyer> buyers;
-    ArrayList<Market> markets;
+    private ArrayList<Buyer> buyers;
+    private ArrayList<Market> markets;
 
     public Network(ArrayList<Market> markets, ArrayList<Buyer> buyers) {
         this.markets = markets;
