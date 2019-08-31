@@ -1,7 +1,4 @@
-import Agents.*;
 import Simulation.*;
-
-import java.util.ArrayList;
 
 // PL: formatear el codigo
 

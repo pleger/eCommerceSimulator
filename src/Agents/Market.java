@@ -17,12 +17,12 @@ public class Market implements Agent {
         Random random = new Random();
         for (int i = 0; i < endorsementProbabilityList.length; i++) {
             double probabilityNumber = random.nextDouble();
-            double positiveProb=endorsementProbabilityList[i][1];
-            double negativeProb=positiveProb+endorsementProbabilityList[i][3];
+            double positiveProb = endorsementProbabilityList[i][1];
+            double negativeProb = positiveProb + endorsementProbabilityList[i][3];
             if (probabilityNumber <= positiveProb) {
                 //adds to a "positive" experience
                 experience.add((int) endorsementProbabilityList[i][0]);
-            } else if(probabilityNumber <=negativeProb){
+            } else if (probabilityNumber <= negativeProb) {
                 //"negative" experience
                 experience.add((int) endorsementProbabilityList[i][2]);
             }//note that in any other case, the attribute will not be added to the experience
@@ -35,7 +35,7 @@ public class Market implements Agent {
         return null;
     }
 
-    public int getNumber(){
+    public int getNumber() {
         return MarketFactory.getMarketNumber(this.name);
     }
 
