@@ -12,6 +12,7 @@ public class Buyer implements Agent {
     private ArrayList<Buyer> friends;
     private ArrayList<Market> knownMarkets;
     private ArrayList<Double> marketProbabilities;
+    private Market chosenMarket;
     private boolean isInitialized;//used to create elections of markets
     private InteractionList interactions;
     private final String type;
@@ -75,7 +76,7 @@ public class Buyer implements Agent {
         return false;
     }
 
-    public double calculateWeight(ArrayList<Integer> experience) {
+    private double calculateWeight(ArrayList<Integer> experience) {
         double positiveValues = 0;
         double negativeValues = 0;
         for (int endorsementIndex : experience) {
@@ -90,96 +91,13 @@ public class Buyer implements Agent {
         }
         return (positiveValues - negativeValues);
     }
-
-    /**
-     * Creates "prejudices" about all the markets, with the intention of creating initial probabilities
-     * @return experiences ArrayList<ArrayList<String>> to be recorded in logger
-     */
-    private ArrayList<ArrayList<String>> initialAction(){
-        ArrayList<ArrayList<String>>experiences = new ArrayList<>();
-        double probabilitySum=0;
-        ArrayList<Double> initialProbabilities=new ArrayList<>();
-        ArrayList<Interaction> initialInteractions=new ArrayList<>();
-        for (Market market:knownMarkets){
-            ArrayList<String>experience=new ArrayList<>();
-            ArrayList<Integer>generatedExperience=market.generateExperience();
-            double experienceWeight=this.calculateWeight(generatedExperience);
-            experience.add(Integer.toString(this.iterationTime));
-            experience.add(this.type);
-            experience.add(market.name);
-            /*
-            for (int marketEndorsement : generatedExperience) {
-                experience.add(EndorsementList.getEndorsement(marketEndorsement));
-            }
-             */
-            //experience.add(Double.toString(experienceWeight));
-            if(experienceWeight<0){
-                initialProbabilities.add(0.0);
-            }else{
-                initialProbabilities.add(experienceWeight);
-                probabilitySum+=experienceWeight;
-            }
-            interactions.addInteraction(new Interaction(market.getNumber(), generatedExperience, iterationTime));
-            experiences.add(experience);
-        }
-        int preferredMarket;
-        if(probabilitySum!=0 && !initialProbabilities.contains(0.0)){//if the action is valid->returns valid probabilities to choose after
-            int probabilityIndex=0;
-            double maxProbability=-1;
-            preferredMarket=-1;
-            for(Market market:knownMarkets){
-                double probability=initialProbabilities.get(probabilityIndex)/probabilitySum;
-                if(probability>maxProbability){
-                    maxProbability=probability;
-                    preferredMarket=market.getNumber();
-                }
-                initialProbabilities.set(probabilityIndex,probability);
-                experiences.get(probabilityIndex).add(Double.toString(probability));//uses index because it's one experience per market
-                probabilityIndex++;
-            }
-            //sets the initial values, as they're now valid
-            marketProbabilities=initialProbabilities;
-            for(Interaction interaction: initialInteractions){
-                interactions.addInteraction(interaction);
-            }
-            isInitialized=true;
-        }else{
-            int probabilityIndex=0;
-            for(Market market:knownMarkets){
-                experiences.get(probabilityIndex).add("NO PROB");
-                probabilityIndex++;
-            }
-            preferredMarket=0;
-        }
-        XChartDriver.addSeriesData(this.buyerId, iterationTime, preferredMarket);
-        InformationPanel.addInfo(preferredMarket, Integer.toString(this.buyerId));
-        return experiences;
-    }
-
-    /**
-     * Chooses a market based on the probabilities, and then recalculates based on the result
-     * @return
-     */
-    private ArrayList<ArrayList<String>> nonInitialAction(){
-        ArrayList<ArrayList<String>>experiences = new ArrayList<>();
-        ArrayList<String> experience= new ArrayList<>();
-        //creates intervals for selection of market
+    private Market chooseMarketByProbability(){
+        //creates intervals
         int cantProb=marketProbabilities.size();
         double[]intervals=new double[cantProb];
         intervals[0]=marketProbabilities.get(0);
-        experience.add(Integer.toString(iterationTime));
-        experience.add(type);
-        experience.add(MarketFactory.getMarketName(knownMarkets.get(0).getNumber()));
-        experience.add(Double.toString(marketProbabilities.get(0)));
-        experiences.add(experience);
         for(int i=1;i<cantProb;i++){
             intervals[i]=marketProbabilities.get(i)+intervals[i-1];
-            experience=new ArrayList<>();
-            experience.add(Integer.toString(iterationTime));
-            experience.add(type);
-            experience.add(MarketFactory.getMarketName(knownMarkets.get(i).getNumber()));
-            experience.add(Double.toString(marketProbabilities.get(i)));
-            experiences.add(experience);
         }
         Random randomNum=new Random();
         double electedNum=randomNum.nextDouble();
@@ -192,15 +110,22 @@ public class Buyer implements Agent {
                 break;
             }
         }
-        ArrayList<Integer> generatedExperience=chosenMarket.generateExperience();
-        interactions.addInteraction(new Interaction(chosenMarket.getNumber(),generatedExperience,this.iterationTime));
-
-        //recalculates the probability
-        double sumWeight=0;
-        boolean validProbability=true;
+        System.out.println("ElectedNum: "+ electedNum+ " Chosen Market: "+chosenMarket.getNumber());
+        return chosenMarket;
+    }
+    private ArrayList<Double> calculateProbabilities(){
         ArrayList<Double> individualProbabilities=new ArrayList<>();
+        double sumWeight=0;
         for(Market market:knownMarkets){
             ArrayList<Integer> allAttributes=interactions.getKnownMarketAttributes(market.getNumber());
+            System.out.print("NonInitial");
+            System.out.print(" / "+market.getNumber());
+            System.out.print(" / "+iterationTime );
+            for(int attribute:allAttributes){
+                System.out.print(" / "+EndorsementList.getEndorsement(attribute));
+
+            }
+            System.out.println("/");
             double weight=calculateWeight(allAttributes);
 
             if(weight>=0) {
@@ -208,23 +133,120 @@ public class Buyer implements Agent {
                 individualProbabilities.add(weight);
             }
             else{
-                validProbability=false;
-                break;
+                interactions.deleteLastMarketInteraction(market.getNumber(),this.iterationTime);
+                return null;
             }
 
         }
-        if(validProbability){
-            int probIndex=0;
-            for(double weight:individualProbabilities){
-                double prob=weight/sumWeight;
-                individualProbabilities.set(probIndex,prob);
-                probIndex++;
+        int probIndex=0;
+        for(double weight:individualProbabilities){
+            double prob=weight/sumWeight;
+            individualProbabilities.set(probIndex,prob);
+            probIndex++;
+        }
+
+        return individualProbabilities;
+    }
+    /**
+     * Creates "prejudices" about all the markets, with the intention of creating initial probabilities
+     * @return experiences ArrayList<ArrayList<String>> to be recorded in logger
+     */
+    private ArrayList<ArrayList<String>> initialAction(){
+        ArrayList<ArrayList<String>>experiences = new ArrayList<>();
+        double probabilitySum=0;
+        ArrayList<Double> initialProbabilities=new ArrayList<>();
+        ArrayList<Interaction> initialInteractions=new ArrayList<>();
+        for (Market market:knownMarkets){
+            ArrayList<String>experience=new ArrayList<>();
+            ArrayList<Integer>generatedExperience=market.generateExperience();
+            System.out.print("Initial");
+            System.out.print(" / "+market.getNumber());
+            System.out.print(" / "+iterationTime );
+            for(int attribute:generatedExperience){
+                System.out.print(" / "+EndorsementList.getEndorsement(attribute));
             }
+            System.out.println("/");
+            double experienceWeight=this.calculateWeight(generatedExperience);
+            experience.add(Integer.toString(this.iterationTime));
+            experience.add(this.type);
+            experience.add(market.name);
+            if(experienceWeight<0){
+                initialProbabilities.add(0.0);
+            }else{
+                initialProbabilities.add(experienceWeight);
+                probabilitySum+=experienceWeight;
+            }
+            initialInteractions.add(new Interaction(market.getNumber(), generatedExperience, iterationTime));
+            experiences.add(experience);
+        }
+        if(probabilitySum!=0 && !initialProbabilities.contains(0.0)){//if the action is valid->returns valid probabilities to choose after
+            int probabilityIndex=0;
+
+            for(Market market:knownMarkets){
+                double probability=initialProbabilities.get(probabilityIndex)/probabilitySum;
+                initialProbabilities.set(probabilityIndex,probability);
+                experiences.get(probabilityIndex).add(Double.toString(probability));//uses index because it's one experience per market
+                probabilityIndex++;
+            }
+            //sets the initial values, as they're now valid
+            marketProbabilities=initialProbabilities;
+            for(Interaction interaction: initialInteractions){
+                interactions.addInteraction(interaction);
+            }
+            //chooses a market
+            chosenMarket=chooseMarketByProbability();
+            isInitialized=true;
+        }else{
+            int probabilityIndex=0;
+            for(Market market:knownMarkets){
+                experiences.get(probabilityIndex).add("NO PROB");
+                probabilityIndex++;
+            }
+            chosenMarket=null;
+        }
+        System.out.print("Preferred Market: ");
+        System.out.println(chosenMarket!=null? chosenMarket.getNumber():0);
+        XChartDriver.addSeriesData(this.buyerId, iterationTime, chosenMarket!=null? chosenMarket.getNumber():0);
+        InformationPanel.addInfo(chosenMarket!=null? chosenMarket.getNumber():0, Integer.toString(this.buyerId));
+        return experiences;
+    }
+
+    /**
+     * Chooses a market based on the probabilities, and then recalculates based on the result
+     * @return
+     */
+    private ArrayList<ArrayList<String>> nonInitialAction(){
+        ArrayList<ArrayList<String>>experiences = new ArrayList<>();
+        ArrayList<String> experience= new ArrayList<>();
+        int cantProb=marketProbabilities.size();
+        experience.add(Integer.toString(iterationTime));
+        experience.add(type);
+        experience.add(MarketFactory.getMarketName(knownMarkets.get(0).getNumber()));
+        experience.add(Double.toString(marketProbabilities.get(0)));
+        experiences.add(experience);
+        for(int i=1;i<cantProb;i++){
+            experience=new ArrayList<>();
+            experience.add(Integer.toString(iterationTime));
+            experience.add(type);
+            experience.add(MarketFactory.getMarketName(knownMarkets.get(i).getNumber()));
+            experience.add(Double.toString(marketProbabilities.get(i)));
+            experiences.add(experience);
+        }
+
+        //election of a market
+        Market newChosenMarket=chooseMarketByProbability();
+        //buyer buys
+        ArrayList<Integer> generatedExperience=chosenMarket.generateExperience();
+        interactions.addInteraction(new Interaction(chosenMarket.getNumber(),generatedExperience,this.iterationTime));
+
+        //recalculates the probability
+        ArrayList<Double> individualProbabilities=calculateProbabilities();
+        if(individualProbabilities!=null){
             marketProbabilities=individualProbabilities;
         }
 
         //adds experience
-        XChartDriver.addSeriesData(this.buyerId, iterationTime, chosenMarket.getNumber());
+        XChartDriver.addSeriesData(this.buyerId, iterationTime, newChosenMarket.getNumber());
         InformationPanel.addInfo(chosenMarket.getNumber(), Integer.toString(this.buyerId));
         return experiences;
     }

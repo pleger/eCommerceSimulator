@@ -86,6 +86,16 @@ public class BuyerFactory {
     }
 
     /**
+     * Public method used for debugging
+     * @return buyer
+     */
+    public static ArrayList<Buyer> dGetBuyer(int type){
+        ArrayList<Buyer>debugUserList=new ArrayList<>();//only one user
+        Buyer buyer= getBuyer(type);
+        debugUserList.add(buyer);
+        return debugUserList;
+    }
+    /**
      * Creates a list of buyers, taking a list of probabilities for every buyer.
      * The list must be in order, that means, first value is for the first type , second value
      * is for the second type, and so on.

@@ -1,6 +1,5 @@
-package Simulation;
-
 import Agents.*;
+import Simulation.*;
 
 import java.util.ArrayList;
 

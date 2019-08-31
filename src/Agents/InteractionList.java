@@ -14,6 +14,15 @@ public class InteractionList {
     public void forgetInteractions(int minTime){
         interactions.removeIf(interaction-> (interaction.getTime()<minTime));
     }
+    public void deleteLastMarketInteraction(int marketNumber,int iterationTime){
+        int interactionsSize=interactions.size();
+        for(int i=interactionsSize-1;i>=0;i--){
+            if(interactions.get(i).getMarket()==marketNumber && interactions.get(i).getTime()==iterationTime){
+                interactions.remove(i);
+                break;
+            }
+        }
+    }
     public ArrayList<Integer> getKnownMarketAttributes(int marketNumber){
         ArrayList<Integer> marketAttributes=new ArrayList<>();
         for(Interaction interaction:interactions){

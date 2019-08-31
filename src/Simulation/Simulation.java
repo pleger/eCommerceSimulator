@@ -14,7 +14,7 @@ public class Simulation {
 
     public Simulation(double[] probabilitiesBuyer, int maxTime) {
         iterationTime = 0;
-        network = NetworkFactory.getNetwork(NetworkFactory.NETWORK_TYPE_1, probabilitiesBuyer);
+        network = NetworkFactory.getNetwork(NetworkFactory.TEST_TYPE, probabilitiesBuyer);
         XChartDriver.createXChartDriver(network.getBuyersSize());
         network.registerBuyersOnChart();
         InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);

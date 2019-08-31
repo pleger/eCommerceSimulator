@@ -11,6 +11,7 @@ import java.util.Random;
 public class NetworkFactory {
 
     public static final int NETWORK_TYPE_1 = 1;
+    public static final int TEST_TYPE=2;
 
     private static ArrayList<Buyer> randomBuyerFriendList(ArrayList<Buyer> buyerList, int buyerID, int numberOfFriends,
                                                           Random randomGenerator, int buyerQuantity) {
@@ -65,8 +66,8 @@ public class NetworkFactory {
         System.out.println("Creando Network...");
         //fixed number of friends,random friends; random number of markets
         if (networkType == NETWORK_TYPE_1) {
-            numberOfFriends = 3;
-            buyerQuantity = 5;
+            numberOfFriends = 0;
+            buyerQuantity = 1;
             maxNumberOfMarkets = 3;
 
             Random randomGenerator = new Random();
@@ -91,6 +92,15 @@ public class NetworkFactory {
                     buyer.addKnownMarket(knownMarket);
                 }
                 buyerID++;
+            }
+            Network network = new Network(marketList, buyerList);
+            System.out.println("Network creada");
+            return network;
+        }else if(networkType== TEST_TYPE){
+            buyerList=BuyerFactory.dGetBuyer(BuyerFactory.TYPE1);
+            Buyer debugBuyer=buyerList.get(0);
+            for(Market knownMarket: marketList){
+                debugBuyer.addKnownMarket(knownMarket);
             }
             Network network = new Network(marketList, buyerList);
             System.out.println("Network creada");
