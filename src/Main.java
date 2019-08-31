@@ -38,7 +38,6 @@ public class Main {
         System.out.println();
         System.out.println("Evaluacion comprador: ");
         System.out.println(buyers.get(0).calculateWeight(experienceMarket));
-
          */
 
         Simulation simulation = SimulationFactory.getSimulation(SimulationFactory.SIMULATION_TYPE_1);
