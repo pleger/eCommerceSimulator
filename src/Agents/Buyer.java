@@ -209,8 +209,8 @@ public class Buyer implements Agent {
                 interactions.addInteraction(interaction);
             }
             //chooses a market
-            //chosenMarket = chooseMarketByProbability();
-            chosenMarket = chooseMarketByHighest();
+            chosenMarket = chooseMarketByProbability();
+            //chosenMarket = chooseMarketByHighest();
             isInitialized = true;
         } else {
             int probabilityIndex = 0;
@@ -241,8 +241,8 @@ public class Buyer implements Agent {
         if (individualProbabilities != null) {//no probability should be negative
             marketProbabilities = individualProbabilities;
             //election of a market
-            //chosenMarket = chooseMarketByProbability();
-            chosenMarket=chooseMarketByHighest();
+            chosenMarket = chooseMarketByProbability();
+            //chosenMarket=chooseMarketByHighest();
             //buyer buys
             ArrayList<Integer> generatedExperience = chosenMarket.generateExperience();
             interactions.addInteraction(new Interaction(chosenMarket.getNumber(), generatedExperience, this.iterationTime));
