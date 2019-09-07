@@ -91,7 +91,20 @@ public class Buyer implements Agent {
         }
         return (positiveValues - negativeValues);
     }
-
+    private Market chooseMarketByHighest(){
+        int cantProb=marketProbabilities.size();
+        double max=-1;
+        int maxIndex=0;
+        for(int i=0;i<cantProb;i++){
+            if(marketProbabilities.get(i)>max){
+                max=marketProbabilities.get(i);
+                maxIndex=i;
+            }
+        }
+        chosenMarket=knownMarkets.get(maxIndex);
+        System.out.println(" Chosen Market: " + chosenMarket.getNumber());
+        return chosenMarket;
+    }
     private Market chooseMarketByProbability() {
         //creates intervals
         int cantProb = marketProbabilities.size();
@@ -147,7 +160,6 @@ public class Buyer implements Agent {
 
         return individualProbabilities;
     }
-
     /**
      * Creates "prejudices" about all the markets, with the intention of creating initial probabilities
      *
@@ -188,6 +200,7 @@ public class Buyer implements Agent {
                 double probability = initialProbabilities.get(probabilityIndex) / probabilitySum;
                 initialProbabilities.set(probabilityIndex, probability);
                 experiences.get(probabilityIndex).add(Double.toString(probability));//uses index because it's one experience per market
+                experiences.get(probabilityIndex).add("INITIAL CHOICE");
                 probabilityIndex++;
             }
             //sets the initial values, as they're now valid
@@ -196,12 +209,14 @@ public class Buyer implements Agent {
                 interactions.addInteraction(interaction);
             }
             //chooses a market
-            chosenMarket = chooseMarketByProbability();
+            //chosenMarket = chooseMarketByProbability();
+            chosenMarket = chooseMarketByHighest();
             isInitialized = true;
         } else {
             int probabilityIndex = 0;
             for (Market market : knownMarkets) {
                 experiences.get(probabilityIndex).add("NO PROB");
+                experiences.get(probabilityIndex).add("NO CHOICE");
                 probabilityIndex++;
             }
             chosenMarket = null;
@@ -226,26 +241,27 @@ public class Buyer implements Agent {
         if (individualProbabilities != null) {//no probability should be negative
             marketProbabilities = individualProbabilities;
             //election of a market
-            chosenMarket = chooseMarketByProbability();
+            //chosenMarket = chooseMarketByProbability();
+            chosenMarket=chooseMarketByHighest();
             //buyer buys
             ArrayList<Integer> generatedExperience = chosenMarket.generateExperience();
             interactions.addInteraction(new Interaction(chosenMarket.getNumber(), generatedExperience, this.iterationTime));
         } else {
             interactions.deleteInteraction(chosenMarket.getNumber(), iterationTime - 1);
         }
-
         int cantProb = marketProbabilities.size();
-        experience.add(Integer.toString(iterationTime));
-        experience.add(type);
-        experience.add(MarketFactory.getMarketName(knownMarkets.get(0).getNumber()));
-        experience.add(Double.toString(marketProbabilities.get(0)));
-        experiences.add(experience);
-        for (int i = 1; i < cantProb; i++) {
+
+        for (int i = 0; i < cantProb; i++) {
             experience = new ArrayList<>();
             experience.add(Integer.toString(iterationTime));
             experience.add(type);
             experience.add(MarketFactory.getMarketName(knownMarkets.get(i).getNumber()));
             experience.add(Double.toString(marketProbabilities.get(i)));
+            if(chosenMarket.equals(knownMarkets.get(i))){
+                experience.add("CHOSEN");
+            }else{
+                experience.add("NOT CHOSEN");
+            }
             experiences.add(experience);
         }
         //adds experience
