@@ -127,10 +127,8 @@ public class Buyer implements Agent {
         System.out.println("ElectedNum: " + electedNum + " Chosen Market: " + chosenMarket.getNumber());
         return chosenMarket;
     }
-
-    private ArrayList<Double> calculateProbabilities() {
-        ArrayList<Double> individualProbabilities = new ArrayList<>();
-        double sumWeight = 0;
+    private ArrayList<Double> calculateEveryWeight(){
+        ArrayList<Double> weights=new ArrayList<>();
         for (Market market : knownMarkets) {
             ArrayList<Integer> allAttributes = interactions.getKnownMarketAttributes(market.getNumber());
             System.out.print("NonInitial");
@@ -142,14 +140,20 @@ public class Buyer implements Agent {
             }
             System.out.println("/");
             double weight = calculateWeight(allAttributes);
-
+            weights.add(weight);
+        }
+        return weights;
+    }
+    private ArrayList<Double> calculateProbabilities(ArrayList<Double> weights) {
+        ArrayList<Double> individualProbabilities = new ArrayList<>();
+        double sumWeight = 0;
+        for (double weight:weights) {
             if (weight >= 0) {
                 sumWeight += weight;
                 individualProbabilities.add(weight);
             } else {
-                return null;
+                individualProbabilities.add(0.0);
             }
-
         }
         int probIndex = 0;
         for (double weight : individualProbabilities) {
@@ -184,6 +188,7 @@ public class Buyer implements Agent {
             experience.add(Integer.toString(this.iterationTime));
             experience.add(this.type);
             experience.add(market.name);
+            experience.add(Double.toString(experienceWeight));
             if (experienceWeight < 0) {
                 initialProbabilities.add(0.0);
             } else {
@@ -209,8 +214,7 @@ public class Buyer implements Agent {
                 interactions.addInteraction(interaction);
             }
             //chooses a market
-            chosenMarket = chooseMarketByProbability();
-            //chosenMarket = chooseMarketByHighest();
+            //chosenMarket = chooseMarketByProbability();
             isInitialized = true;
         } else {
             int probabilityIndex = 0;
@@ -235,9 +239,9 @@ public class Buyer implements Agent {
      */
     private ArrayList<ArrayList<String>> nonInitialAction() {
         ArrayList<ArrayList<String>> experiences = new ArrayList<>();
-        ArrayList<String> experience = new ArrayList<>();
         //recalculates the probability
-        ArrayList<Double> individualProbabilities = calculateProbabilities();
+        ArrayList<Double> endorsementWeights=calculateEveryWeight();
+        ArrayList<Double> individualProbabilities = calculateProbabilities(endorsementWeights);
         if (individualProbabilities != null) {//no probability should be negative
             marketProbabilities = individualProbabilities;
             //election of a market
@@ -252,10 +256,11 @@ public class Buyer implements Agent {
         int cantProb = marketProbabilities.size();
 
         for (int i = 0; i < cantProb; i++) {
-            experience = new ArrayList<>();
+            ArrayList<String> experience = new ArrayList<>();
             experience.add(Integer.toString(iterationTime));
             experience.add(type);
             experience.add(MarketFactory.getMarketName(knownMarkets.get(i).getNumber()));
+            experience.add(Double.toString(endorsementWeights.get(i)));
             experience.add(Double.toString(marketProbabilities.get(i)));
             if(chosenMarket.equals(knownMarkets.get(i))){
                 experience.add("CHOSEN");

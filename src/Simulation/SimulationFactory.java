@@ -13,11 +13,11 @@ public class SimulationFactory {
         if (simulationType == SIMULATION_TYPE_1) {
             double probabilityType1 = 0.3;
             double probabilityType2 = 0.7;
-            int maxTime = 30;
+            int maxTime = 50;
             double[] probabilities = {probabilityType1, probabilityType2};
             simulation = new Simulation(probabilities, maxTime);
             ArrayList<String> headers = new ArrayList<>(Arrays.asList("Iteration Time", "Buyer Type", "Market",
-                    "Probability", "Buyer Id"));
+                    "Weight","Probability","Status", "Buyer Id"));
             simulation.enableLog(headers);
             System.out.println("Simulacion creada");
             return simulation;
