@@ -7,18 +7,18 @@ import Log.Logger;
 import java.util.ArrayList;
 
 public class Simulation {
-    int iterationTime;
-    Network network;
-    final int maxTime;
-    Logger logger;
+    private int iterationTime;
+    private Network network;
+    private final int maxTime;
+    private Logger logger;
 
-    public Simulation(double[] probabilitiesBuyer, int maxTime) {
+    public Simulation(int maxTime) {
         iterationTime = 0;
-        network = NetworkFactory.getNetwork(NetworkFactory.TEST_TYPE, probabilitiesBuyer);
+        network = NetworkFactory.getNetwork(NetworkFactory.CUSTOM_NETWORK_TYPE);
         XChartDriver.createXChartDriver(network.getBuyersSize());
         network.registerBuyersOnChart();
-        InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);
         this.maxTime = maxTime;
+        InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);
     }
 
     public void enableLog(ArrayList<String> headers) {

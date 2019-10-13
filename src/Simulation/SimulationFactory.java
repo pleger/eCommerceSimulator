@@ -1,27 +1,20 @@
 package Simulation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SimulationFactory {
-    public static int SIMULATION_TYPE_1 = 1;
 
 
-    public static Simulation getSimulation(int simulationType) {
+    public static Simulation getSimulation() {
         System.out.println("Creando Simulación...");
-        Simulation simulation;
-        if (simulationType == SIMULATION_TYPE_1) {
-            double probabilityType1 = 0.3;
-            double probabilityType2 = 0.7;
-            int maxTime = 50;
-            double[] probabilities = {probabilityType1, probabilityType2};
-            simulation = new Simulation(probabilities, maxTime);
-            ArrayList<String> headers = new ArrayList<>(Arrays.asList("Iteration Time", "Buyer Type", "Market",
-                    "Weight","Probability","Status", "Buyer Id"));
-            simulation.enableLog(headers);
-            System.out.println("Simulacion creada");
-            return simulation;
-        }
-        return null;
+
+        int maxTime = SimulationMain.MAX_TIME;
+        ArrayList<String> headers = SimulationMain.HEADERS;
+
+        Simulation simulation = new Simulation(maxTime);
+        simulation.enableLog(headers);
+
+        System.out.println("Simulacion creada");
+        return simulation;
     }
 }

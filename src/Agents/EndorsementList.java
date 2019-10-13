@@ -11,7 +11,6 @@ public class EndorsementList {
     public static final int BAJA_CONFIANZA_VEN = 8;
     public static final int BAJA_CALIDAD = 9;
     public static final int BAJA_VERACIDAD = 10;
-    public static final int ENDORSEMENTS_QTY = 5;
 
     /*relation between numbers above and endorsments list: an element in endorsment list MUST BE
     in position number-1 eg. ALTA_SEGURIDAD is number 1 and "alta seguridad" is in pos 1-1=0 of list;

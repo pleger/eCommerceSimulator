@@ -116,7 +116,7 @@ public class BuyerFactory {
             intervals[i] = probList[i] + intervals[i - 1];
         }
 
-        //PL: separa el random!
+
         Random randomNum = new Random();
         for (int i = 0; i < buyerQuantity; i++) {
             Double prob = randomNum.nextDouble();

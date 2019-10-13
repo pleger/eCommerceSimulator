@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class NetworkFactory {
 
-    public static final int NETWORK_TYPE_1 = 1;
-    public static final int TEST_TYPE=2;
+    public static final int CUSTOM_NETWORK_TYPE = 1;
+    public static final int TEST_TYPE = 2;
 
     private static ArrayList<Buyer> randomBuyerFriendList(ArrayList<Buyer> buyerList, int buyerID, int numberOfFriends,
                                                           Random randomGenerator, int buyerQuantity) {
@@ -56,19 +56,17 @@ public class NetworkFactory {
         return buyerMarketList;
     }
 
-    public static Network getNetwork(int networkType, double[] buyerProbability) {
+    public static Network getNetwork(int networkType) {
         ArrayList<Market> marketList = MarketFactory.getMarketList();
         ArrayList<Buyer> buyerList;
-        int numberOfFriends;
-        int buyerQuantity;
-        int maxNumberOfMarkets;
 
         System.out.println("Creando Network...");
         //fixed number of friends,random friends; random number of markets
-        if (networkType == NETWORK_TYPE_1) {
-            numberOfFriends = 0;
-            buyerQuantity = 1;
-            maxNumberOfMarkets = 3;
+        if (networkType == CUSTOM_NETWORK_TYPE) {
+            int numberOfFriends = 0; //not implemented yet
+            int buyerQuantity = SimulationMain.BUYER_QUANTITY_NETWORK;
+            int maxNumberOfMarkets = SimulationMain.MAX_NUMBER_OF_MARKETS;
+            double[] buyerProbability = SimulationMain.BUYER_PROBABILITIES;
 
             Random randomGenerator = new Random();
             buyerList = BuyerFactory.getBuyerList(buyerQuantity, buyerProbability);
@@ -96,10 +94,10 @@ public class NetworkFactory {
             Network network = new Network(marketList, buyerList);
             System.out.println("Network creada");
             return network;
-        }else if(networkType== TEST_TYPE){
-            buyerList=BuyerFactory.dGetBuyer(BuyerFactory.TYPE1);
-            Buyer debugBuyer=buyerList.get(0);
-            for(Market knownMarket: marketList){
+        } else if (networkType == TEST_TYPE) {
+            buyerList = BuyerFactory.dGetBuyer(BuyerFactory.TYPE1);
+            Buyer debugBuyer = buyerList.get(0);
+            for (Market knownMarket : marketList) {
                 debugBuyer.addKnownMarket(knownMarket);
             }
             Network network = new Network(marketList, buyerList);
