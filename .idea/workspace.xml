@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang_commons_lang_20030203_000129.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InputManager/Buyers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InputManager/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InputManager/Loader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InputManager/Markets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/input/data.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/input/originalInformation.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/input/~$data.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChinaSimulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChinaSimulation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/Buyer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Agents/EndorsementList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/EndorsementList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Experiment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agents/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agents/MarketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/InformationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/InformationPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/SimulationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/SimulationMain.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,119 +25,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/BuyerFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="149" column="13" lean-forward="true" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/Network.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/Experiment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/EndorsementList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/Interaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Agents/InteractionList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-              <folding>
-                <element signature="e#156#157#0" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -149,121 +40,36 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/Agent.java" />
-        <option value="$PROJECT_DIR$/src/Market.java" />
-        <option value="$PROJECT_DIR$/src/Buyer.java" />
-        <option value="$PROJECT_DIR$/src/BuyerFactory.java" />
-        <option value="$PROJECT_DIR$/src/Agents/EndorsmentList.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Agent.java" />
-        <option value="$PROJECT_DIR$/src/Log/Logger.java" />
-        <option value="$PROJECT_DIR$/src/Log/Reporter.java" />
-        <option value="$PROJECT_DIR$/src/GUI/DataSeries.java" />
-        <option value="$PROJECT_DIR$/src/GUI/XChartDriver.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/Main.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/Network.java" />
-        <option value="$PROJECT_DIR$/src/Agents/MarketFactory.java" />
-        <option value="$PROJECT_DIR$/src/GUI/InformationPanel.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Interaction.java" />
-        <option value="$PROJECT_DIR$/src/Agents/InteractionList.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Market.java" />
-        <option value="$PROJECT_DIR$/src/Agents/Buyer.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/Simulation.java" />
-        <option value="$PROJECT_DIR$/src/Agents/BuyerFactory.java" />
-        <option value="$PROJECT_DIR$/src/Agents/EndorsementList.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/SimulationMain.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" />
-        <option value="$PROJECT_DIR$/src/Simulation/Experiment.java" />
-      </list>
-    </option>
+  <component name="ProjectId" id="1ZgHZtQO3F6kbYq8VYLMvzwLRKF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Agents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ChinaSimulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChinaSimulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/AgentBasedModelGeneric" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GitHub/AgentBasedModelGeneric" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -273,18 +79,6 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="," />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
     </option>
   </component>
   <component name="RunManager">
@@ -344,6 +138,15 @@
       <workItem from="1568212050138" duration="2257000" />
       <workItem from="1568238513418" duration="563000" />
       <workItem from="1570996085198" duration="7960000" />
+      <workItem from="1585253878610" duration="1681000" />
+      <workItem from="1585321991638" duration="634000" />
+      <workItem from="1586207235045" duration="678000" />
+      <workItem from="1586377086243" duration="1923000" />
+      <workItem from="1586403312269" duration="260000" />
+      <workItem from="1586404532999" duration="9544000" />
+      <workItem from="1586524071984" duration="194000" />
+      <workItem from="1586524979460" duration="17237000" />
+      <workItem from="1586719425512" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -446,9 +249,6 @@
     <option name="localTasksCounter" value="15" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167322000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -458,43 +258,8 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18704453" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22912966" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32874015" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3463588" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.14209591" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32955465" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -511,22 +276,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -545,8 +295,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added Agent interface, buyer class and market class" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Fully functioning buyer factory" />
@@ -562,343 +314,106 @@
     <MESSAGE value="different logic for buyer's market choice" />
     <option name="LAST_COMMIT_MESSAGE" value="different logic for buyer's market choice" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/FactoryBuyer.java" />
-    <entry file="file://$PROJECT_DIR$/src/a.java" />
-    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Log/Loggeable.java" />
-    <entry file="uml://MODULES/mdl-ChinaSimulation">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement>mdl-ChinaSimulation</OriginalElement>
-          <nodes>
-            <node x="0.0" y="0.0">mdl-ChinaSimulation</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="-163.0" y="-6.0" />
-          <SelectedNodes>
-            <node>mdl-ChinaSimulation</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ChinaSimulation.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/function/Predicate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Log/Reporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/InformationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/XChartDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/DataSeries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/MarketFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/Market.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Log/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/Agent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JavaScript-modules-diagram/C:/Users/Brian/IdeaProjects/ChinaSimulation/src/Simulation">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$/src/Simulation</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="502.0" y="191.5" />
-          <SelectedNodes />
-          <Categories>
-            <Category>All</Category>
-          </Categories>
-          <VISIBILITY>Details</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="" y="">com</node>
-            <node x="" y="">netscape</node>
-            <node x="" y="">oracle</node>
-            <node x="" y="">Log</node>
-            <node x="" y="">org</node>
-            <node x="" y="">Agents</node>
-            <node x="" y="">sun</node>
-            <node x="" y="">META-INF</node>
-            <node x="" y="">jdk</node>
-            <node x="" y="">groovyjarjarasm</node>
-            <node x="" y="">java</node>
-            <node x="" y="">groovy</node>
-            <node x="" y="">Simulation</node>
-            <node x="" y="">javax</node>
-            <node x="" y="">GUI</node>
-            <node x="" y="">groovyjarjarcommonscli</node>
-            <node x="" y="">javafx</node>
-            <node x="" y="">groovyjarjarantlr</node>
-            <node x="" y="">Main</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.6950998185117967" x="243.0" y="296.5" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/Agents">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>Agents</OriginalElement>
-          <nodes>
-            <node x="0.0" y="1039.0">Agents.Interaction</node>
-            <node x="686.0" y="0.0">Agents.EndorsementList</node>
-            <node x="681.0" y="746.0">Agents.InteractionList</node>
-            <node x="344.0" y="746.0">Agents.BuyerFactory</node>
-            <node x="385.0" y="308.0">Agents.Market</node>
-            <node x="0.0" y="746.0">Agents.MarketFactory</node>
-            <node x="227.25" y="0.0">Agents.Agent</node>
-            <node x="0.0" y="99.0">Agents.Buyer</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="Agents.Buyer" target="Agents.Agent">
-              <point x="0.0" y="-301.0" />
-              <point x="182.5" y="74.0" />
-              <point x="287.5" y="74.0" />
-              <point x="-60.25" y="24.5" />
-            </edge>
-            <edge source="Agents.Market" target="Agents.Agent">
-              <point x="0.0" y="-92.0" />
-              <point x="513.0" y="74.0" />
-              <point x="408.0" y="74.0" />
-              <point x="60.25" y="24.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-83.5" y="1046.0" />
-          <SelectedNodes>
-            <node>Agents.Interaction</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/Simulation">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>Simulation</OriginalElement>
-          <nodes>
-            <node x="222.0" y="412.0">Simulation.SimulationFactory</node>
-            <node x="0.0" y="229.0">Simulation.NetworkFactory</node>
-            <node x="0.0" y="0.0">Simulation.Network</node>
-            <node x="0.0" y="552.0">Simulation.SimulationMain</node>
-            <node x="337.0" y="0.0">Simulation.Simulation</node>
-            <node x="0.0" y="412.0">Simulation.Experiment</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="-436.00000000000006" y="365.99999999999994" />
-          <SelectedNodes>
-            <node>Simulation.SimulationFactory</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Constructors</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/Buyer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4758">
-          <caret line="295" column="28" selection-start-line="295" selection-start-column="28" selection-end-line="295" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/InteractionList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#156#157#0" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/BuyerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="149" column="13" lean-forward="true" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/EndorsementList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Agents/Interaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/SimulationFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/NetworkFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulation/Experiment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1586533909289">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586533909289" />
+    <state x="428" y="226" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586524893182">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="428" y="226" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586524893182" />
+    <state x="504" y="371" width="471" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586492750804">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="504" y="371" width="471" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.877@0.23.1440.877" timestamp="1586492750804" />
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586544248784">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1586544248784" />
+    <state x="328" y="223" key="IDE.errors.dialog" timestamp="1586568725752">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586538707284" />
+    <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877@0.23.1440.877" timestamp="1586568725752" />
+    <state x="241" y="63" key="SettingsEditor" timestamp="1586536539446">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="241" y="63" key="SettingsEditor/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586536539446" />
+    <state x="241" y="120" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1586488202996" />
+    <state x="455" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1586524072795">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="2047" y="372" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1440.-17.1920.1057@1440.-17.1920.1057" timestamp="1585321993031" />
+    <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586524072794" />
+    <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1586405363988" />
+    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586546886498">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586536524932" />
+    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877@0.23.1440.877" timestamp="1586546886498" />
+    <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586807968273">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586468867870" />
+    <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1586807968273" />
+    <state width="302" height="124" key="javadoc.popup.new" timestamp="1586544301479">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="300" height="66" key="javadoc.popup.new/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586536700580" />
+    <state width="302" height="124" key="javadoc.popup.new/0.23.1440.877@0.23.1440.877" timestamp="1586544301479" />
+  </component>
+  <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
+    <setting name="isActivated" value="false" />
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>

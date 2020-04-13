@@ -21,7 +21,6 @@ public class Buyer implements Agent {
     private int iterationTime;
     private int buyerId;
 
-
     public Buyer(int[][] endorsementList, double base, String type) {
         this.base = base;
         this.endorsementList = endorsementList;
@@ -105,6 +104,7 @@ public class Buyer implements Agent {
         System.out.println(" Chosen Market: " + chosenMarket.getNumber());
         return chosenMarket;
     }
+
     private Market chooseMarketByProbability() {
         //creates intervals
         int cantProb = marketProbabilities.size();
@@ -127,6 +127,7 @@ public class Buyer implements Agent {
         System.out.println("ElectedNum: " + electedNum + " Chosen Market: " + chosenMarket.getNumber());
         return chosenMarket;
     }
+
     private ArrayList<Double> calculateEveryWeight(){
         ArrayList<Double> weights=new ArrayList<>();
         for (Market market : knownMarkets) {

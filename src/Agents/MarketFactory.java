@@ -42,10 +42,7 @@ public class MarketFactory {
         double[][] marketEndorsmentProbabilityList;
         if (type == MARKET1) {
             marketEndorsmentProbabilityList = new double[5][4];
-            marketEndorsmentProbabilityList[0][0] = EndorsementList.ALTA_VARIEDAD;
-            marketEndorsmentProbabilityList[0][1] = 0.6;
-            marketEndorsmentProbabilityList[0][2] = EndorsementList.BAJA_VARIEDAD;
-            marketEndorsmentProbabilityList[0][3] = 0.2;
+            
             marketEndorsmentProbabilityList[1][0] = EndorsementList.ALTA_SEGURIDAD;
             marketEndorsmentProbabilityList[1][1] = 0.4;
             marketEndorsmentProbabilityList[1][2] = EndorsementList.BAJA_SEGURIDAD;

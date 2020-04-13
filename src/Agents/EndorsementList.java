@@ -6,6 +6,7 @@ public class EndorsementList {
     public static final int ALTA_CONFIANZA_VEN = 3;
     public static final int ALTA_CALIDAD = 4;
     public static final int ALTA_VERACIDAD = 5;
+
     public static final int BAJA_SEGURIDAD = 6;
     public static final int BAJA_VARIEDAD = 7;
     public static final int BAJA_CONFIANZA_VEN = 8;

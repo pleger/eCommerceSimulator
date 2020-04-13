@@ -96,6 +96,4 @@ public class InformationPanel {
         iterationTime++;
         clearMarketInfo();
     }
-
-
 }

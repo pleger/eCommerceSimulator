@@ -1,11 +1,13 @@
 package Simulation;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class SimulationFactory {
 
-
-    public static Simulation getSimulation() {
+    public static @NotNull
+    Simulation getSimulation() {
         System.out.println("Creando Simulación...");
 
         int maxTime = SimulationMain.MAX_TIME;
