@@ -1,64 +1,137 @@
 package InputManager;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 
 public class Configuration {
+    private static final Logger logger = LogManager.getRootLogger();
 
-    private final static int D_ITERATIONS = 30;
+    private final static int D_PERIODS = 30;
     private final static int D_AGENTS = 10;
     private final static int D_CONTACTS = 17;
     private final static double D_FRIENDS = .7;
-    private final static int D_MARKETS = 5;
-    private final static int D_ENDORSEMENTS = 13;
     private final static int D_LEVELS = 2; //2 or 3
-    private final static int D_EXPERIMENTS = 0;
-    private final static boolean D_GUI = false;
+    private final static int D_REPETITIONS = 0;
+    private final static boolean D_GUI = false; //could be removed
+    private final static double D_BASE = 1.2;
+    private final static int D_MEMORY = -1;    //-1 infinite
 
-    public static int ITERATIONS = D_ITERATIONS;
+    public static int MARKETS;
+    public static int ATTRIBUTES_M;
+    public static int ATTRIBUTES_B;
+
+    public static int PERIODS = D_PERIODS;
     public static int AGENTS = D_AGENTS;
     public static int CONTACTS = D_CONTACTS;
     public static double FRIENDS = D_FRIENDS;
-    public static int MARKETS = D_MARKETS;
-    public static int ENDORSEMENTS = D_ENDORSEMENTS;
     public static int LEVELS = D_LEVELS; //2 or 3
-    public static int EXPERIMENTS = D_EXPERIMENTS;
+    public static int REPETITIONS = D_REPETITIONS;
     public static boolean GUI = D_GUI;
+    public static double BASE = D_BASE;
+    public static int MEMORY = D_MEMORY;
 
     public static void set(HashMap<String, Double> conf) {
-        ITERATIONS = conf.get("ITERATIONS") != null? conf.get("ITERATIONS").intValue() : D_ITERATIONS;
-        AGENTS = conf.get("ITERATIONS") != null? conf.get("AGENTS").intValue() : D_AGENTS;
-        CONTACTS = conf.get("CONTACTS") != null? conf.get("CONTACTS").intValue() : D_CONTACTS;
-        FRIENDS = conf.get("FRIENDS") != null? conf.get("FRIENDS") : D_FRIENDS;
-        MARKETS = conf.get("MARKETS") != null? conf.get("MARKETS").intValue() : D_MARKETS;
-        ENDORSEMENTS = conf.get("ENDORSEMENTS") != null? conf.get("ENDORSEMENTS").intValue() : D_ENDORSEMENTS;
-        LEVELS = conf.get("LEVELS") != null? conf.get("LEVELS").intValue() : D_LEVELS;
-        EXPERIMENTS = conf.get("EXPERIMENTS") != null? conf.get("EXPERIMENTS").intValue() : D_EXPERIMENTS;
-        GUI = conf.get("GUI") != null? conf.get("GUI") == 1 : D_GUI;
+        checkConfigurationInput(conf);
+
+        PERIODS = conf.get("PERIODS") != null ? conf.get("PERIODS").intValue() : D_PERIODS;
+        AGENTS = conf.get("AGENTS") != null ? conf.get("AGENTS").intValue() : D_AGENTS;
+        CONTACTS = conf.get("CONTACTS") != null ? conf.get("CONTACTS").intValue() : D_CONTACTS;
+        FRIENDS = conf.get("FRIENDS") != null ? conf.get("FRIENDS") : D_FRIENDS;
+        LEVELS = conf.get("LEVELS") != null ? conf.get("LEVELS").intValue() : D_LEVELS;
+        REPETITIONS = conf.get("REPETITIONS") != null ? conf.get("REPETITIONS").intValue() : D_REPETITIONS;
+        GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
+        BASE = conf.get("BASE") != null ? conf.get("BASE")  : D_BASE;
+        MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
     }
 
+    public static void setAttributes(int markets, int buyers) {
+        set("ATTRIBUTES_M", markets);
+        set("ATTRIBUTES_B", buyers);
+    }
+
+    public static void setMarkets(int markets) {
+        set("MARKETS", markets);
+    }
+
+    private static void set(String name, double value)  {
+        switch (name.toUpperCase()) {
+            case "PERIODS": PERIODS = (int) value; break;
+            case "AGENTS": AGENTS = (int) value; break;
+            case "CONTACTS": CONTACTS = (int) value; break;
+            case "FRIENDS": FRIENDS =  value; break;
+            case "ATTRIBUTES_M": ATTRIBUTES_M = (int) value; break;
+            case "ATTRIBUTES_B": ATTRIBUTES_B = (int) value; break;
+            case "MARKETS": MARKETS = (int) value; break;
+            case "REPETITIONS": REPETITIONS = (int) value; break;
+            case "LEVELS": LEVELS = (int) value; break;
+            case "GUI": GUI = value == 1; break;
+            case "BASE": BASE = value; break;
+            case "MEMORY": MEMORY = (int) value; break;
+            default: logger.error("CONFIGURATOR.SET: Wrong Parameter");
+        }
+    }
+
+    private static void checkConfigurationInput(HashMap<String, Double> conf) {
+        if (conf.get("PERIODS") == null) {
+            logger.warn("PERIODS is missing.");
+        }
+        if (conf.get("AGENTS") == null) {
+            logger.warn("AGENTS is missing.");
+        }
+        if (conf.get("CONTACTS") == null) {
+            logger.warn("CONTACTS is missing.");
+        }
+        if (conf.get("FRIENDS") == null) {
+            logger.warn("LEVELS is missing.");
+        }
+        if (conf.get("MARKETS") == null) {
+            logger.warn("MARKETS is missing.");
+        }
+        if (conf.get("LEVELS") == null) {
+            logger.warn("LEVELS is missing.");
+        }
+        if (conf.get("REPETITIONS") == null) {
+            logger.warn("REPETITIONS is missing.");
+        }
+        if (conf.get("GUI") == null) {
+            logger.warn("GUI is missing.");
+        }
+        if (conf.get("BASE") == null) {
+            logger.warn("BASE is missing.");
+        }
+        if (conf.get("MEMORY") == null) {
+            logger.warn("MEMORY is missing.");
+        }
+    }
+    
     public static void setDefault() {
-        ITERATIONS = D_ITERATIONS;
+        PERIODS = D_PERIODS;
         AGENTS = D_AGENTS;
         CONTACTS = D_CONTACTS;
         FRIENDS = D_FRIENDS;
-        MARKETS = D_MARKETS;
-        ENDORSEMENTS = D_ENDORSEMENTS;
         LEVELS = D_LEVELS;
-        EXPERIMENTS = D_EXPERIMENTS;
+        REPETITIONS = D_REPETITIONS;
         GUI = D_GUI;
+        BASE = D_BASE;
+        MEMORY = D_MEMORY;
     }
 
-    public static String configuration() {
-        String text = "";
-        text += "ITERATIONS:" + ITERATIONS + "\n";
-        text += "AGENTS:" + AGENTS + "\n";
-        text += "CONTACTS:" + CONTACTS + "\n";
-        text += "FRIENDS:" + FRIENDS + "\n";
-        text += "MARKETS:" + MARKETS + "\n";
-        text += "ENDORSEMENTS:" + ENDORSEMENTS + "\n";
-        text += "LEVELS:" + LEVELS + "\n";
-        text += "EXPERIMENTS:" + EXPERIMENTS + "\n";
-        text += "GUI:" + GUI + "\n";
+    public static String toStringConfiguration() {
+        String text = "\n";
+        text += "PERIODS: " + PERIODS + "\n";
+        text += "AGENTS: " + AGENTS + "\n";
+        text += "CONTACTS: " + CONTACTS + "\n";
+        text += "FRIENDS: " + FRIENDS + "\n";
+        text += "MARKETS: " + MARKETS + "\n";
+        text += "ATTRIBUTES_M: " + ATTRIBUTES_M + "\n";
+        text += "ATTRIBUTES_B: " + ATTRIBUTES_B + "\n";
+        text += "LEVELS: " + LEVELS + "\n";
+        text += "REPETITIONS: " + REPETITIONS + "\n";
+        text += "GUI: " + GUI + "\n";
+        text += "BASE: " + BASE + "\n";
+        text += "MEMORY: " + MEMORY + "\n";
 
         return text;
     }

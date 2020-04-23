@@ -1,7 +1,7 @@
 package Log;
 
-import Agents.BuyerFactory;
-import Agents.MarketFactory;
+import OLD_Agents.BuyerFactory;
+import OLD_Agents.MarketFactory;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;

@@ -1,13 +1,42 @@
-import Simulation.*;
+import Agent.Buyer;
+import Agent.BuyerFactory;
+import Agent.Market;
+import Agent.MarketFactory;
+import InputManager.Configuration;
+import InputManager.Loader;
+import Simulation.Simulation;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
-// PL: formatear el codigo
+import java.util.List;
 
 public class Main {
-    public static int TIMES_REPEAT_SIMULATION = 9;
-    public static double[] PROBABILITIES = {0.7,0.3};
+    private static final String FILE = "input.xlsx";
 
-    public static void main(String[] args) throws Exception {
-        System.out.println("Inicializando....");
-        Experiment.runExperiment();
+    private static List<Buyer> buyers;
+    private static List<Market> markets;
+
+    private static void createFromInput() {
+        Loader.read(FILE); //load from file
+        buyers = BuyerFactory.createFromInput();
+        markets = MarketFactory.createFromInput();
+    }
+
+    public static void main(String[] args) {
+        BasicConfigurator.configure();
+        Logger logger = LogManager.getRootLogger();
+        logger.setLevel(Level.TRACE);
+
+        createFromInput();
+
+        logger.trace(Configuration.toStringConfiguration());
+        Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);
+        for (int i = 0; i < Configuration.REPETITIONS + 1; ++i) {
+            s.reinit();
+            s.run();
+            logger.trace("SIMULATIONS:" + i);
+        }
     }
 }

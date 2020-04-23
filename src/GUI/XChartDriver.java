@@ -12,7 +12,7 @@ public class XChartDriver {
     static SwingWrapper<XYChart> sw;
 
     public static void createXChartDriver(int dataSeriesSize) {
-        chart = new XYChartBuilder().width(800).height(600).title("Simulation")
+        chart = new XYChartBuilder().width(800).height(600).title("OLD_Simulation")
                 .xAxisTitle("Iteration time").yAxisTitle("Market").build();
         chart.getStyler().setYAxisDecimalPattern("#0");
         dataSeries = new ArrayList<>(dataSeriesSize);

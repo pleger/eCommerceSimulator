@@ -1,43 +1,24 @@
 package Simulation;
 
-import Agents.Buyer;
-import Agents.Market;
+import Agent.Buyer;
+import Agent.Market;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class Network {
-    private ArrayList<Buyer> buyers;
-    private ArrayList<Market> markets;
+public class Network implements FlyWeight {
+    List<Buyer> buyers;
+    List<Market> markets;
 
-    public Network(ArrayList<Market> markets, ArrayList<Buyer> buyers) {
-        this.markets = markets;
+    Network(List<Buyer> buyers, List<Market> markets) {
         this.buyers = buyers;
+        this.markets = markets;
+        reinit();
     }
 
-    public ArrayList<ArrayList<String>> doStep() {
-        ArrayList<ArrayList<String>> allExperiences = new ArrayList<>();
-        for (Buyer buyer : buyers) {
-            ArrayList<ArrayList<String>> experiences = buyer.action();
-            for (ArrayList<String> singleExperience : experiences) {
-                //adds the id of the buyer
-                singleExperience.add(Integer.toString(buyer.getBuyerId()));
-                allExperiences.add(singleExperience);
-            }
-        }
-        return allExperiences;
-    }
-
-    public void registerBuyersOnChart() {
-        for (Buyer buyer : buyers) {
-            buyer.registerChartSeries();
-        }
-    }
-
-    public int getBuyersSize() {
-        return buyers.size();
-    }
-
-    public int getMarketsSize() {
-        return markets.size();
+    @Override
+    public void reinit() {
+        buyers.iterator().forEachRemaining(Buyer::reinit);
+        buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
+        buyers.iterator().forEachRemaining(buyer -> buyer.setInitialEndorsements(markets));
     }
 }

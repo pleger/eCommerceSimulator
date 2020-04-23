@@ -1,46 +1,41 @@
 package Simulation;
 
-import GUI.InformationPanel;
-import GUI.XChartDriver;
-import Log.Logger;
+import Agent.Buyer;
+import Agent.Market;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Simulation {
-    private int iterationTime;
-    private Network network;
-    private final int maxTime;
-    private Logger logger;
+public class Simulation implements FlyWeight, Step {
+    private final int periods;
+    private final List<Buyer> buyers;
+    private final List<Market> markets;
+    private final Network network;
 
-    public Simulation(int maxTime) {
-        iterationTime = 0;
-        network = NetworkFactory.getNetwork(NetworkFactory.CUSTOM_NETWORK_TYPE);
-        XChartDriver.createXChartDriver(network.getBuyersSize());
-        network.registerBuyersOnChart();
-        this.maxTime = maxTime;
-        InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);
+    public Simulation(List<Buyer> buyers, List<Market> markets, int periods) {
+        this.periods = periods;
+        this.buyers = buyers;
+        this.markets = markets;
+        network = new Network(buyers, markets);
+
+        reinit();
+    }
+    
+    @Override
+    public void reinit() {
+        network.reinit();
     }
 
-    public void enableLog(ArrayList<String> headers) {
-        logger = new Logger(headers);
-    }
-
-    public void runSimulation() throws Exception {
-        while (iterationTime < maxTime) {
-            ArrayList<ArrayList<String>> experiences = network.doStep();
-            for (ArrayList<String> record : experiences) {
-                logger.addLog(record);
-            }
-            if (iterationTime == 0) {
-                XChartDriver.drawChart();
-                InformationPanel.displayPanel();
-            } else {
-                XChartDriver.updateChart();
-                InformationPanel.updatePanel();
-            }
-            Thread.sleep(0);
-            iterationTime++;
+    public void run() {
+        for (int period = 0; period < periods; ++period) {
+            doStep();
+            System.out.println(period);
         }
-        logger.writeLog();
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> doStep() {
+        buyers.iterator().forEachRemaining(Buyer::doStep);
+        return null;
     }
 }
