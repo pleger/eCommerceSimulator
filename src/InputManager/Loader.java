@@ -30,7 +30,7 @@ public class Loader {
             Buyers.set(readBuyers(buyer));
 
             Configuration.setAttributes(Markets.attributeSize(), Buyers.attributeSize());
-            Configuration.setMarkets(Markets.getMarkets().size());
+            Configuration.setMarkets(Markets.getInnerMarkets().size());
         } catch (Exception ex) {
             logger.error("Input cannot be open: " + file.getAbsolutePath());
             logger.error("ERROR: " + ex);
@@ -51,9 +51,9 @@ public class Loader {
         ArrayList<String> marketNames = new ArrayList<>();
 
         for (Row row : market) {
-            if (row.getRowNum() == 2) {
+            if (row.getRowNum() == 1) {
                 for (Cell cell : row) {
-                    if (cell.getColumnIndex() > 0 && cell.getColumnIndex() % levels == 0) {
+                    if (cell.getColumnIndex() > 0 && (cell.getColumnIndex() + 1) % levels == 0) {
                         marketNames.add(cell.getStringCellValue());
                     }
                 }
@@ -70,11 +70,11 @@ public class Loader {
         for (Row row : market) {
             String name = "NO NAME";
 
-            //get data from endorsements
-            if (row.getRowNum() > 2) {  // where starts endorsements
+            //get data from attributes
+            if (row.getRowNum() > 2) {  // where starts attributes
                 for (Cell cell : row) {
                     if (cell.getColumnIndex() == 0) {  //adding attributeName
-                        name = cell.getStringCellValue();
+                        name = cell.getStringCellValue().toUpperCase();
                     } else {
                         endor.add(cell.getNumericCellValue());
                         if (cell.getColumnIndex() % levels == 0) {

@@ -2,66 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang_commons_lang_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_log4j_1_2_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/poi_ooxml_3_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/input.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/originalInformation.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-codec-1.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-collections4-4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/curvesapi-1.04.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/poi-3.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/poi-4.1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/poi-ooxml-3.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/poi-ooxml-schemas-3.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/stax-api-1.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/xmlbeans-2.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Agent/Buyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Agent/BuyerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Agent/Market.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Agent/MarketFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/Attributes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/AttributesBuyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/AttributesMarket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/Endorsement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/EndorsementEvaluation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/EndorsementFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Endorsement/Endorsements.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InputManager/InnerBuyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InputManager/InnerMarket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OLD_Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OLD_Simulation/Network.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OLD_Simulation/Simulation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Simulation/FlyWeight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Simulation/Step.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang_commons_lang_20030203_000129.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/poi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/original_input.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/~$input.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Agent/Interaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Chart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/DataChart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OLD_GUI/InformationPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChinaSimulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChinaSimulation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/poi.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/Agent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/Buyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/BuyerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/BuyerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/EndorsementList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/EndorsementList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Interaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/Interaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/InteractionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/InteractionList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/Market.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Agents/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/MarketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/input.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/input/input.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agent/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agent/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agent/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agent/Market.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Agent/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Agent/MarketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Endorsement/Attributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Endorsement/Attributes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Endorsement/EndorsementEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Endorsement/EndorsementEvaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Endorsement/EndorsementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Endorsement/EndorsementFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Endorsement/Endorsements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Endorsement/Endorsements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/DataSeries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_GUI/DataSeries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/InformationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/InformationPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/XChartDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/XChartDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputManager/Buyers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputManager/Buyers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InputManager/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputManager/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/XChartDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_GUI/XChartDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputManager/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputManager/Loader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputManager/Markets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputManager/Markets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Log/Reporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Log/Reporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Simulation/Experiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Agents/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD_Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Simulation/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/NetworkFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Simulation/NetworkFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/SimulationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Simulation/SimulationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation/SimulationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD_Simulation/SimulationMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation/Step.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input/data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/data.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Singleton" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -90,6 +58,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1ZgHZtQO3F6kbYq8VYLMvzwLRKF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -109,7 +84,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GitHub/AgentBasedModelGeneric" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/OLD_GUI" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -117,7 +92,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
@@ -125,6 +100,13 @@
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/OLD_GUI" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="OLD_Agents" />
+      <recent name="GUI" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Endorsement" />
@@ -138,6 +120,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
+      <log_file alias="test" path="$PROJECT_DIR$" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ChinaSimulation" />
       <method v="2">
@@ -216,7 +199,7 @@
       <workItem from="1586899892211" duration="3400000" />
       <workItem from="1586962499382" duration="19359000" />
       <workItem from="1586990531261" duration="27346000" />
-      <workItem from="1587569131248" duration="12406000" />
+      <workItem from="1587569131248" duration="38880000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -316,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567816910080</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="different logic for buyer's market choice">
+      <created>1587663974943</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587663974943</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -385,18 +375,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="different logic for buyer's market choice" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="459" y="23" key="#Auto_Import" timestamp="1586988221618">
+    <state x="459" y="23" key="#Auto_Import" timestamp="1587681015242">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="459" y="23" key="#Auto_Import/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586988221618" />
-    <state x="166" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586988731530">
+    <state x="459" y="23" key="#Auto_Import/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587681015242" />
+    <state x="166" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587726832783">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="166" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586988731530" />
-    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1587003606801">
+    <state x="166" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1587726832783" />
+    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1587681284442">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586988248503" />
+    <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587681284442" />
     <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1587003606801" />
     <state x="440" y="224" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587003442989">
       <screen x="0" y="23" width="1440" height="877" />
@@ -414,63 +405,104 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="504" y="371" width="471" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.877@0.23.1440.877" timestamp="1586492750804" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586971556124">
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587787471557">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586971556123" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1586544248784" />
-    <state width="1358" height="159" key="GridCell.Tab.0.bottom" timestamp="1587220886792">
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1587787471557" />
+    <state x="258" y="23" key="CommitChangelistDialog2" timestamp="1587663974028">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="329" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586992250589" />
-    <state width="1358" height="159" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1587220886792" />
-    <state width="1358" height="159" key="GridCell.Tab.0.center" timestamp="1587220886791">
+    <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663974028" />
+    <state x="556" y="173" key="EnvironmentVariablesDialog" timestamp="1587726787199">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="329" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586992250588" />
-    <state width="1358" height="159" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1587220886791" />
-    <state width="1358" height="159" key="GridCell.Tab.0.left" timestamp="1587220886790">
+    <state x="556" y="173" key="EnvironmentVariablesDialog/0.23.1440.877@0.23.1440.877" timestamp="1587726787199" />
+    <state width="1358" height="311" key="GridCell.Tab.0.bottom" timestamp="1587787672710">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="329" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586992250588" />
-    <state width="1358" height="159" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1587220886790" />
-    <state width="1358" height="159" key="GridCell.Tab.0.right" timestamp="1587220886791">
+    <state width="1358" height="311" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367347" />
+    <state width="1358" height="311" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1587787672710" />
+    <state width="1358" height="311" key="GridCell.Tab.0.center" timestamp="1587787672709">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="329" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586992250588" />
-    <state width="1358" height="159" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1587220886791" />
-    <state x="328" y="223" key="IDE.errors.dialog" timestamp="1587131863987">
+    <state width="1358" height="311" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367340" />
+    <state width="1358" height="311" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1587787672709" />
+    <state width="1358" height="311" key="GridCell.Tab.0.left" timestamp="1587787672709">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367335" />
+    <state width="1358" height="311" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1587787672709" />
+    <state width="1358" height="311" key="GridCell.Tab.0.right" timestamp="1587787672710">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367344" />
+    <state width="1358" height="311" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1587787672710" />
+    <state width="1358" height="311" key="GridCell.Tab.1.bottom" timestamp="1587787672712">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.1.bottom/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367363" />
+    <state width="1358" height="311" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1587787672712" />
+    <state width="1358" height="311" key="GridCell.Tab.1.center" timestamp="1587787672711">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.1.center/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367357" />
+    <state width="1358" height="311" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1587787672711" />
+    <state width="1358" height="311" key="GridCell.Tab.1.left" timestamp="1587787672710">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.1.left/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367352" />
+    <state width="1358" height="311" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1587787672710" />
+    <state width="1358" height="311" key="GridCell.Tab.1.right" timestamp="1587787672711">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1358" height="311" key="GridCell.Tab.1.right/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744367361" />
+    <state width="1358" height="311" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1587787672711" />
+    <state x="328" y="223" key="IDE.errors.dialog" timestamp="1587664017457">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587131863987" />
+    <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587664017457" />
     <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877@0.23.1440.877" timestamp="1586568725752" />
-    <state x="241" y="63" key="SettingsEditor" timestamp="1587608917889">
+    <state x="241" y="63" key="SettingsEditor" timestamp="1587776804427">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="241" y="63" key="SettingsEditor/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586991605466" />
-    <state x="241" y="63" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1587608917889" />
+    <state x="241" y="63" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1587776804427" />
+    <state x="302" y="168" key="Vcs.Push.Dialog.v2" timestamp="1587663977640">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663977640" />
+    <state x="102" y="123" width="1200" height="637" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587785123538">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="102" y="123" width="1200" height="637" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1587785123538" />
     <state x="455" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1586524072795">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="2047" y="372" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1440.-17.1920.1057@1440.-17.1920.1057" timestamp="1585321993031" />
     <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586524072794" />
     <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1586405363988" />
-    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587008733234">
+    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587776803158">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="402" y="300" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586990847516" />
-    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877@0.23.1440.877" timestamp="1587008733234" />
+    <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877@0.23.1440.877" timestamp="1587776803158" />
     <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586986547711">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586986547711" />
     <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1586807968273" />
-    <state width="331" height="220" key="javadoc.popup.new" timestamp="1587663413247">
+    <state x="400" y="77" width="604" height="729" key="find.popup" timestamp="1587784627720">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="302" height="124" key="javadoc.popup.new/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587590045902" />
-    <state width="331" height="220" key="javadoc.popup.new/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663413247" />
-    <state width="302" height="118" key="javadoc.popup.new/0.23.1440.877@0.23.1440.877" timestamp="1587611117812" />
+    <state x="400" y="77" width="604" height="729" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1587784627720" />
+    <state width="302" height="118" key="javadoc.popup.new" timestamp="1587787370140">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="464" height="343" key="javadoc.popup.new/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587744309004" />
+    <state width="331" height="220" key="javadoc.popup.new/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587664146936" />
+    <state width="302" height="118" key="javadoc.popup.new/0.23.1440.877@0.23.1440.877" timestamp="1587787370140" />
   </component>
   <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
     <setting name="isActivated" value="false" />

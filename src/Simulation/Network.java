@@ -5,6 +5,7 @@ import Agent.Market;
 
 import java.util.List;
 
+//todo  
 public class Network implements FlyWeight {
     List<Buyer> buyers;
     List<Market> markets;
@@ -19,6 +20,6 @@ public class Network implements FlyWeight {
     public void reinit() {
         buyers.iterator().forEachRemaining(Buyer::reinit);
         buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
-        buyers.iterator().forEachRemaining(buyer -> buyer.setInitialEndorsements(markets));
+        buyers.iterator().forEachRemaining(buyer -> buyer.setInitialEndorsements());
     }
 }

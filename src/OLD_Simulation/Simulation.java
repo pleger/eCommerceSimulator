@@ -7,6 +7,7 @@ import Log.Logger;
 import java.util.ArrayList;
 
 public class Simulation {
+    /*
     private int iterationTime;
     private Network network;
     private final int maxTime;
@@ -18,7 +19,7 @@ public class Simulation {
         XChartDriver.createXChartDriver(network.getBuyersSize());
         network.registerBuyersOnChart();
         this.maxTime = maxTime;
-        InformationPanel.createInformationPanel(network.getMarketsSize(), network.getBuyersSize(), maxTime);
+        InformationPanel.triggerGUI(network.getMarketsSize(), network.getBuyersSize(), maxTime);
     }
 
     public void enableLog(ArrayList<String> headers) {
@@ -43,4 +44,6 @@ public class Simulation {
         }
         logger.writeLog();
     }
+
+     */
 }

@@ -1,23 +1,22 @@
-package GUI;
+package OLD_GUI;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import java.awt.GridLayout;
+import OLD_Agents.MarketFactory;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class InformationPanel {
-    /*
     private static JFrame frame;
+    private static JPanel panelBuyersMarket;
+    private static JPanel panelIterationTable;
     private static JTable iterationTable;
+    private static JTabbedPane tabs;
     private static ArrayList<JLabel> marketLabels;
     private static ArrayList<ArrayList<String>> marketInfo;
     private static int iterationTime;
 
-    public static void triggerGUI(int marketsSize, int buyersSize, int maxTime) {
+    public static void createInformationPanel(int marketsSize, int buyersSize, int maxTime) {
         marketInfo = new ArrayList<>();
         marketLabels = new ArrayList<>();
 
@@ -27,7 +26,7 @@ public class InformationPanel {
             individualMarketInfo.add(MarketFactory.getMarketName(marketNumber) + "(Market " + marketNumber + ")");
             marketInfo.add(individualMarketInfo);
         }
-        JTabbedPane tabs = new JTabbedPane();
+        tabs = new JTabbedPane();
 
         frame = new JFrame();
         frame.setTitle("Information");
@@ -36,7 +35,7 @@ public class InformationPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        JPanel panelBuyersMarket = new JPanel();
+        panelBuyersMarket = new JPanel();
         panelBuyersMarket.setLayout(new GridLayout(marketsSize, 1));
         for (int i = 0; i < marketsSize; i++) {
             JLabel label = new JLabel();
@@ -44,7 +43,7 @@ public class InformationPanel {
             panelBuyersMarket.add(label);
         }
 
-        JPanel panelIterationTable = new JPanel();
+        panelIterationTable = new JPanel();
         panelIterationTable.setLayout(new GridLayout(1, 1));
         iterationTable = new JTable(maxTime, buyersSize + 1);
         for (int i = 0; i < maxTime; i++) {
@@ -97,6 +96,4 @@ public class InformationPanel {
         iterationTime++;
         clearMarketInfo();
     }
-
-     */
 }

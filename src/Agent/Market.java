@@ -2,12 +2,17 @@ package Agent;
 
 import Endorsement.AttributesMarket;
 import InputManager.InnerMarket;
-import Simulation.Step;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
+import java.awt.*;
 import java.util.ArrayList;
 
-public class Market implements Step {
+public class Market {
+    private static final Logger logger = LogManager.getRootLogger();
+    private static int counter = 0;
 
+    private final int ID;
     private final String name;
     private final AttributesMarket attributes;
 
@@ -16,8 +21,14 @@ public class Market implements Step {
     }
 
     Market(String name, ArrayList<String> attributeNames, ArrayList<Double[]> values) {
+        this.ID = ++counter;
         this.name = name;
         this.attributes = new AttributesMarket(attributeNames, values);
+        logger.trace("market:"+this);
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getName(){
@@ -29,13 +40,9 @@ public class Market implements Step {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> doStep() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "Market{" +
+                "id="+ID+"," +
                 "name='" + name + '\'' +
                 ", attributes=" + attributes +
                 '}';

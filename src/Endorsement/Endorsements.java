@@ -43,7 +43,21 @@ public class Endorsements {
         return filter(endor -> endor.getPeriod() == period);
     }
 
-    public Endorsements filterByMarketName(Market market) {
+    public Endorsements filterByMarket(Market market) {
         return filter(endor -> endor.getMarket().getName().equals(market.getName()));
+    }
+
+    public double[] toArray() {
+        double[] values = new double[endors.size()];
+
+        for (int i = 0; i < endors.size(); ++i) {
+             values[i] = endors.get(i).getEvaluation();
+        }
+        return values;
+    }
+
+    public Market getSelectedMarket(int period){
+        List<Endorsement> lastTransaction = filterByPeriod(period).endors;
+        return lastTransaction.get(0).getMarket();
     }
 }

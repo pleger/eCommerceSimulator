@@ -22,7 +22,7 @@ public class Markets {
         }
     }
 
-    public static ArrayList<InnerMarket> getMarkets() {
+    public static ArrayList<InnerMarket> getInnerMarkets() {
         return innerMarkets;
     }
 

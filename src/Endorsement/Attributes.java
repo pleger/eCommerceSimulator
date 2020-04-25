@@ -1,13 +1,15 @@
 package Endorsement;
 
+import javax.swing.text.ZoneView;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Attributes {
     protected final ArrayList<String> names;
     protected final ArrayList<Double[]> values;
 
     public Attributes(ArrayList<String> names, ArrayList<Double[]> values) {
-        //todo: is it necessary to clone this?
         this.names = new ArrayList<>(names);
         this.values = new ArrayList<>(values);
     }
@@ -37,9 +39,15 @@ public class Attributes {
 
     @Override
     public String toString() {
-        return "Endorsements{" +
-                "values=" + values +
-                ", names=" + names +
+        StringBuilder valueString = new StringBuilder();
+        for(int i = 0; i < values.size(); ++i) {
+            Double[] oneValues = values.get(i);
+            String name = names.get(i);
+            valueString.append(name).append(" [").append(Arrays.toString(oneValues)).append("], ");
+        }
+
+        return "Attributes{" +
+                 valueString +
                 '}';
     }
 }

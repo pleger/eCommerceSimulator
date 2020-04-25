@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 public class EndorsementFactory {
 
     public static Endorsements createInitial(int period, Buyer buyer, Market market) {
-        return create(period,buyer,market,EndorsementEvaluation::MAX);
+        return create(period,buyer,market,EndorsementEvaluation::BY_MAX);
     }
     public static Endorsements createByStep(int period, Buyer buyer, Market market) {
         return create(period,buyer,market,EndorsementEvaluation::BY_PROBABILITY);
@@ -18,7 +18,7 @@ public class EndorsementFactory {
         Endorsements endors = new Endorsements();
 
         AttributesMarket aMarket = market.getAttributes();
-        AttributesBuyer aBuyer = buyer.getAttributes();
+        AttributesBuyer aBuyer = buyer.getAttribute();
 
         double[] results = EndorsementEvaluation.evaluate(aMarket, aBuyer, strategy);
 

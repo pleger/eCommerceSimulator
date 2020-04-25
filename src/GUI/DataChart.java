@@ -2,15 +2,15 @@ package GUI;
 
 import java.util.ArrayList;
 
-public class DataSeries {
-    private String seriesName;
-    private ArrayList<Integer> xData;
-    private ArrayList<Integer> yData;
+public class DataChart {
+    private final String seriesName;
+    private final ArrayList<Integer> xData;
+    private final ArrayList<Integer> yData;
 
-    public DataSeries(String seriesName, ArrayList<Integer> xData, ArrayList<Integer> yData) {
+    public DataChart(String seriesName) {
         this.seriesName = seriesName;
-        this.xData = xData;
-        this.yData = yData;
+        xData = new ArrayList<>();
+        yData = new ArrayList<>();
     }
 
     public void addData(int x, int y) {
@@ -20,12 +20,6 @@ public class DataSeries {
             xData.remove(0);
             yData.remove(0);
         }
-        /*
-        if(xData.size()>20){
-            xData.remove(0);
-            yData.remove(0);
-        }
-         */
     }
 
     public ArrayList<Integer> getXData() {
@@ -36,7 +30,7 @@ public class DataSeries {
         return yData;
     }
 
-    public String getSeriesName() {
+    public String getName() {
         return seriesName;
     }
 }

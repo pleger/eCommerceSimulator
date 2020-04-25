@@ -8,6 +8,7 @@ import java.util.Random;
 import GUI.InformationPanel;
 import GUI.XChartDriver;
 
+/*
 public class Buyer implements Agent {
     private ArrayList<Buyer> friends;
     private ArrayList<Market> knownMarkets;
@@ -344,7 +345,7 @@ public class Buyer implements Agent {
         previousPreferredMarket = preferredMarket;
         iterationTime++;
         return experiences;
-        */
+        
     }
 
     //Use this to test the correct assignation of a buyer's endorsments - Brian
@@ -362,3 +363,4 @@ public class Buyer implements Agent {
         return state;
     }
 }
+*/

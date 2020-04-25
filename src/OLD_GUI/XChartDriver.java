@@ -1,4 +1,4 @@
-package GUI;
+package OLD_GUI;
 
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
