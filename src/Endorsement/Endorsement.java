@@ -2,20 +2,24 @@ package Endorsement;
 
 import Agent.Market;
 import InputManager.Configuration;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class Endorsement {
+    private static final Logger logger = LogManager.getRootLogger();
+
     private final int period;
     private final Market market;
     private final String attributeName;
-    private final double evaluation;
+    private final double value;
 
-    public Endorsement(int period, Market market, String attributeName, double evaluation) {
+    public Endorsement(int period, Market market, String attributeName, double value) {
         this.period = period;
         this.market = market;
         this.attributeName = attributeName;
-        
-        assert evaluation > 0 && evaluation <= Configuration.LEVELS: "Wrong Evaluation Scale";
-        this.evaluation = evaluation;
+
+        logger.assertLog(value <= 0 && value > Configuration.LEVELS, "Wrong Evaluation Scale:" + value);
+        this.value = value;
     }
 
     public int getPeriod() {
@@ -26,11 +30,11 @@ public class Endorsement {
         return market;
     }
 
-    public double getEvaluation() {
-        return evaluation;
+    public double getValue() {
+        return value;
     }
 
-    public String getAttributeName(){
+    public String getAttributeName() {
         return attributeName;
     }
 }

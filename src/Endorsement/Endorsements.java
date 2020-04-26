@@ -51,7 +51,7 @@ public class Endorsements {
         double[] values = new double[endors.size()];
 
         for (int i = 0; i < endors.size(); ++i) {
-             values[i] = endors.get(i).getEvaluation();
+             values[i] = endors.get(i).getValue();
         }
         return values;
     }
@@ -59,5 +59,9 @@ public class Endorsements {
     public Market getSelectedMarket(int period){
         List<Endorsement> lastTransaction = filterByPeriod(period).endors;
         return lastTransaction.get(0).getMarket();
+    }
+
+    public int size() {
+        return endors.size();
     }
 }

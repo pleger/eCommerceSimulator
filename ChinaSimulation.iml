@@ -4,9 +4,10 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/src/Log" />
+      <excludeFolder url="file://$MODULE_DIR$/output" />
       <excludeFolder url="file://$MODULE_DIR$/src/OLD_Agents" />
       <excludeFolder url="file://$MODULE_DIR$/src/OLD_GUI" />
+      <excludeFolder url="file://$MODULE_DIR$/src/OLD_Log" />
       <excludeFolder url="file://$MODULE_DIR$/src/OLD_Simulation" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -23,23 +23,19 @@ public class Interaction {
         double[] evaluations = new double[markets.size()];
         for (int i = 0; i < markets.size(); ++i) {
             Endorsements endors = buyer.getEndorsements().filterByMarket(markets.get(i)).filterByMemory(period);
+            System.out.println("Buyer:" + buyer.getID() + " endors:" + endors.size());
             evaluations[i] = evaluateMarket(endors.toArray());
         }
-
-        System.out.println("evaluations:" + evaluations.length + " " + markets.size());
 
         double max = Double.MAX_VALUE * -1;
         int selected = -1;
         for (int i = 0; i < evaluations.length; ++i) {
-            System.out.println(evaluations[i] + " " + max);
             if (max < evaluations[i]) {
                 max = evaluations[i];
                 selected = i;
             }
         }
-
         buyer.setCurrentEvaluation(max);
-
         return selected;
     }
 
@@ -47,6 +43,7 @@ public class Interaction {
         double result = 0;
 
         for (double value : values) {
+            if (value > 0) System.out.println("COOL:" + value);
             result += value > 0 ? Math.pow(Configuration.BASE, value) : -1 * Math.pow(Configuration.BASE, Math.abs(value));
         }
         return result;

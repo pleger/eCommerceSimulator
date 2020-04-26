@@ -19,8 +19,8 @@ public class Main {
     private static List<Buyer> buyers;
     private static List<Market> markets;
 
-    private static void loadDataFromInput() {
-        Loader.read(FILE_IN); //load from file
+    private static void loadDataFromFile() {
+        Loader.read(FILE_IN);
         buyers = BuyerFactory.createFromInput();
         markets = MarketFactory.createFromInput();
     }
@@ -30,7 +30,7 @@ public class Main {
         Logger logger = LogManager.getRootLogger();
         logger.setLevel(Level.TRACE);
 
-        loadDataFromInput();
+        loadDataFromFile();
 
         logger.trace(Configuration.toStringConfiguration());
         Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);
