@@ -15,19 +15,21 @@ import java.util.HashMap;
 
 public class Loader {
     private static final Logger logger = LogManager.getRootLogger();
+    private static Sheet markets;
+    private static Sheet buyers;
 
     public static void read(String fileName) {
-        File file = new File("input/" + fileName);
+        File file = new File("input/" + fileName + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
             Sheet conf = workbook.getSheet("configuration");
-            Sheet market = workbook.getSheet("markets");
-            Sheet buyer = workbook.getSheet("buyers");
+            markets = workbook.getSheet("markets");
+            buyers = workbook.getSheet("buyers");
 
             Configuration.set(readConfiguration(conf));
-            Markets.set(readMarketAttributes(market, Configuration.LEVELS), readMarketNames(market, Configuration.LEVELS));
-            Buyers.set(readBuyers(buyer));
+            Markets.set(readMarketAttributes(markets, Configuration.LEVELS), readMarketNames(markets, Configuration.LEVELS));
+            Buyers.set(readBuyers(buyers));
 
             Configuration.setAttributes(Markets.attributeSize(), Buyers.attributeSize());
             Configuration.setMarkets(Markets.getInnerMarkets().size());
@@ -98,5 +100,13 @@ public class Loader {
             buyers.put(row.getCell(0).getStringCellValue().toUpperCase(), row.getCell(1).getNumericCellValue());
         }
         return buyers;
+    }
+
+    public static Sheet getBuyers() {
+        return buyers;
+    }
+
+    public static Sheet getMarkets() {
+        return markets;
     }
 }

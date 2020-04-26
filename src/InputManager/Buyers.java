@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Buyers {
-    private final static ArrayList<InnerBuyer> INNER_BUYERS = new ArrayList<InnerBuyer>();
+    private final static ArrayList<InnerBuyer> INNER_BUYERS = new ArrayList<>();
 
     public static void set(HashMap<String, Double> data) {
         InnerBuyer oneKindConsumer = new InnerBuyer();
@@ -31,11 +31,11 @@ public class Buyers {
     }
 
     public static String toStringBuyers() {
-        String text = "";
+        StringBuilder text = new StringBuilder();
         for (InnerBuyer buyer: INNER_BUYERS) {
-            text += buyer + "\n";
+            text.append(buyer).append("\n");
         }
-        return text;
+        return text.toString();
     }
 }
 

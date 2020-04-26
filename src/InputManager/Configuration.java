@@ -4,6 +4,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Configuration {
     private static final Logger logger = LogManager.getRootLogger();
@@ -17,6 +18,7 @@ public class Configuration {
     private final static boolean D_GUI = false; //could be removed
     private final static double D_BASE = 1.2;
     private final static int D_MEMORY = -1;    //-1 infinite
+    private final static String D_OUTPUT_FILE = "output";
 
     public static int MARKETS;
     public static int ATTRIBUTES_M;
@@ -31,6 +33,7 @@ public class Configuration {
     public static boolean GUI = D_GUI;
     public static double BASE = D_BASE;
     public static int MEMORY = D_MEMORY;
+    public static String OUTPUT_FILE = D_OUTPUT_FILE;
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -44,6 +47,7 @@ public class Configuration {
         GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
         BASE = conf.get("BASE") != null ? conf.get("BASE")  : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
+        OUTPUT_FILE = conf.get("OUTPUT_FILE") != null ? conf.get("OUTPUT_FILE").toString() : OUTPUT_FILE;
     }
 
     public static void setAttributes(int markets, int buyers) {
@@ -104,6 +108,9 @@ public class Configuration {
         if (conf.get("MEMORY") == null) {
             logger.warn("MEMORY is missing.");
         }
+        if (conf.get("OUTPUT_FILE") == null) {
+            logger.warn("OUTPUT_FILE is missing.");
+        }
     }
     
     public static void setDefault() {
@@ -116,10 +123,26 @@ public class Configuration {
         GUI = D_GUI;
         BASE = D_BASE;
         MEMORY = D_MEMORY;
+        OUTPUT_FILE= D_OUTPUT_FILE;
+    }
+
+    public static Map<String, Double> toMap() {
+        Map<String,Double> conf = new HashMap<>();
+        conf.put("Periods",(double) PERIODS);
+        conf.put("AGENT",(double) AGENTS);
+        conf.put("CONTACTS",(double) CONTACTS);
+        conf.put("FRIENDS", FRIENDS);
+        conf.put("LEVELS", (double) LEVELS);
+        conf.put("REPETITIONS", (double) REPETITIONS);
+        conf.put("GUI", GUI? 1.0:0.0);
+        conf.put("BASE", BASE);
+        conf.put("MEMORY", (double) MEMORY);
+
+        return conf;
     }
 
     public static String toStringConfiguration() {
-        String text = "\n";
+        String text = "";
         text += "PERIODS: " + PERIODS + "\n";
         text += "AGENTS: " + AGENTS + "\n";
         text += "CONTACTS: " + CONTACTS + "\n";
@@ -132,6 +155,7 @@ public class Configuration {
         text += "GUI: " + GUI + "\n";
         text += "BASE: " + BASE + "\n";
         text += "MEMORY: " + MEMORY + "\n";
+        text += "OUTPUT_FILE: " + OUTPUT_FILE + "\n";
 
         return text;
     }

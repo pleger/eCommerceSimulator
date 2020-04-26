@@ -6,7 +6,10 @@ import Endorsement.Endorsements;
 import GUI.DataChart;
 import InputManager.Configuration;
 import InputManager.InnerBuyer;
+import Reporter.Reporter;
+import Reporter.IterationData;
 import Simulation.FlyWeight;
+import Simulation.Simulation;
 import Simulation.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -25,6 +28,7 @@ public class Buyer implements Step, FlyWeight {
     private List<Market> knownMarkets;
 
     private final DataChart data;
+    private double evaluation;
 
     Buyer(InnerBuyer ib) {
         this.ID = ++counter;
@@ -40,7 +44,7 @@ public class Buyer implements Step, FlyWeight {
         attribute = new AttributesBuyer(ib.attributeNames, values);
         data = new DataChart(Integer.toString(ID));
 
-        logger.trace("buyer:"+this);
+        logger.trace("buyer:" + this);
     }
 
     public void setFriends(List<Buyer> buyers) {
@@ -85,18 +89,21 @@ public class Buyer implements Step, FlyWeight {
     }
 
     public void setKnowMarkets(List<Market> markets) {
-        this.knownMarkets = markets;
+        this.knownMarkets = new ArrayList<>(markets);
     }
 
     @Override
     public void doStep(int period) {
         endors.addAll(Interaction.interact(period, this, knownMarkets));
+
         //adding data
         data.addData(period, endors.getSelectedMarket(period).getID());
+        Reporter.addData(new IterationData(Simulation.ID, period, getID(), endors.getSelectedMarket(period).getName(), evaluation));
     }
 
     @Override
     public void reinit() {
+        evaluation = 0;
         endors.clear();
         friends.clear();
         knownMarkets.clear();
@@ -114,6 +121,10 @@ public class Buyer implements Step, FlyWeight {
                 "ID=" + ID +
                 ", attr=" + stringValue +
                 '}';
+    }
+
+    public void setCurrentEvaluation(double evaluation) {
+        this.evaluation = evaluation;
     }
 }
 

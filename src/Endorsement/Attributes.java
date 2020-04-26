@@ -1,9 +1,7 @@
 package Endorsement;
 
-import javax.swing.text.ZoneView;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class Attributes {
     protected final ArrayList<String> names;

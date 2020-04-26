@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Simulation implements FlyWeight, Step {
     private final Logger logger = LogManager.getRootLogger();
+    public static int ID = 0;
 
     private final int periods;
     private final List<Buyer> buyers;
@@ -27,21 +28,24 @@ public class Simulation implements FlyWeight, Step {
 
     @Override
     public void reinit() {
+        System.out.println("REINIT: markets:"+markets.size());
+        ++Simulation.ID;
         buyers.iterator().forEachRemaining(Buyer::reinit);
         buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
         buyers.iterator().forEachRemaining(buyer -> buyer.setKnowMarkets(markets));
         buyers.iterator().forEachRemaining(Buyer::setInitialEndorsements);
+        System.out.println("END-REINIT: markets:"+markets.size());
     }
 
     public void run() {
         logger.trace("Simulation: Starting");
-        for (int period = 0; period < periods; ++period) {
+        for (int period = 1; period <= periods; ++period) {
             doStep(period);
             logger.trace("Simulation: Period " + period);
         }
 
         if (Configuration.GUI) {
-            logger.trace("Simulation: Displaying chart");
+            logger.trace("Simulation: Displaying & Saving chart");
             Chart.display(buyers, markets);
         }
     }

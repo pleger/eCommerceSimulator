@@ -2,26 +2,25 @@ import Agent.Buyer;
 import Agent.BuyerFactory;
 import Agent.Market;
 import Agent.MarketFactory;
-import GUI.InformationPanel;
 import InputManager.Configuration;
 import InputManager.Loader;
+import Reporter.Reporter;
 import Simulation.Simulation;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.omg.CORBA.CODESET_INCOMPATIBLE;
 
 import java.util.List;
 
 public class Main {
-    private static final String FILE = "input.xlsx";
+    private static final String FILE_IN = "input";
 
     private static List<Buyer> buyers;
     private static List<Market> markets;
 
-    private static void createFromInput() {
-        Loader.read(FILE); //load from file
+    private static void loadDataFromInput() {
+        Loader.read(FILE_IN); //load from file
         buyers = BuyerFactory.createFromInput();
         markets = MarketFactory.createFromInput();
     }
@@ -31,14 +30,14 @@ public class Main {
         Logger logger = LogManager.getRootLogger();
         logger.setLevel(Level.TRACE);
 
-        createFromInput();
+        loadDataFromInput();
 
         logger.trace(Configuration.toStringConfiguration());
         Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);
-        s.reinit();
         for (int i = 0; i < Configuration.REPETITIONS + 1; ++i) {
             logger.trace("REPETITION:" + i);
             s.run();
         }
+        Reporter.write();
     }
 }

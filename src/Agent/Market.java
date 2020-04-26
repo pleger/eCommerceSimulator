@@ -5,7 +5,6 @@ import InputManager.InnerMarket;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Market {

@@ -3,15 +3,18 @@ package Agent;
 import Endorsement.EndorsementFactory;
 import Endorsement.Endorsements;
 import InputManager.Configuration;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class Interaction {
 
+    private static final Logger logger = LogManager.getRootLogger();
+
     public static Endorsements interact(int period, Buyer buyer, List<Market> markets) {
         int selectedMarket = selectMarket(period, buyer, markets);
-
-        System.out.println(period+" "+buyer.getID()+ " "+ selectedMarket);
+        logger.assertLog(selectedMarket != -1, "No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
 
         return EndorsementFactory.createByStep(period, buyer, markets.get(selectedMarket));
     }
@@ -23,17 +26,20 @@ public class Interaction {
             evaluations[i] = evaluateMarket(endors.toArray());
         }
 
-        System.out.println("evaluations:"+evaluations.length+ " " + markets.size());
+        System.out.println("evaluations:" + evaluations.length + " " + markets.size());
 
-        double max = Double.MAX_VALUE*-1;
+        double max = Double.MAX_VALUE * -1;
         int selected = -1;
         for (int i = 0; i < evaluations.length; ++i) {
-            System.out.println(evaluations[i]+ " "+max);
+            System.out.println(evaluations[i] + " " + max);
             if (max < evaluations[i]) {
                 max = evaluations[i];
                 selected = i;
             }
         }
+
+        buyer.setCurrentEvaluation(max);
+
         return selected;
     }
 

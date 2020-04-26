@@ -1,18 +1,19 @@
 package Endorsement;
 
 import InputManager.Configuration;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
 import java.util.function.BiFunction;
 
 public class EndorsementEvaluation {
+    private static final Logger logger = LogManager.getRootLogger();
 
     public static Double BY_MAX(Double @NotNull [] attributes, Double mean) {
         int index = -1;
         double max = -1;
-
-        //System.out.println("SALIDA:"+attributes.length);
 
         for (int i = 0; i < Configuration.LEVELS; ++i) {
             if (max < attributes[i]) {
@@ -62,7 +63,7 @@ public class EndorsementEvaluation {
         int attributesNumber = amarkets.size();
         double[] results = new double[attributesNumber];
 
-        assert Configuration.ATTRIBUTES_M == attributesNumber : "wrong number of attributes of market";
+        logger.assertLog(Configuration.ATTRIBUTES_M == attributesNumber,  "wrong number of attributes of market");
 
         for (int i = 0; i < attributesNumber; ++i) {
             results[i] = strategy.apply(amarkets.getValues(i), abuyer.getValue(i));
