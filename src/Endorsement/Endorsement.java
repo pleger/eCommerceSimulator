@@ -18,6 +18,7 @@ public class Endorsement {
         this.market = market;
         this.attributeName = attributeName;
 
+        //todo fix!
         logger.assertLog(value <= 0 && value > Configuration.LEVELS, "Wrong Evaluation Scale:" + value);
         this.value = value;
     }

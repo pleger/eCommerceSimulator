@@ -4,6 +4,7 @@ import Agent.Buyer;
 import Agent.Market;
 import GUI.Chart;
 import InputManager.Configuration;
+import Reporter.Reporter;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -43,6 +44,8 @@ public class Simulation implements FlyWeight, Step {
             doStep(period);
             logger.trace("Simulation: Period " + period);
         }
+
+        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData(ID)));
 
         if (Configuration.GUI) {
             logger.trace("Simulation: Displaying & Saving chart");

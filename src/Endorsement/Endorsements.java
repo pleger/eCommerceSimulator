@@ -5,6 +5,8 @@ import InputManager.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -33,6 +35,10 @@ public class Endorsements {
 
     private Endorsements filter(Predicate<Endorsement> filter) {
         return new Endorsements(endors.stream().filter(filter).collect(Collectors.toList()));
+    }
+
+    public void forEach(Consumer<Endorsement> fun) {
+        endors.iterator().forEachRemaining(fun);
     }
 
     public Endorsements filterByMemory(int period) {

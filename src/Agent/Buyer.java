@@ -8,6 +8,7 @@ import InputManager.Configuration;
 import InputManager.InnerBuyer;
 import Reporter.Reporter;
 import Reporter.IterationData;
+import Reporter.EndorsementData;
 import Simulation.FlyWeight;
 import Simulation.Simulation;
 import Simulation.Step;
@@ -98,7 +99,7 @@ public class Buyer implements Step, FlyWeight {
 
         //adding data
         data.addData(period, endors.getSelectedMarket(period).getID());
-        Reporter.addData(new IterationData(Simulation.ID, period, getID(), endors.getSelectedMarket(period).getName(), evaluation));
+        Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), endors.getSelectedMarket(period).getName(), evaluation));
     }
 
     @Override
@@ -125,6 +126,16 @@ public class Buyer implements Step, FlyWeight {
 
     public void setCurrentEvaluation(double evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public ArrayList<EndorsementData> getEndorsementData(int simulationId) {
+        ArrayList<EndorsementData> endorsData = new ArrayList<>();
+        endors.forEach(endor -> {
+            endorsData.add(new EndorsementData(simulationId, endor.getPeriod(), ID, endor.getMarket().getName(),
+                    endor.getAttributeName(), endor.getValue()));
+        });
+
+        return endorsData;
     }
 }
 

@@ -1,5 +1,6 @@
 package Reporter;
 
+import Endorsement.Endorsement;
 import InputManager.Configuration;
 import InputManager.Loader;
 import org.apache.log4j.LogManager;
@@ -20,17 +21,20 @@ import java.util.Map;
 public class Reporter {
     private static final Logger logger = LogManager.getRootLogger();
 
-    private static final List<IterationData> data = new ArrayList<>();
+    private static final List<IterationData> iterationData = new ArrayList<>();
+    private static final List<EndorsementData> endorsData = new ArrayList<>();
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet conf = workbook.createSheet("configuration");
         Sheet results = workbook.createSheet("results");
+        Sheet endors = workbook.createSheet("endorsement");
 
         writeConfiguration(conf);
-        writeResults(results);
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
+        writeResults(results);
+        writeEndorsements(endors);
 
         writeDisk(workbook);
     }
@@ -56,8 +60,12 @@ public class Reporter {
         }
     }
 
-    public static void addData(IterationData oneRow) {
-        data.add(oneRow);
+    public static void addEndorsementData(ArrayList<EndorsementData> endors) {
+        endorsData.addAll(endors);
+    }
+
+    public static void addIterationData(IterationData oneRow) {
+        iterationData.add(oneRow);
     }
 
     private static void writeDisk(XSSFWorkbook workbook) {
@@ -77,6 +85,29 @@ public class Reporter {
         }
     }
 
+    private static void writeEndorsements(Sheet results) {
+        Row headRow = results.createRow(0);
+
+        int column = 0;
+        for (String head : EndorsementData.getHeader()) {
+            Cell cell = headRow.createCell(column);
+            cell.setCellValue(head);
+            ++column;
+        }
+
+        int rowIndex = 1;
+        for (EndorsementData oneRow : endorsData) {
+            Row dataRow = results.createRow(rowIndex);
+            dataRow.createCell(0).setCellValue(oneRow.simulationId);
+            dataRow.createCell(1).setCellValue(oneRow.period);
+            dataRow.createCell(2).setCellValue(oneRow.buyerId);
+            dataRow.createCell(3).setCellValue(oneRow.marketName);
+            dataRow.createCell(4).setCellValue(oneRow.attribute);
+            dataRow.createCell(5).setCellValue(oneRow.value);
+            ++rowIndex;
+        }
+    }
+
     private static void writeResults(Sheet results) {
         Row headRow = results.createRow(0);
 
@@ -88,7 +119,7 @@ public class Reporter {
         }
 
         int rowIndex = 1;
-        for (IterationData oneRow : data) {
+        for (IterationData oneRow : iterationData) {
             Row dataRow = results.createRow(rowIndex);
             dataRow.createCell(0).setCellValue(oneRow.simulationId);
             dataRow.createCell(1).setCellValue(oneRow.period);
