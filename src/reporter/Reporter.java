@@ -1,7 +1,7 @@
-package Reporter;
+package reporter;
 
-import InputManager.Configuration;
-import InputManager.Loader;
+import inputManager.Configuration;
+import inputManager.Loader;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
@@ -29,7 +29,7 @@ public class Reporter {
         XSSFSheet conf = workbook.createSheet("Configuration");
         Sheet results = workbook.createSheet("Results");
         Sheet detailedResults = workbook.createSheet("DetailResult");
-        Sheet endors = workbook.createSheet("Endorsement");
+        Sheet endors = workbook.createSheet("endorsement");
 
 
         writeConfiguration(conf);
@@ -46,7 +46,7 @@ public class Reporter {
         Row headRow = detailedResults.createRow(0);
 
         int column = 0;
-        for (String head : IterationData.getHeader()) {
+        for (String head : MarketEvaluationData.getHeader()) {
             Cell cell = headRow.createCell(column);
             cell.setCellValue(head);
             ++column;

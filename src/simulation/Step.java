@@ -1,4 +1,4 @@
-package Simulation;
+package simulation;
 
 public interface Step {
     void doStep(int period);

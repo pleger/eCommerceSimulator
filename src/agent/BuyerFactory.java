@@ -1,8 +1,8 @@
-package Agent;
+package agent;
 
-import InputManager.Configuration;
-import InputManager.InnerBuyer;
-import InputManager.Buyers;
+import inputManager.Configuration;
+import inputManager.InnerBuyer;
+import inputManager.Buyers;
 
 import java.util.ArrayList;
 import java.util.List;

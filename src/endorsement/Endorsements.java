@@ -1,7 +1,7 @@
-package Endorsement;
+package endorsement;
 
-import Agent.Market;
-import InputManager.Configuration;
+import agent.Market;
+import inputManager.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;

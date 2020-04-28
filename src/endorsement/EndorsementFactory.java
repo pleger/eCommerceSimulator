@@ -1,7 +1,7 @@
-package Endorsement;
+package endorsement;
 
-import Agent.Buyer;
-import Agent.Market;
+import agent.Buyer;
+import agent.Market;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

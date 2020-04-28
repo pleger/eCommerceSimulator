@@ -1,17 +1,17 @@
-package Agent;
+package agent;
 
-import Endorsement.AttributesBuyer;
-import Endorsement.EndorsementFactory;
-import Endorsement.Endorsements;
+import endorsement.AttributesBuyer;
+import endorsement.EndorsementFactory;
+import endorsement.Endorsements;
 import GUI.DataChart;
-import InputManager.Configuration;
-import InputManager.InnerBuyer;
-import Reporter.Reporter;
-import Reporter.IterationData;
-import Reporter.EndorsementData;
-import Simulation.FlyWeight;
-import Simulation.Simulation;
-import Simulation.Step;
+import inputManager.Configuration;
+import inputManager.InnerBuyer;
+import reporter.Reporter;
+import reporter.IterationData;
+import reporter.EndorsementData;
+import simulation.FlyWeight;
+import simulation.Simulation;
+import simulation.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -130,10 +130,8 @@ public class Buyer implements Step, FlyWeight {
 
     public ArrayList<EndorsementData> getEndorsementData() {
         ArrayList<EndorsementData> endorsData = new ArrayList<>();
-        endors.forEach(endor -> {
-            endorsData.add(new EndorsementData(Simulation.ID, endor.getPeriod(), ID, endor.getMarket().getName(),
-                    endor.getAttributeName(), endor.getValue()));
-        });
+        endors.forEach(endor -> endorsData.add(new EndorsementData(Simulation.ID, endor.getPeriod(), ID, endor.getMarket().getName(),
+                endor.getAttributeName(), endor.getValue())));
 
         return endorsData;
     }

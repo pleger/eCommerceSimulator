@@ -1,7 +1,7 @@
-package Agent;
+package agent;
 
-import Endorsement.AttributesMarket;
-import InputManager.InnerMarket;
+import endorsement.AttributesMarket;
+import inputManager.InnerMarket;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

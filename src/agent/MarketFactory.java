@@ -1,7 +1,7 @@
-package Agent;
+package agent;
 
-import InputManager.InnerMarket;
-import InputManager.Markets;
+import inputManager.InnerMarket;
+import inputManager.Markets;
 
 import java.util.ArrayList;
 import java.util.List;

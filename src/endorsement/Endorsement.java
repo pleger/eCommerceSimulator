@@ -1,6 +1,6 @@
-package Endorsement;
+package endorsement;
 
-import Agent.Market;
+import agent.Market;
 
 public class Endorsement {
 

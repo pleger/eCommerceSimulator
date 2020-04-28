@@ -1,4 +1,4 @@
-package Reporter;
+package reporter;
 
 import java.util.ArrayList;
 import java.util.List;

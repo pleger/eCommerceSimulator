@@ -1,13 +1,13 @@
-package InputManager;
+package inputManager;
 
 import org.apache.commons.lang.ArrayUtils;
 
 import java.util.ArrayList;
 
 public class InnerMarket {
-    public String name;
-    public ArrayList<String> attributeNames;
-    public ArrayList<Double[]> attributeValues;
+    public final String name;
+    public final ArrayList<String> attributeNames;
+    public final ArrayList<Double[]> attributeValues;
 
     InnerMarket(String name) {
         this.name = name;

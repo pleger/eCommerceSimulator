@@ -1,8 +1,8 @@
 package GUI;
 
-import Agent.Buyer;
-import Agent.Market;
-import InputManager.Configuration;
+import agent.Buyer;
+import agent.Market;
+import inputManager.Configuration;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.knowm.xchart.BitmapEncoder;
@@ -32,7 +32,7 @@ public class Chart {
     }
 
     private static void createXChartDriver(List<Market> markets) {
-        chart = new XYChartBuilder().width(800).height(600).title("Simulation")
+        chart = new XYChartBuilder().width(800).height(600).title("simulation")
                 .xAxisTitle("Period").yAxisTitle("Market").build();
 
         chart.getStyler().setYAxisDecimalPattern("#0").setXAxisDecimalPattern("#0").setYAxisMax(markets.size() * 1.0).setLegendPosition(Styler.LegendPosition.InsideNE);

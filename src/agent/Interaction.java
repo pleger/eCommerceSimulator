@@ -1,10 +1,10 @@
-package Agent;
+package agent;
 
-import Endorsement.EndorsementFactory;
-import Endorsement.Endorsements;
-import InputManager.Configuration;
-import Reporter.MarketEvaluationData;
-import Simulation.Simulation;
+import endorsement.EndorsementFactory;
+import endorsement.Endorsements;
+import inputManager.Configuration;
+import reporter.MarketEvaluationData;
+import simulation.Simulation;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -27,7 +27,7 @@ public class Interaction {
             Endorsements endors = buyer.getEndorsements().filterByMarket(market).filterByMemory(period);
             evaluations[market.getID()] = evaluateMarket(endors.toArray());
 
-            Reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), evaluations[market.getID()]));
+            reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), evaluations[market.getID()]));
         }
 
         double max = Double.MAX_VALUE * -1;

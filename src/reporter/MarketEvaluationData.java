@@ -1,23 +1,21 @@
-package Reporter;
+package reporter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EndorsementData {
+public class MarketEvaluationData {
     public final int simulationId;
     public final int period;
     public final int buyerId;
     public final String marketName;
-    public final String attribute;
-    public final double value;
+    public final double evaluation;
 
-    public EndorsementData(int simulationId, int period, int buyerId, String marketName, String attribute, double value) {
+    public MarketEvaluationData(int simulationId, int period, int buyerId, String marketName, double evaluation) {
         this.simulationId = simulationId;
         this.period = period;
         this.buyerId = buyerId;
         this.marketName = marketName;
-        this.attribute = attribute;
-        this.value = value;
+        this.evaluation = evaluation;
     }
 
     public static List<String> getHeader() {
@@ -26,8 +24,7 @@ public class EndorsementData {
             add("Period");
             add("BuyerId");
             add("Market");
-            add("Attribute");
-            add("Value");
+            add("Evaluation");
         }};
     }
 }

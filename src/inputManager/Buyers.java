@@ -1,4 +1,4 @@
-package InputManager;
+package inputManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;

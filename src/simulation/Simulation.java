@@ -1,10 +1,10 @@
-package Simulation;
+package simulation;
 
-import Agent.Buyer;
-import Agent.Market;
+import agent.Buyer;
+import agent.Market;
 import GUI.Chart;
-import InputManager.Configuration;
-import Reporter.Reporter;
+import inputManager.Configuration;
+import reporter.Reporter;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

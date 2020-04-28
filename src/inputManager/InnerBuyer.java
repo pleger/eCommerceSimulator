@@ -1,10 +1,10 @@
-package InputManager;
+package inputManager;
 
 import java.util.ArrayList;
 
 public class InnerBuyer {
-    public ArrayList<String> attributeNames;
-    public ArrayList<Double> attributeValues;
+    public final ArrayList<String> attributeNames;
+    public final ArrayList<Double> attributeValues;
 
     InnerBuyer() {
         attributeNames = new ArrayList<>();
