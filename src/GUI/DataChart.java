@@ -16,11 +16,6 @@ public class DataChart {
     public void addData(int x, int y) {
         xData.add(x);
         yData.add(y);
-        //todo: remove it!
-        if (xData.get(0) == -1 && yData.get(0) == -1) {
-            xData.remove(0);
-            yData.remove(0);
-        }
     }
 
     public ArrayList<Integer> getXData() {

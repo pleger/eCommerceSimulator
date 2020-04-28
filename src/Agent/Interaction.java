@@ -3,6 +3,8 @@ package Agent;
 import Endorsement.EndorsementFactory;
 import Endorsement.Endorsements;
 import InputManager.Configuration;
+import Reporter.MarketEvaluationData;
+import Simulation.Simulation;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -14,17 +16,18 @@ public class Interaction {
 
     public static Endorsements interact(int period, Buyer buyer, List<Market> markets) {
         int selectedMarket = selectMarket(period, buyer, markets);
-        logger.assertLog(selectedMarket != -1, "No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
+        logger.assertLog(selectedMarket != -1, "Interaction: No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
 
         return EndorsementFactory.createByStep(period, buyer, markets.get(selectedMarket));
     }
 
     private static int selectMarket(int period, Buyer buyer, List<Market> markets) {
         double[] evaluations = new double[markets.size()];
-        for (int i = 0; i < markets.size(); ++i) {
-            Endorsements endors = buyer.getEndorsements().filterByMarket(markets.get(i)).filterByMemory(period);
-            System.out.println("Buyer:" + buyer.getID() + " endors:" + endors.size());
-            evaluations[i] = evaluateMarket(endors.toArray());
+        for (Market market : markets) {
+            Endorsements endors = buyer.getEndorsements().filterByMarket(market).filterByMemory(period);
+            evaluations[market.getID()] = evaluateMarket(endors.toArray());
+
+            Reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), evaluations[market.getID()]));
         }
 
         double max = Double.MAX_VALUE * -1;
@@ -35,6 +38,7 @@ public class Interaction {
                 selected = i;
             }
         }
+
         buyer.setCurrentEvaluation(max);
         return selected;
     }
@@ -43,7 +47,6 @@ public class Interaction {
         double result = 0;
 
         for (double value : values) {
-            if (value > 0) System.out.println("COOL:" + value);
             result += value > 0 ? Math.pow(Configuration.BASE, value) : -1 * Math.pow(Configuration.BASE, Math.abs(value));
         }
         return result;

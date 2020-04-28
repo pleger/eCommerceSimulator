@@ -20,7 +20,7 @@ public class Market {
     }
 
     Market(String name, ArrayList<String> attributeNames, ArrayList<Double[]> values) {
-        this.ID = ++counter;
+        this.ID = counter++;
         this.name = name;
         this.attributes = new AttributesMarket(attributeNames, values);
         logger.trace("market:"+this);

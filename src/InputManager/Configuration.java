@@ -45,7 +45,7 @@ public class Configuration {
         LEVELS = conf.get("LEVELS") != null ? conf.get("LEVELS").intValue() : D_LEVELS;
         REPETITIONS = conf.get("REPETITIONS") != null ? conf.get("REPETITIONS").intValue() : D_REPETITIONS;
         GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
-        BASE = conf.get("BASE") != null ? conf.get("BASE")  : D_BASE;
+        BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
         OUTPUT_FILE = conf.get("OUTPUT_FILE") != null ? conf.get("OUTPUT_FILE").toString() : OUTPUT_FILE;
     }
@@ -59,21 +59,46 @@ public class Configuration {
         set("MARKETS", markets);
     }
 
-    private static void set(String name, double value)  {
+    private static void set(String name, double value) {
         switch (name.toUpperCase()) {
-            case "PERIODS": PERIODS = (int) value; break;
-            case "AGENTS": AGENTS = (int) value; break;
-            case "CONTACTS": CONTACTS = (int) value; break;
-            case "FRIENDS": FRIENDS =  value; break;
-            case "ATTRIBUTES_M": ATTRIBUTES_M = (int) value; break;
-            case "ATTRIBUTES_B": ATTRIBUTES_B = (int) value; break;
-            case "MARKETS": MARKETS = (int) value; break;
-            case "REPETITIONS": REPETITIONS = (int) value; break;
-            case "LEVELS": LEVELS = (int) value; break;
-            case "GUI": GUI = value == 1; break;
-            case "BASE": BASE = value; break;
-            case "MEMORY": MEMORY = (int) value; break;
-            default: logger.error("CONFIGURATOR.SET: Wrong Parameter");
+            case "PERIODS":
+                PERIODS = (int) value;
+                break;
+            case "AGENTS":
+                AGENTS = (int) value;
+                break;
+            case "CONTACTS":
+                CONTACTS = (int) value;
+                break;
+            case "FRIENDS":
+                FRIENDS = value;
+                break;
+            case "ATTRIBUTES_M":
+                ATTRIBUTES_M = (int) value;
+                break;
+            case "ATTRIBUTES_B":
+                ATTRIBUTES_B = (int) value;
+                break;
+            case "MARKETS":
+                MARKETS = (int) value;
+                break;
+            case "REPETITIONS":
+                REPETITIONS = (int) value;
+                break;
+            case "LEVELS":
+                LEVELS = (int) value;
+                break;
+            case "GUI":
+                GUI = value == 1;
+                break;
+            case "BASE":
+                BASE = value;
+                break;
+            case "MEMORY":
+                MEMORY = (int) value;
+                break;
+            default:
+                logger.error("CONFIGURATOR.SET: Wrong Parameter");
         }
     }
 
@@ -112,7 +137,7 @@ public class Configuration {
             logger.warn("OUTPUT_FILE is missing.");
         }
     }
-    
+
     public static void setDefault() {
         PERIODS = D_PERIODS;
         AGENTS = D_AGENTS;
@@ -123,18 +148,18 @@ public class Configuration {
         GUI = D_GUI;
         BASE = D_BASE;
         MEMORY = D_MEMORY;
-        OUTPUT_FILE= D_OUTPUT_FILE;
+        OUTPUT_FILE = D_OUTPUT_FILE;
     }
 
     public static Map<String, Double> toMap() {
-        Map<String,Double> conf = new HashMap<>();
-        conf.put("Periods",(double) PERIODS);
-        conf.put("AGENT",(double) AGENTS);
-        conf.put("CONTACTS",(double) CONTACTS);
+        Map<String, Double> conf = new HashMap<>();
+        conf.put("PERIODS", (double) PERIODS);
+        conf.put("AGENT", (double) AGENTS);
+        conf.put("CONTACTS", (double) CONTACTS);
         conf.put("FRIENDS", FRIENDS);
         conf.put("LEVELS", (double) LEVELS);
         conf.put("REPETITIONS", (double) REPETITIONS);
-        conf.put("GUI", GUI? 1.0:0.0);
+        conf.put("GUI", GUI ? 1.0 : 0.0);
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
 

@@ -35,7 +35,7 @@ public class Chart {
         chart = new XYChartBuilder().width(800).height(600).title("Simulation")
                 .xAxisTitle("Period").yAxisTitle("Market").build();
 
-        chart.getStyler().setYAxisDecimalPattern("#0").setYAxisMax(markets.size() * 1.0).setLegendPosition(Styler.LegendPosition.InsideNE);
+        chart.getStyler().setYAxisDecimalPattern("#0").setXAxisDecimalPattern("#0").setYAxisMax(markets.size() * 1.0).setLegendPosition(Styler.LegendPosition.InsideNE);
         Map<Double, Object> customYAxisTickLabelsMap = new HashMap<>();
         for (Market market : markets) {
             customYAxisTickLabelsMap.put(market.getID() * 1.0, market.getName());

@@ -21,7 +21,7 @@ public class EndorsementEvaluation {
                 index = i;
             }
         }
-        return calculateEndorsementFormula(index, mean, Configuration.LEVELS);
+        return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
     public static Double BY_PROBABILITY(Double @NotNull [] attributes, Double mean) {
@@ -36,7 +36,7 @@ public class EndorsementEvaluation {
                 break;
             }
         }
-        return calculateEndorsementFormula(index, mean, Configuration.LEVELS);
+        return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
     /**
@@ -47,14 +47,18 @@ public class EndorsementEvaluation {
      */
     private static Double calculateEndorsementFormula(@Range(from = 0, to = Integer.MAX_VALUE) int index, Double mean, int levels) {
         int k = (int) Math.floor(index - levels / 2.0);
+        k = levels%2 == 0 && k <=0? k - 1: k;
+        
         double result = 0;
-
         if (k > 0) {
             result = mean * k * (2.0 / levels);
         }
+
         if (k < 0) {
             result = mean * k * (1 / (levels - 1.0));
         }
+
+        //System.out.println("Valores. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
 
         return result;
     }
@@ -63,7 +67,7 @@ public class EndorsementEvaluation {
         int attributesNumber = amarkets.size();
         double[] results = new double[attributesNumber];
 
-        logger.assertLog(Configuration.ATTRIBUTES_M == attributesNumber,  "wrong number of attributes of market");
+        logger.assertLog(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
 
         for (int i = 0; i < attributesNumber; ++i) {
             results[i] = strategy.apply(amarkets.getValues(i), abuyer.getValue(i));

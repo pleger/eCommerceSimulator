@@ -1,6 +1,5 @@
 package Reporter;
 
-import Endorsement.Endorsement;
 import InputManager.Configuration;
 import InputManager.Loader;
 import org.apache.log4j.LogManager;
@@ -23,21 +22,48 @@ public class Reporter {
 
     private static final List<IterationData> iterationData = new ArrayList<>();
     private static final List<EndorsementData> endorsData = new ArrayList<>();
+    private static final List<MarketEvaluationData> marketEvaluationData = new ArrayList<>();
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet conf = workbook.createSheet("configuration");
-        Sheet results = workbook.createSheet("results");
-        Sheet endors = workbook.createSheet("endorsement");
+        XSSFSheet conf = workbook.createSheet("Configuration");
+        Sheet results = workbook.createSheet("Results");
+        Sheet detailedResults = workbook.createSheet("DetailResult");
+        Sheet endors = workbook.createSheet("Endorsement");
+
 
         writeConfiguration(conf);
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
         writeResults(results);
+        writeDetailedResults(detailedResults);
         writeEndorsements(endors);
 
         writeDisk(workbook);
     }
+
+    private static void writeDetailedResults(Sheet detailedResults) {
+        Row headRow = detailedResults.createRow(0);
+
+        int column = 0;
+        for (String head : IterationData.getHeader()) {
+            Cell cell = headRow.createCell(column);
+            cell.setCellValue(head);
+            ++column;
+        }
+
+        int rowIndex = 1;
+        for (MarketEvaluationData oneRow : marketEvaluationData) {
+            Row dataRow = detailedResults.createRow(rowIndex);
+            dataRow.createCell(0).setCellValue(oneRow.simulationId);
+            dataRow.createCell(1).setCellValue(oneRow.period);
+            dataRow.createCell(2).setCellValue(oneRow.buyerId);
+            dataRow.createCell(3).setCellValue(oneRow.marketName);
+            dataRow.createCell(4).setCellValue(oneRow.evaluation);
+            ++rowIndex;
+        }
+    }
+
 
     private static void addSheet(XSSFWorkbook workbook, Sheet sheet) {
         Sheet newSheet = workbook.createSheet(sheet.getSheetName());
@@ -66,6 +92,10 @@ public class Reporter {
 
     public static void addIterationData(IterationData oneRow) {
         iterationData.add(oneRow);
+    }
+
+    public static void addMarketEvaluationData(MarketEvaluationData oneRow) {
+        marketEvaluationData.add(oneRow);
     }
 
     private static void writeDisk(XSSFWorkbook workbook) {

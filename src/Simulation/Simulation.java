@@ -45,7 +45,7 @@ public class Simulation implements FlyWeight, Step {
             logger.trace("Simulation: Period " + period);
         }
 
-        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData(ID)));
+        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData()));
 
         if (Configuration.GUI) {
             logger.trace("Simulation: Displaying & Saving chart");

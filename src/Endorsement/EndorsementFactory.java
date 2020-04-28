@@ -2,10 +2,14 @@ package Endorsement;
 
 import Agent.Buyer;
 import Agent.Market;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.function.BiFunction;
 
 public class EndorsementFactory {
+    private static final Logger logger = LogManager.getRootLogger();
+
 
     public static Endorsements createInitial(int period, Buyer buyer, Market market) {
         return create(period,buyer,market,EndorsementEvaluation::BY_MAX);

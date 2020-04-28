@@ -32,7 +32,7 @@ public class Buyer implements Step, FlyWeight {
     private double evaluation;
 
     Buyer(InnerBuyer ib) {
-        this.ID = ++counter;
+        this.ID = counter++;
         this.friends = new ArrayList<>();
         this.knownMarkets = new ArrayList<>();
         this.endors = new Endorsements();
@@ -128,10 +128,10 @@ public class Buyer implements Step, FlyWeight {
         this.evaluation = evaluation;
     }
 
-    public ArrayList<EndorsementData> getEndorsementData(int simulationId) {
+    public ArrayList<EndorsementData> getEndorsementData() {
         ArrayList<EndorsementData> endorsData = new ArrayList<>();
         endors.forEach(endor -> {
-            endorsData.add(new EndorsementData(simulationId, endor.getPeriod(), ID, endor.getMarket().getName(),
+            endorsData.add(new EndorsementData(Simulation.ID, endor.getPeriod(), ID, endor.getMarket().getName(),
                     endor.getAttributeName(), endor.getValue()));
         });
 
