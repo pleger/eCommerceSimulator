@@ -18,8 +18,9 @@ public class Configuration {
     private final static boolean D_GUI = false; //could be removed
     private final static double D_BASE = 1.2;
     private final static int D_MEMORY = -1;    //-1 infinite
-    private final static String D_OUTPUT_FILE = "output";
+    private final static boolean D_SAVED_ENDORSEMENTS = false;
 
+    public static String FILE_NAME;
     public static int MARKETS;
     public static int ATTRIBUTES_M;
     public static int ATTRIBUTES_B;
@@ -33,7 +34,7 @@ public class Configuration {
     public static boolean GUI = D_GUI;
     public static double BASE = D_BASE;
     public static int MEMORY = D_MEMORY;
-    public static String OUTPUT_FILE = D_OUTPUT_FILE;
+    public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -47,7 +48,11 @@ public class Configuration {
         GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
-        OUTPUT_FILE = conf.get("OUTPUT_FILE") != null ? conf.get("OUTPUT_FILE").toString() : OUTPUT_FILE;
+        SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS ") != null ? conf.get("AVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
+    }
+
+    public static void setFile(String name) {
+        FILE_NAME = name;
     }
 
     public static void setAttributes(int markets, int buyers) {
@@ -97,6 +102,9 @@ public class Configuration {
             case "MEMORY":
                 MEMORY = (int) value;
                 break;
+            case "SAVED_ENDORSEMENT":
+                SAVED_ENDORSEMENTS = value == 1;
+                break;
             default:
                 logger.error("CONFIGURATOR.SET: Wrong Parameter");
         }
@@ -133,8 +141,8 @@ public class Configuration {
         if (conf.get("MEMORY") == null) {
             logger.warn("MEMORY is missing.");
         }
-        if (conf.get("OUTPUT_FILE") == null) {
-            logger.warn("OUTPUT_FILE is missing.");
+        if (conf.get("SAVED_ENDORSEMENTS") == null) {
+            logger.warn("SAVED_ENDORSEMENTS is missing.");
         }
     }
 
@@ -148,7 +156,7 @@ public class Configuration {
         GUI = D_GUI;
         BASE = D_BASE;
         MEMORY = D_MEMORY;
-        OUTPUT_FILE = D_OUTPUT_FILE;
+        SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
     }
 
     public static Map<String, Double> toMap() {
@@ -162,14 +170,18 @@ public class Configuration {
         conf.put("GUI", GUI ? 1.0 : 0.0);
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
+        conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
 
         return conf;
     }
 
     public static String toStringConfiguration() {
         String text = "";
+        text += "FILE_NAME" + FILE_NAME + "\n";
         text += "PERIODS: " + PERIODS + "\n";
         text += "AGENTS: " + AGENTS + "\n";
+        text += "BASE: " + BASE + "\n";
+        text += "MEMORY: " + MEMORY + "\n";
         text += "CONTACTS: " + CONTACTS + "\n";
         text += "FRIENDS: " + FRIENDS + "\n";
         text += "MARKETS: " + MARKETS + "\n";
@@ -177,10 +189,8 @@ public class Configuration {
         text += "ATTRIBUTES_B: " + ATTRIBUTES_B + "\n";
         text += "LEVELS: " + LEVELS + "\n";
         text += "REPETITIONS: " + REPETITIONS + "\n";
+        text += "SAVED_ENDORSEMENTS: " + SAVED_ENDORSEMENTS + "\n";
         text += "GUI: " + GUI + "\n";
-        text += "BASE: " + BASE + "\n";
-        text += "MEMORY: " + MEMORY + "\n";
-        text += "OUTPUT_FILE: " + OUTPUT_FILE + "\n";
 
         return text;
     }

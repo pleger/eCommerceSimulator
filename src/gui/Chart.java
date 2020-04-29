@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import agent.Buyer;
 import agent.Market;
@@ -10,6 +10,7 @@ import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.style.Styler;
+import simulation.Simulation;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -25,9 +26,10 @@ public class Chart {
     private static XYChart chart;
 
     public static void display(List<Buyer> buyers, List<Market> markets) {
+        logger.trace("Chart: Displaying");
         createXChartDriver(markets);
         buyers.iterator().forEachRemaining(buyer -> registerSeries(buyer.getDataSeries()));
-        drawChart();
+        if (Configuration.REPETITIONS == 0) drawChart();
         saveChart();
     }
 
@@ -52,7 +54,7 @@ public class Chart {
     }
 
     private static void saveChart() {
-        String fileName = Configuration.OUTPUT_FILE;
+        String fileName = Configuration.FILE_NAME + "_Simulation_" + Simulation.ID + "_";
         DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
         fileName += df.format(new Date()) + ".png";
 

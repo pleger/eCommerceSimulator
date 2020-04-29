@@ -31,14 +31,17 @@ public class Reporter {
         Sheet detailedResults = workbook.createSheet("DetailResult");
         Sheet endors = workbook.createSheet("endorsement");
 
-
+        logger.trace("Reporter: Adding sheets");
         writeConfiguration(conf);
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
         writeResults(results);
         writeDetailedResults(detailedResults);
+
+        logger.trace("Reporter: Adding endorsements: " + endorsData.size());
         writeEndorsements(endors);
 
+        logger.trace("Reporter: Writing to the disk");
         writeDisk(workbook);
     }
 
@@ -64,7 +67,6 @@ public class Reporter {
         }
     }
 
-
     private static void addSheet(XSSFWorkbook workbook, Sheet sheet) {
         Sheet newSheet = workbook.createSheet(sheet.getSheetName());
 
@@ -73,13 +75,12 @@ public class Reporter {
             Row newRow = newSheet.createRow(i);
             for (int j = 0; j < row.getLastCellNum(); ++j) {
                 Cell cell = row.getCell(j);
+                String cellType = cell.getCellTypeEnum().name();
                 Cell newCell = newRow.createCell(j);
-                CellType ct = cell.getCellTypeEnum();
-
-                if (ct.name().equalsIgnoreCase("STRING")) {
+                if (cellType.equalsIgnoreCase("STRING")) {
                     newCell.setCellValue(cell.getRichStringCellValue());
                 }
-                if (ct.name().equalsIgnoreCase("NUMERIC")) {
+                if (cellType.equalsIgnoreCase("NUMERIC") || cellType.equalsIgnoreCase("FORMULA")) {
                     newCell.setCellValue(cell.getNumericCellValue());
                 }
             }
@@ -99,7 +100,7 @@ public class Reporter {
     }
 
     private static void writeDisk(XSSFWorkbook workbook) {
-        String fileName = Configuration.OUTPUT_FILE;
+        String fileName = Configuration.FILE_NAME + "_reporter_";
         try {
             DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
             fileName += df.format(new Date()) + ".xlsx";
@@ -107,6 +108,7 @@ public class Reporter {
             FileOutputStream file = new FileOutputStream("output/" + fileName);
             workbook.write(file);
             file.close();
+            logger.trace("Reporter: File saved.");
         } catch (IOException ex) {
             logger.error("Input cannot be open: " + fileName);
             logger.error("ERROR: " + ex);

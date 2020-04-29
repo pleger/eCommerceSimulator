@@ -2,7 +2,7 @@ package simulation;
 
 import agent.Buyer;
 import agent.Market;
-import GUI.Chart;
+import gui.Chart;
 import inputManager.Configuration;
 import reporter.Reporter;
 import org.apache.log4j.LogManager;
@@ -29,13 +29,11 @@ public class Simulation implements FlyWeight, Step {
 
     @Override
     public void reinit() {
-        System.out.println("REINIT: markets:"+markets.size());
         ++Simulation.ID;
         buyers.iterator().forEachRemaining(Buyer::reinit);
         buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
         buyers.iterator().forEachRemaining(buyer -> buyer.setKnowMarkets(markets));
         buyers.iterator().forEachRemaining(Buyer::setInitialEndorsements);
-        System.out.println("END-REINIT: markets:"+markets.size());
     }
 
     public void run() {
@@ -45,16 +43,26 @@ public class Simulation implements FlyWeight, Step {
             logger.trace("Simulation: Period " + period);
         }
 
-        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData()));
-
         if (Configuration.GUI) {
-            logger.trace("Simulation: Displaying & Saving chart");
             Chart.display(buyers, markets);
         }
+
+        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData()));
+        reinit();
     }
 
     @Override
     public void doStep(int period) {
         buyers.iterator().forEachRemaining(buyer -> buyer.doStep(period));
+    }
+
+    @Override
+    public String toString() {
+        return "Simulation{" +
+                "ID=" + Simulation.ID +
+                ", periods=" + periods +
+                ", buyers=" + buyers.size() +
+                ", markets=" + markets.size() +
+                '}';
     }
 }

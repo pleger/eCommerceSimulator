@@ -3,9 +3,10 @@ package agent;
 import endorsement.AttributesBuyer;
 import endorsement.EndorsementFactory;
 import endorsement.Endorsements;
-import GUI.DataChart;
+import gui.DataChart;
 import inputManager.Configuration;
 import inputManager.InnerBuyer;
+import org.jetbrains.annotations.NotNull;
 import reporter.Reporter;
 import reporter.IterationData;
 import reporter.EndorsementData;
@@ -31,7 +32,7 @@ public class Buyer implements Step, FlyWeight {
     private final DataChart data;
     private double evaluation;
 
-    Buyer(InnerBuyer ib) {
+    Buyer(@NotNull InnerBuyer ib) {
         this.ID = counter++;
         this.friends = new ArrayList<>();
         this.knownMarkets = new ArrayList<>();
@@ -45,7 +46,7 @@ public class Buyer implements Step, FlyWeight {
         attribute = new AttributesBuyer(ib.attributeNames, values);
         data = new DataChart(Integer.toString(ID));
 
-        logger.trace("buyer:" + this);
+        logger.trace("Buyer:" + this);
     }
 
     public void setFriends(List<Buyer> buyers) {
@@ -120,7 +121,7 @@ public class Buyer implements Step, FlyWeight {
 
         return "Buyer{" +
                 "ID=" + ID +
-                ", attr=" + stringValue +
+                ", attribute=" + stringValue +
                 '}';
     }
 

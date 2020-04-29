@@ -47,15 +47,16 @@ public class EndorsementEvaluation {
      */
     private static Double calculateEndorsementFormula(@Range(from = 0, to = Integer.MAX_VALUE) int index, Double mean, int levels) {
         int k = (int) Math.floor(index - levels / 2.0);
-        k = levels%2 == 0 && k <=0? k - 1: k;
-        
+        k = levels % 2 == 0 && k <= 0 ? k - 1 : k;
+        double div = levels % 2 == 0 ? levels : levels - 1;
+
         double result = 0;
         if (k > 0) {
-            result = mean * k * (2.0 / levels);
+            result = mean * k * (2.0 / div);
         }
 
         if (k < 0) {
-            result = mean * k * (1 / (levels - 1.0));
+            result = mean * k * (1.0 / div);
         }
 
         //System.out.println("Valores. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);

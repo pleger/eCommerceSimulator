@@ -19,7 +19,9 @@ public class Loader {
     private static Sheet buyers;
 
     public static void read(String fileName) {
-        File file = new File("input/" + fileName + ".xlsx");
+        Configuration.setFile(fileName);
+        
+        File file = new File("input/" + Configuration.FILE_NAME + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
@@ -87,7 +89,7 @@ public class Loader {
                     }
                 }
 
-                datas.put(name, (ArrayList<Double[]>) endors.clone());
+                datas.put(name, new ArrayList<>(endors));
                 endors.clear();
             }
         }

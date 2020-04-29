@@ -4,8 +4,7 @@ import endorsement.AttributesMarket;
 import inputManager.InnerMarket;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class Market {
     private static final Logger logger = LogManager.getRootLogger();
@@ -15,15 +14,11 @@ public class Market {
     private final String name;
     private final AttributesMarket attributes;
 
-    Market(InnerMarket innerMarket) {
-        this(innerMarket.name, innerMarket.attributeNames, innerMarket.attributeValues);
-    }
-
-    Market(String name, ArrayList<String> attributeNames, ArrayList<Double[]> values) {
+    Market(@NotNull InnerMarket innerMarket) {
         this.ID = counter++;
-        this.name = name;
-        this.attributes = new AttributesMarket(attributeNames, values);
-        logger.trace("market:"+this);
+        this.name = innerMarket.name;
+        this.attributes = new AttributesMarket(innerMarket.attributeNames, innerMarket.attributeValues);
+        logger.trace("Market:"+this);
     }
 
     public int getID() {
