@@ -1,15 +1,13 @@
 package endorsement;
 
 import inputManager.Configuration;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
 import java.util.function.BiFunction;
 
-public class EndorsementEvaluation {
-    private static final Logger logger = LogManager.getRootLogger();
+public class EndorsementEvalStrategies {
 
     public static Double BY_MAX(Double @NotNull [] attributes, Double mean) {
         int index = -1;
@@ -21,7 +19,7 @@ public class EndorsementEvaluation {
                 index = i;
             }
         }
-        logger.assertLog(index != -1, "EndorsementEvaluatio: MAX index not found");
+        Console.setAssert(index != -1, "EndorsementEvaluatio: MAX index not found");
 
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
@@ -38,7 +36,7 @@ public class EndorsementEvaluation {
                 break;
             }
         }
-        logger.assertLog(index != -1, "EndorsementEvaluatio: BY_PROBABILITY index not found");
+        Console.setAssert(index != -1, "EndorsementEvaluatio: BY_PROBABILITY index not found");
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
@@ -69,8 +67,10 @@ public class EndorsementEvaluation {
     public static double[] evaluate(AttributesMarket amarkets, AttributesBuyer abuyer, BiFunction<Double[], Double, Double> strategy) {
         int attributesNumber = amarkets.size();
         double[] results = new double[attributesNumber];
-        logger.assertLog(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
 
+        Console.setAssert(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
+
+        //test values
         for (int i = 0; i < attributesNumber; ++i) {
             String nameAtt = amarkets.getName(i);
             Double[] valuesMarket = amarkets.getValues(nameAtt);

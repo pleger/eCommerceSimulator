@@ -6,6 +6,7 @@ import endorsement.Endorsements;
 import gui.DataChart;
 import inputManager.Configuration;
 import inputManager.InnerBuyer;
+import logger.Console;
 import org.jetbrains.annotations.NotNull;
 import reporter.Reporter;
 import reporter.IterationData;
@@ -13,14 +14,11 @@ import reporter.EndorsementData;
 import simulation.FlyWeight;
 import simulation.Simulation;
 import simulation.Step;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer implements Step, FlyWeight {
-    private static final Logger logger = LogManager.getRootLogger();
     private static int counter = 0;
 
     private final int ID;
@@ -46,7 +44,7 @@ public class Buyer implements Step, FlyWeight {
         attribute = new AttributesBuyer(ib.attributeNames, values);
         data = new DataChart(Integer.toString(ID));
 
-        logger.trace("Buyer:" + this);
+        Console.trace("Buyer:" + this);
     }
 
     public void setFriends(List<Buyer> buyers) {

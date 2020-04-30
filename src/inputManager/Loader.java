@@ -1,7 +1,6 @@
 package inputManager;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Loader {
-    private static final Logger logger = LogManager.getRootLogger();
     private static Sheet markets;
     private static Sheet buyers;
 
@@ -36,8 +34,8 @@ public class Loader {
             Configuration.setAttributes(Markets.attributeSize(), Buyers.attributeSize());
             Configuration.setMarkets(Markets.getInnerMarkets().size());
         } catch (Exception ex) {
-            logger.error("Input cannot be open: " + file.getAbsolutePath());
-            logger.error("ERROR: " + ex);
+            Console.error("Input cannot be open: " + file.getAbsolutePath());
+            Console.error("ERROR: " + ex);
             ex.printStackTrace();
             System.exit(1);
         }

@@ -2,12 +2,10 @@ package agent;
 
 import endorsement.AttributesMarket;
 import inputManager.InnerMarket;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 import org.jetbrains.annotations.NotNull;
 
 public class Market {
-    private static final Logger logger = LogManager.getRootLogger();
     private static int counter = 0;
 
     private final int ID;
@@ -18,7 +16,7 @@ public class Market {
         this.ID = counter++;
         this.name = innerMarket.name;
         this.attributes = new AttributesMarket(innerMarket.attributeNames, innerMarket.attributeValues);
-        logger.trace("Market:"+this);
+        Console.trace("Market:"+this);
     }
 
     public int getID() {

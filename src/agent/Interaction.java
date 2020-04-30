@@ -3,20 +3,17 @@ package agent;
 import endorsement.EndorsementFactory;
 import endorsement.Endorsements;
 import inputManager.Configuration;
+import logger.Console;
 import reporter.MarketEvaluationData;
 import simulation.Simulation;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class Interaction {
 
-    private static final Logger logger = LogManager.getRootLogger();
-
     public static Endorsements interact(int period, Buyer buyer, List<Market> markets) {
         int selectedMarket = selectMarket(period, buyer, markets);
-        logger.assertLog(selectedMarket != -1, "Interaction: No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
+        Console.setAssert(selectedMarket != -1, "Interaction: No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
 
         return EndorsementFactory.createByStep(period, buyer, markets.get(selectedMarket));
     }
@@ -30,16 +27,18 @@ public class Interaction {
             reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), evaluations[market.getID()]));
         }
 
-        double max = Double.MAX_VALUE * -1;
+        /*double max = Double.MAX_VALUE * -1;
         int selected = -1;
         for (int i = 0; i < evaluations.length; ++i) {
             if (max < evaluations[i]) {
                 max = evaluations[i];
                 selected = i;
             }
-        }
+        }*/
 
-        buyer.setCurrentEvaluation(max);
+        int selected = MarketSelectionStrategies.BY_PROBABILITY(evaluations);
+
+        buyer.setCurrentEvaluation(evaluations[selected]);
         return selected;
     }
 

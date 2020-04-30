@@ -4,14 +4,12 @@ import agent.Buyer;
 import agent.Market;
 import gui.Chart;
 import inputManager.Configuration;
+import logger.Console;
 import reporter.Reporter;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class Simulation implements FlyWeight, Step {
-    private final Logger logger = LogManager.getRootLogger();
     public static int ID = 0;
 
     private final int periods;
@@ -24,7 +22,7 @@ public class Simulation implements FlyWeight, Step {
         this.markets = markets;
 
         reinit();
-        logger.trace("Simulation: created with buyers and markets:" + buyers.size() + " " + markets.size());
+        Console.trace("Simulation: created with buyers and markets:" + buyers.size() + " " + markets.size());
     }
 
     @Override
@@ -37,10 +35,10 @@ public class Simulation implements FlyWeight, Step {
     }
 
     public void run() {
-        logger.trace("Simulation: Starting");
+        Console.trace("Simulation: Starting");
         for (int period = 1; period <= periods; ++period) {
             doStep(period);
-            logger.trace("Simulation: Period " + period);
+            Console.trace("Simulation: Period " + period);
         }
 
         if (Configuration.GUI) {

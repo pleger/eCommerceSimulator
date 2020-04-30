@@ -2,8 +2,7 @@ package reporter;
 
 import inputManager.Configuration;
 import inputManager.Loader;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -19,8 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Reporter {
-    private static final Logger logger = LogManager.getRootLogger();
-
     private static final List<IterationData> iterationData = new ArrayList<>();
     private static final List<EndorsementData> endorsData = new ArrayList<>();
     private static final List<MarketEvaluationData> marketEvaluationData = new ArrayList<>();
@@ -28,7 +25,7 @@ public class Reporter {
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
 
-        logger.trace("Reporter: Adding sheets");
+        Console.trace("Reporter: Adding sheets");
         writeConfiguration(workbook.createSheet("Configuration"));
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
@@ -36,11 +33,11 @@ public class Reporter {
         writeDetailedResults(workbook.createSheet("DetailResult"));
         
         if (Configuration.SAVED_ENDORSEMENTS) {
-            logger.trace("Reporter: Adding endorsements: " + endorsData.size());
+            Console.trace("Reporter: Adding endorsements: " + endorsData.size());
             writeEndorsements(workbook.createSheet("Endorsements"));
         }
 
-        logger.trace("Reporter: Writing to the disk");
+        Console.trace("Reporter: Writing to the disk");
         writeDisk(workbook);
     }
 
@@ -107,10 +104,10 @@ public class Reporter {
             FileOutputStream file = new FileOutputStream("output/" + fileName);
             workbook.write(file);
             file.close();
-            logger.trace("Reporter: File saved.");
+            Console.trace("Reporter: File saved.");
         } catch (IOException ex) {
-            logger.error("Input cannot be open: " + fileName);
-            logger.error("ERROR: " + ex);
+            Console.error("Input cannot be open: " + fileName);
+            Console.error("ERROR: " + ex);
             ex.printStackTrace();
             System.exit(1);
         }

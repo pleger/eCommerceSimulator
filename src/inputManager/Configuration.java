@@ -1,14 +1,11 @@
 package inputManager;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
-    private static final Logger logger = LogManager.getRootLogger();
-
     private final static int D_PERIODS = 30;
     private final static int D_AGENTS = 10;
     private final static int D_CONTACTS = 17;
@@ -106,43 +103,43 @@ public class Configuration {
                 SAVED_ENDORSEMENTS = value == 1;
                 break;
             default:
-                logger.error("CONFIGURATOR.SET: Wrong Parameter");
+                Console.error("CONFIGURATOR.SET: Wrong Parameter");
         }
     }
 
     private static void checkConfigurationInput(HashMap<String, Double> conf) {
         if (conf.get("PERIODS") == null) {
-            logger.warn("PERIODS is missing.");
+            Console.warn("PERIODS is missing.");
         }
         if (conf.get("AGENTS") == null) {
-            logger.warn("AGENTS is missing.");
+            Console.warn("AGENTS is missing.");
         }
         if (conf.get("CONTACTS") == null) {
-            logger.warn("CONTACTS is missing.");
+            Console.warn("CONTACTS is missing.");
         }
         if (conf.get("FRIENDS") == null) {
-            logger.warn("LEVELS is missing.");
+            Console.warn("LEVELS is missing.");
         }
         if (conf.get("MARKETS") == null) {
-            logger.warn("MARKETS is missing.");
+            Console.warn("MARKETS is missing.");
         }
         if (conf.get("LEVELS") == null) {
-            logger.warn("LEVELS is missing.");
+            Console.warn("LEVELS is missing.");
         }
         if (conf.get("REPETITIONS") == null) {
-            logger.warn("REPETITIONS is missing.");
+            Console.warn("REPETITIONS is missing.");
         }
         if (conf.get("GUI") == null) {
-            logger.warn("GUI is missing.");
+            Console.warn("GUI is missing.");
         }
         if (conf.get("BASE") == null) {
-            logger.warn("BASE is missing.");
+            Console.warn("BASE is missing.");
         }
         if (conf.get("MEMORY") == null) {
-            logger.warn("MEMORY is missing.");
+            Console.warn("MEMORY is missing.");
         }
         if (conf.get("SAVED_ENDORSEMENTS") == null) {
-            logger.warn("SAVED_ENDORSEMENTS is missing.");
+            Console.warn("SAVED_ENDORSEMENTS is missing.");
         }
     }
 

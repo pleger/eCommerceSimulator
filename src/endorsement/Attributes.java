@@ -1,14 +1,12 @@
 package endorsement;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.BiConsumer;
 
 public class Attributes {
-    Logger logger = LogManager.getRootLogger();
-
     protected final ArrayList<String> names;
     protected final ArrayList<Double[]> values;
 
@@ -40,8 +38,16 @@ public class Attributes {
             }
         }
         
-        logger.assertLog(index != -1, "Attributes: " + name + " not found");
+        Console.setAssert(index != -1, "Attributes: " + name + " not found");
         return index;
+    }
+
+    public void forEach(BiConsumer<String,Double[]> fun) {
+        for (int i = 0; i < names.size(); ++i) {
+            String name = names.get(i);
+            Double[] values = this.values.get(i);
+            fun.accept(name,values);
+        }
     }
 
     @Override

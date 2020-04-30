@@ -3,8 +3,7 @@ package gui;
 import agent.Buyer;
 import agent.Market;
 import inputManager.Configuration;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import logger.Console;
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
@@ -21,12 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Chart {
-    private static final Logger logger = LogManager.getRootLogger();
-
     private static XYChart chart;
 
     public static void display(List<Buyer> buyers, List<Market> markets) {
-        logger.trace("Chart: Displaying");
+        Console.trace("Chart: Displaying");
         createXChartDriver(markets);
         buyers.iterator().forEachRemaining(buyer -> registerSeries(buyer.getDataSeries()));
         if (Configuration.REPETITIONS == 0) drawChart();
@@ -59,11 +56,11 @@ public class Chart {
         fileName += df.format(new Date()) + ".png";
 
         try {
-            logger.trace("Chart: Saving chart");
+            Console.trace("Chart: Saving chart");
             BitmapEncoder.saveBitmap(chart, "output/" + fileName, BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException ex) {
-            logger.error("Image cannot be saved: " + fileName);
-            logger.error("ERROR: " + ex);
+            Console.error("Image cannot be saved: " + fileName);
+            Console.error("ERROR: " + ex);
             ex.printStackTrace();
             System.exit(1);
         }
