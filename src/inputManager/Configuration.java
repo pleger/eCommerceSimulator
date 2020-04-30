@@ -48,7 +48,7 @@ public class Configuration {
         GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
-        SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS ") != null ? conf.get("AVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
+        SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
     }
 
     public static void setFile(String name) {
@@ -162,7 +162,7 @@ public class Configuration {
     public static Map<String, Double> toMap() {
         Map<String, Double> conf = new HashMap<>();
         conf.put("PERIODS", (double) PERIODS);
-        conf.put("AGENT", (double) AGENTS);
+        conf.put("AGENTS", (double) AGENTS);
         conf.put("CONTACTS", (double) CONTACTS);
         conf.put("FRIENDS", FRIENDS);
         conf.put("LEVELS", (double) LEVELS);
@@ -177,7 +177,7 @@ public class Configuration {
 
     public static String toStringConfiguration() {
         String text = "";
-        text += "FILE_NAME" + FILE_NAME + "\n";
+        text += "FILE_NAME:" + FILE_NAME + "\n";
         text += "PERIODS: " + PERIODS + "\n";
         text += "AGENTS: " + AGENTS + "\n";
         text += "BASE: " + BASE + "\n";

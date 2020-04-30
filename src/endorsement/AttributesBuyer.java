@@ -8,6 +8,9 @@ public class AttributesBuyer extends Attributes {
     }
 
     public double getValue(int i) {
-        return values.get(i)[0];
+        return super.getValues(i)[0];
+    }
+    public double getValue(String name) {
+        return super.getValues(name)[0];
     }
 }

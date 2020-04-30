@@ -1,9 +1,14 @@
 package endorsement;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Attributes {
+    Logger logger = LogManager.getRootLogger();
+
     protected final ArrayList<String> names;
     protected final ArrayList<Double[]> values;
 
@@ -20,6 +25,8 @@ public class Attributes {
         return values.get(i);
     }
 
+    public Double[] getValues(String name) {return getValues(getIndex(name));}
+
     public String getName(int i) {
         return this.names.get(i);
     }
@@ -32,6 +39,8 @@ public class Attributes {
                 break;
             }
         }
+        
+        logger.assertLog(index != -1, "Attributes: " + name + " not found");
         return index;
     }
 

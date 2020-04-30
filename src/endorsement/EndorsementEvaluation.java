@@ -21,6 +21,8 @@ public class EndorsementEvaluation {
                 index = i;
             }
         }
+        logger.assertLog(index != -1, "EndorsementEvaluatio: MAX index not found");
+
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
@@ -36,6 +38,7 @@ public class EndorsementEvaluation {
                 break;
             }
         }
+        logger.assertLog(index != -1, "EndorsementEvaluatio: BY_PROBABILITY index not found");
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
@@ -60,18 +63,20 @@ public class EndorsementEvaluation {
         }
 
         //System.out.println("Valores. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
-
         return result;
     }
 
     public static double[] evaluate(AttributesMarket amarkets, AttributesBuyer abuyer, BiFunction<Double[], Double, Double> strategy) {
         int attributesNumber = amarkets.size();
         double[] results = new double[attributesNumber];
-
         logger.assertLog(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
 
         for (int i = 0; i < attributesNumber; ++i) {
-            results[i] = strategy.apply(amarkets.getValues(i), abuyer.getValue(i));
+            String nameAtt = amarkets.getName(i);
+            Double[] valuesMarket = amarkets.getValues(nameAtt);
+            Double valueBuyer = abuyer.getValue(nameAtt);
+
+            results[i] = strategy.apply(valuesMarket, valueBuyer);
         }
         return results;
     }

@@ -4,8 +4,9 @@ import inputManager.Configuration;
 import inputManager.Loader;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
@@ -26,20 +27,18 @@ public class Reporter {
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet conf = workbook.createSheet("Configuration");
-        Sheet results = workbook.createSheet("Results");
-        Sheet detailedResults = workbook.createSheet("DetailResult");
-        Sheet endors = workbook.createSheet("endorsement");
 
         logger.trace("Reporter: Adding sheets");
-        writeConfiguration(conf);
+        writeConfiguration(workbook.createSheet("Configuration"));
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
-        writeResults(results);
-        writeDetailedResults(detailedResults);
-
-        logger.trace("Reporter: Adding endorsements: " + endorsData.size());
-        writeEndorsements(endors);
+        writeResults(workbook.createSheet("Results"));
+        writeDetailedResults(workbook.createSheet("DetailResult"));
+        
+        if (Configuration.SAVED_ENDORSEMENTS) {
+            logger.trace("Reporter: Adding endorsements: " + endorsData.size());
+            writeEndorsements(workbook.createSheet("Endorsements"));
+        }
 
         logger.trace("Reporter: Writing to the disk");
         writeDisk(workbook);
