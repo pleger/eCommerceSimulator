@@ -6,28 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/TEST.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/input/TEST.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/Agent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/Buyer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/BuyerFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/EndorsementList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/Interaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/InteractionList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/Market.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Agents/MarketFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_GUI/DataSeries.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_GUI/InformationPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_GUI/XChartDriver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Log/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Log/Reporter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/Experiment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/Network.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/NetworkFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/Simulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/SimulationFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OLD_Simulation/SimulationMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/MarketSelectionStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/MarketSelectionStrategies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/endorsement/EndorsementEvalStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endorsement/EndorsementEvalStrategies.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +187,7 @@
       <workItem from="1588281397563" duration="258000" />
       <workItem from="1589500617400" duration="30000" />
       <workItem from="1589500673774" duration="988000" />
-      <workItem from="1589504100227" duration="601000" />
+      <workItem from="1589504100227" duration="1460000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -379,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588281301266</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="final version for testing">
+      <created>1589504708223</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1589504708223</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,12 +471,13 @@
     <state x="1892" y="291" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877/1440.23.1360.745@1440.23.1360.745" timestamp="1588187260483" />
     <state x="479" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588035291322" />
     <state x="503" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/36.23.1404.877@36.23.1404.877" timestamp="1589504259428" />
-    <state x="258" y="23" key="CommitChangelistDialog2" timestamp="1588281300776">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="288" y="23" key="CommitChangelistDialog2" timestamp="1589504707920">
+      <screen x="36" y="23" width="1404" height="877" />
     </state>
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1588281300776" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663974028" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588211295771" />
+    <state x="288" y="23" key="CommitChangelistDialog2/36.23.1404.877@36.23.1404.877" timestamp="1589504707920" />
     <state x="100" y="123" width="1240" height="677" key="DiffContextDialog" timestamp="1588100733619">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
