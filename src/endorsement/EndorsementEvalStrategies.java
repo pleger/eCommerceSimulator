@@ -19,7 +19,7 @@ public class EndorsementEvalStrategies {
                 index = i;
             }
         }
-        Console.setAssert(index != -1, "EndorsementEvaluatio: MAX index not found");
+        Console.setAssert(index != -1, "Endorsement Evaluation: MAX index not found");
 
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
@@ -36,7 +36,7 @@ public class EndorsementEvalStrategies {
                 break;
             }
         }
-        Console.setAssert(index != -1, "EndorsementEvaluatio: BY_PROBABILITY index not found");
+        Console.setAssert(index != -1, "Endorsement: Evaluation BY_PROBABILITY index not found");
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
@@ -44,7 +44,7 @@ public class EndorsementEvalStrategies {
      * @param index  index of levels
      * @param mean   mean of buyers
      * @param levels maximum of levels
-     * @return Formula of Oswaldo
+     * @return Formula of @Oswaldo
      */
     private static Double calculateEndorsementFormula(@Range(from = 0, to = Integer.MAX_VALUE) int index, Double mean, int levels) {
         int k = (int) Math.floor(index - levels / 2.0);
@@ -60,7 +60,7 @@ public class EndorsementEvalStrategies {
             result = mean * k * (1.0 / div);
         }
 
-        //System.out.println("Valores. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
+        //System.out.println("Values. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
         return result;
     }
 

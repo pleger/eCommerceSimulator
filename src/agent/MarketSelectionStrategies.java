@@ -1,6 +1,5 @@
 package agent;
 
-import inputManager.Configuration;
 import logger.Console;
 
 public class MarketSelectionStrategies {
