@@ -16,6 +16,8 @@ public class Configuration {
     private final static double D_BASE = 1.2;
     private final static int D_MEMORY = -1;    //-1 infinite
     private final static boolean D_SAVED_ENDORSEMENTS = false;
+    private final static boolean D_SAVED_DETAILED_RESULTS = false;
+    private final static boolean D_MARKET_QUOTA = false;
 
     public static String FILE_NAME;
     public static int MARKETS;
@@ -32,6 +34,8 @@ public class Configuration {
     public static double BASE = D_BASE;
     public static int MEMORY = D_MEMORY;
     public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
+    public static boolean SAVED_DETAILED_RESULTS = D_SAVED_DETAILED_RESULTS;
+    public static boolean MARKET_QUOTA = D_MARKET_QUOTA;
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -46,6 +50,8 @@ public class Configuration {
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
         SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
+        SAVED_DETAILED_RESULTS = conf.get("SAVED_DETAILED_RESULTS") != null ? conf.get("SAVED_DETAILED_RESULTS") == 1 : D_SAVED_DETAILED_RESULTS;
+        MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
     }
 
     public static void setFile(String name) {
@@ -102,6 +108,12 @@ public class Configuration {
             case "SAVED_ENDORSEMENT":
                 SAVED_ENDORSEMENTS = value == 1;
                 break;
+            case "SAVED_DETAILED_RESULTS":
+                SAVED_DETAILED_RESULTS = value == 1;
+                break;
+            case "MARKET_QUOTA":
+                MARKET_QUOTA = value == 1;
+                break;
             default:
                 Console.error("CONFIGURATOR.SET: Wrong Parameter");
         }
@@ -119,9 +131,6 @@ public class Configuration {
         }
         if (conf.get("FRIENDS") == null) {
             Console.warn("LEVELS is missing.");
-        }
-        if (conf.get("MARKETS") == null) {
-            Console.warn("MARKETS is missing.");
         }
         if (conf.get("LEVELS") == null) {
             Console.warn("LEVELS is missing.");
@@ -141,19 +150,12 @@ public class Configuration {
         if (conf.get("SAVED_ENDORSEMENTS") == null) {
             Console.warn("SAVED_ENDORSEMENTS is missing.");
         }
-    }
-
-    public static void setDefault() {
-        PERIODS = D_PERIODS;
-        AGENTS = D_AGENTS;
-        CONTACTS = D_CONTACTS;
-        FRIENDS = D_FRIENDS;
-        LEVELS = D_LEVELS;
-        REPETITIONS = D_REPETITIONS;
-        GUI = D_GUI;
-        BASE = D_BASE;
-        MEMORY = D_MEMORY;
-        SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
+        if (conf.get("SAVED_DETAILED_RESULTS") == null) {
+            Console.warn("SAVED_DETAILED_RESULTS is missing.");
+        }
+        if (conf.get("MARKET_QUOTA") == null) {
+            Console.warn("MARKET_QUOTA is missing.");
+        }
     }
 
     public static Map<String, Double> toMap() {
@@ -168,27 +170,13 @@ public class Configuration {
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
         conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
+        conf.put("SAVED_DETAILED_RESULTS", SAVED_DETAILED_RESULTS ? 1.0 : 0.0);
+        conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
 
         return conf;
     }
 
     public static String toStringConfiguration() {
-        String text = "";
-        text += "FILE_NAME:" + FILE_NAME + "\n";
-        text += "PERIODS: " + PERIODS + "\n";
-        text += "AGENTS: " + AGENTS + "\n";
-        text += "BASE: " + BASE + "\n";
-        text += "MEMORY: " + MEMORY + "\n";
-        text += "CONTACTS: " + CONTACTS + "\n";
-        text += "FRIENDS: " + FRIENDS + "\n";
-        text += "MARKETS: " + MARKETS + "\n";
-        text += "ATTRIBUTES_M: " + ATTRIBUTES_M + "\n";
-        text += "ATTRIBUTES_B: " + ATTRIBUTES_B + "\n";
-        text += "LEVELS: " + LEVELS + "\n";
-        text += "REPETITIONS: " + REPETITIONS + "\n";
-        text += "SAVED_ENDORSEMENTS: " + SAVED_ENDORSEMENTS + "\n";
-        text += "GUI: " + GUI + "\n";
-
-        return text;
+        return Configuration.toMap().toString();
     }
 }

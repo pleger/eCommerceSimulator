@@ -25,13 +25,13 @@ public class Main {
     public static void main(String[] args) {
         loadDataFromFile();
 
-        Console.trace("MAIN: Configuration loaded -> {" + Configuration.toStringConfiguration() + " }");
+        Console.info("MAIN: Configuration loaded -> {" + Configuration.toStringConfiguration() + " }");
         Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);
         for (int i = 1; i <= Configuration.REPETITIONS + 1; ++i) {
-            Console.trace(s);
+            Console.info(s);
             s.run();
         }
         Reporter.write();
-        Console.trace("Main: End.");
+        Console.info("Main: End.");
     }
 }

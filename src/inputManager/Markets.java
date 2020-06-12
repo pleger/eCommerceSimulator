@@ -7,9 +7,9 @@ import java.util.Map;
 public class Markets {
     private final static ArrayList<InnerMarket> innerMarkets = new ArrayList<>();
 
-    public static void set(HashMap<String, ArrayList<Double[]>> data, ArrayList<String> names) {
+    public static void set(HashMap<String, ArrayList<Double[]>> data, ArrayList<String> names, HashMap<String,Double> quota) {
         for (String name : names) {
-            innerMarkets.add(new InnerMarket(name));
+            innerMarkets.add(new InnerMarket(name, quota.get(name)));
         }
 
         for (Map.Entry<String, ArrayList<Double[]>> entry : data.entrySet()) {
@@ -33,6 +33,11 @@ public class Markets {
             text.append(endorName).append(" ");
         }
         return text.toString();
+    }
+
+
+    public static int size() {
+        return innerMarkets.size();
     }
 
     public static int attributeSize() {

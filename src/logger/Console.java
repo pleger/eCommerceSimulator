@@ -12,13 +12,18 @@ public class Console {
         if (logger == null) {
             BasicConfigurator.configure();
             logger = LogManager.getRootLogger();
-            logger.setLevel(Level.TRACE);
+            logger.setLevel(Level.DEBUG);
         }
     }
 
-    public static void trace(Object msg) {
+    public static void debug(Object msg) {
         initLoggerRequired();
-        logger.trace(msg);
+        logger.debug(msg);
+    }
+
+    public static void info(Object msg) {
+        initLoggerRequired();
+        logger.info(msg);
     }
 
     public static void error(Object msg) {

@@ -22,15 +22,34 @@ import java.util.Map;
 public class Chart {
     private static XYChart chart;
 
-    public static void display(List<Buyer> buyers, List<Market> markets) {
-        Console.trace("Chart: Displaying");
-        createXChartDriver(markets);
+    public static void displaySales(List<Market> markets) {
+        Console.info("Chart: Displaying Sales");
+        createXChartDriverSales();
+
+        DataSaleChart[] sales = DataSaleChart.createDataSaleChart(markets);
+        for (int i = 0; i < sales.length; ++i) {
+            registerSeries2(sales[i]);
+        }
+
+        if (Configuration.REPETITIONS == 0) drawChart();
+        saveChart();
+    }
+
+    public static void displaySelection(List<Buyer> buyers, List<Market> markets) {
+        Console.info("Chart: Displaying Selection");
+        createXChartDriverSelection(markets);
         buyers.iterator().forEachRemaining(buyer -> registerSeries(buyer.getDataSeries()));
         if (Configuration.REPETITIONS == 0) drawChart();
         saveChart();
     }
 
-    private static void createXChartDriver(List<Market> markets) {
+    private static void createXChartDriverSales() {
+        chart = new XYChartBuilder().width(800).height(600).title("simulation")
+                .xAxisTitle("Period").yAxisTitle("Sales").build();
+        chart.getStyler().setYAxisDecimalPattern("#0").setXAxisDecimalPattern("#0").setLegendPosition(Styler.LegendPosition.InsideNE);
+    }
+
+    private static void createXChartDriverSelection(List<Market> markets) {
         chart = new XYChartBuilder().width(800).height(600).title("simulation")
                 .xAxisTitle("Period").yAxisTitle("Market").build();
 
@@ -40,6 +59,10 @@ public class Chart {
             customYAxisTickLabelsMap.put(market.getID() * 1.0, market.getName());
         }
         chart.setYAxisLabelOverrideMap(customYAxisTickLabelsMap);
+    }
+
+    private static void registerSeries2(DataSaleChart dataChart) {
+        chart.addSeries(dataChart.getName(), dataChart.getXData(), dataChart.getYData());
     }
 
     private static void registerSeries(DataChart dataChart) {
@@ -56,7 +79,7 @@ public class Chart {
         fileName += df.format(new Date()) + ".png";
 
         try {
-            Console.trace("Chart: Saving chart");
+            Console.info("Chart: Saving chart");
             BitmapEncoder.saveBitmap(chart, "output/" + fileName, BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException ex) {
             Console.error("Image cannot be saved: " + fileName);

@@ -6,6 +6,7 @@ import logger.Console;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
@@ -21,27 +22,51 @@ public class Reporter {
     private static final List<IterationData> iterationData = new ArrayList<>();
     private static final List<EndorsementData> endorsData = new ArrayList<>();
     private static final List<MarketEvaluationData> marketEvaluationData = new ArrayList<>();
+    private static final List<SalesPerMarketData> salesPerMarketData = new ArrayList<>();
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
 
-        Console.trace("Reporter: Adding sheets");
+        Console.info("Reporter: Adding sheets");
         writeConfiguration(workbook.createSheet("Configuration"));
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
         writeResults(workbook.createSheet("Results"));
-        writeDetailedResults(workbook.createSheet("DetailResult"));
-        
-        if (Configuration.SAVED_ENDORSEMENTS) {
-            Console.trace("Reporter: Adding endorsements: " + endorsData.size());
-            writeEndorsements(workbook.createSheet("Endorsements"));
-        }
+        writeSalesPerMarket(workbook.createSheet("SalesPerMarket"));
+        if (Configuration.SAVED_DETAILED_RESULTS) writeDetailedResults(workbook.createSheet("DetailedResult"));
+        if (Configuration.SAVED_ENDORSEMENTS) writeEndorsements(workbook.createSheet("Endorsements"));
 
-        Console.trace("Reporter: Writing to the disk");
+        Console.info("Reporter: Writing to the disk");
         writeDisk(workbook);
     }
 
+    private static void writeSalesPerMarket(XSSFSheet salesPerMarket) {
+        Console.info("Reporter: Adding Sales Per Market: " + salesPerMarketData.size());
+        Row headRow = salesPerMarket.createRow(0);
+
+        int column = 0;
+        for (String head : SalesPerMarketData.getHeader()) {
+            Cell cell = headRow.createCell(column);
+            cell.setCellValue(head);
+            ++column;
+        }
+
+        int rowIndex = 1;
+        for (SalesPerMarketData oneRow : salesPerMarketData) {
+            Row dataRow = salesPerMarket.createRow(rowIndex);
+            dataRow.createCell(0).setCellValue(oneRow.simulationId);
+            dataRow.createCell(1).setCellValue(oneRow.period);
+
+            for (int i = 0; i < oneRow.sales.length; ++i) {
+                //accSales[i] += oneRow.sales[i];
+                dataRow.createCell(2 + i).setCellValue(oneRow.sales[i]);
+            }
+            ++rowIndex;
+        }
+    }
+
     private static void writeDetailedResults(Sheet detailedResults) {
+        Console.info("Reporter: Adding Detailed Results: " +  marketEvaluationData.size());
         Row headRow = detailedResults.createRow(0);
 
         int column = 0;
@@ -95,6 +120,10 @@ public class Reporter {
         marketEvaluationData.add(oneRow);
     }
 
+    public static void addSalesByMarketData(SalesPerMarketData oneRow) {
+        salesPerMarketData.add(oneRow);
+    }
+
     private static void writeDisk(XSSFWorkbook workbook) {
         String fileName = Configuration.FILE_NAME + "_reporter_";
         try {
@@ -104,7 +133,7 @@ public class Reporter {
             FileOutputStream file = new FileOutputStream("output/" + fileName);
             workbook.write(file);
             file.close();
-            Console.trace("Reporter: File saved.");
+            Console.info("Reporter: File saved.");
         } catch (IOException ex) {
             Console.error("Input cannot be open: " + fileName);
             Console.error("ERROR: " + ex);
@@ -113,7 +142,12 @@ public class Reporter {
         }
     }
 
+    public static List<SalesPerMarketData> getSalesPerMarketData() {
+        return salesPerMarketData;
+    }
+
     private static void writeEndorsements(Sheet results) {
+        Console.info("Reporter: Adding endorsements: " + endorsData.size());
         Row headRow = results.createRow(0);
 
         int column = 0;
@@ -137,6 +171,7 @@ public class Reporter {
     }
 
     private static void writeResults(Sheet results) {
+        Console.info("Reporter: Adding Results: " +  iterationData.size());
         Row headRow = results.createRow(0);
 
         int column = 0;
@@ -159,6 +194,7 @@ public class Reporter {
     }
 
     private static void writeConfiguration(Sheet conf) {
+        Console.info("Reporter: Adding Configuration");
         Map<String, Double> dump = Configuration.toMap();
 
         int rowIndex = 0;

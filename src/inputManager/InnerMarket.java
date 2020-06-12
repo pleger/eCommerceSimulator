@@ -6,11 +6,13 @@ import java.util.ArrayList;
 
 public class InnerMarket {
     public final String name;
+    public final double quota;
     public final ArrayList<String> attributeNames;
     public final ArrayList<Double[]> attributeValues;
 
-    InnerMarket(String name) {
+    InnerMarket(String name, double quota) {
         this.name = name;
+        this.quota = quota;
         attributeNames = new ArrayList<>();
         attributeValues = new ArrayList<>();
     }
@@ -23,6 +25,7 @@ public class InnerMarket {
     @Override
     public String toString() {
         StringBuilder text = new StringBuilder(name);
+        text.append("{quota:").append(quota).append("}");
 
         for (int i = 0; i < attributeNames.size(); ++i) {
             String result = ArrayUtils.toString(attributeValues.get(i));

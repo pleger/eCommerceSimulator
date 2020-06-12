@@ -7,39 +7,44 @@ import logger.Console;
 import reporter.MarketEvaluationData;
 import simulation.Simulation;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Interaction {
 
     public static Endorsements interact(int period, Buyer buyer, List<Market> markets) {
-        int selectedMarket = selectMarket(period, buyer, markets);
-        Console.setAssert(selectedMarket != -1, "Interaction: No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
+        Market selectedMarket = selectMarket(period, buyer, markets);
+        Console.setAssert(selectedMarket != null, "Interaction: No Market selected. Selected:" + selectedMarket + " marketSize:" + markets.size() + " buyerSize:" + buyer.getID());
 
-        return EndorsementFactory.createByStep(period, buyer, markets.get(selectedMarket));
+        return EndorsementFactory.createByStep(period, buyer, selectedMarket);
     }
 
-    private static int selectMarket(int period, Buyer buyer, List<Market> markets) {
-        double[] evaluations = new double[markets.size()];
+    private static Market selectMarket(int period, Buyer buyer, List<Market> markets) {
+        Map<Integer, Double> evaluations = new HashMap<>();
+
+        //double[] evaluations = new double[markets.size()];
         for (Market market : markets) {
             Endorsements endors = buyer.getEndorsements().filterByMarket(market).filterByMemory(period);
-            evaluations[market.getID()] = evaluateMarket(endors.toArray());
+            double eval = evaluateMarket(endors.toArray());
+            //evaluations[market.getID()] = eval;
+            evaluations.put(market.getID(), eval);
 
-            reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), evaluations[market.getID()]));
+            reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), eval));
         }
+        
+        int idSelected = MarketSelectionStrategies.BY_PROBABILITY(evaluations);
+        Market mkSelected = null;
 
-        /*double max = Double.MAX_VALUE * -1;
-        int selected = -1;
-        for (int i = 0; i < evaluations.length; ++i) {
-            if (max < evaluations[i]) {
-                max = evaluations[i];
-                selected = i;
+        for (Market mk: markets) {
+            if (mk.getID() == idSelected) {
+                mkSelected = mk;
+                break;
             }
-        }*/
-
-        int selected = MarketSelectionStrategies.BY_PROBABILITY(evaluations);
-
-        buyer.setCurrentEvaluation(evaluations[selected]);
-        return selected;
+        }
+        
+        buyer.setCurrentEvaluation(evaluations.get(idSelected));
+        return mkSelected;
     }
 
     private static double evaluateMarket(double[] values) {

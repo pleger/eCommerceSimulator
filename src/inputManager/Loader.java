@@ -23,12 +23,14 @@ public class Loader {
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
-            Sheet conf = workbook.getSheet("configuration");
             markets = workbook.getSheet("markets");
             buyers = workbook.getSheet("buyers");
 
-            Configuration.set(readConfiguration(conf));
-            Markets.set(readMarketAttributes(markets, Configuration.LEVELS), readMarketNames(markets, Configuration.LEVELS));
+            Configuration.set(readConfiguration(workbook.getSheet("configuration")));
+            Markets.set(readMarketAttributes(markets, Configuration.LEVELS),
+                    readMarketNames(markets, Configuration.LEVELS),
+                    readMarketQuota(workbook.getSheet("marketQuota")));
+
             Buyers.set(readBuyers(buyers));
 
             Configuration.setAttributes(Markets.attributeSize(), Buyers.attributeSize());
@@ -39,6 +41,15 @@ public class Loader {
             ex.printStackTrace();
             System.exit(1);
         }
+    }
+
+    private static HashMap<String, Double> readMarketQuota(Sheet marketQuota) {
+        HashMap<String, Double> quota = new HashMap<>();
+
+        for (Row row : marketQuota) {
+            quota.put(row.getCell(0).getStringCellValue().toUpperCase(), row.getCell(1).getNumericCellValue()/100.0);
+        }
+        return quota;
     }
 
     private static HashMap<String, Double> readConfiguration(Sheet conf) {
@@ -56,7 +67,7 @@ public class Loader {
             if (row.getRowNum() == 1) {
                 for (Cell cell : row) {
                     if (cell.getColumnIndex() > 0 && (cell.getColumnIndex() + 1) % levels == 0) {
-                        marketNames.add(cell.getStringCellValue());
+                        marketNames.add(cell.getStringCellValue().toUpperCase());
                     }
                 }
             }

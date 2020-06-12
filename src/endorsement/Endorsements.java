@@ -62,8 +62,8 @@ public class Endorsements {
     }
 
     public Market getSelectedMarket(int period){
-        List<Endorsement> lastTransaction = filterByPeriod(period).endors;
-        return lastTransaction.get(0).getMarket();
+        List<Endorsement> periodTransaction = filterByPeriod(period).endors;
+        return periodTransaction.size() > 0? periodTransaction.get(0).getMarket() : null;
     }
 
     public int size() {

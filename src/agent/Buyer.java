@@ -44,7 +44,7 @@ public class Buyer implements Step, FlyWeight {
         attribute = new AttributesBuyer(ib.attributeNames, values);
         data = new DataChart(Integer.toString(ID));
 
-        Console.trace("Buyer:" + this);
+        Console.info("Buyer:" + this);
     }
 
     public void setFriends(List<Buyer> buyers) {
@@ -94,33 +94,13 @@ public class Buyer implements Step, FlyWeight {
 
     @Override
     public void doStep(int period) {
-        endors.addAll(Interaction.interact(period, this, knownMarkets));
+        if (knownMarkets.size() > 0) { //buyer could not ignore all markets
+            endors.addAll(Interaction.interact(period, this, knownMarkets));
 
-        //adding data
-        data.addData(period, endors.getSelectedMarket(period).getID());
-        Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), endors.getSelectedMarket(period).getName(), evaluation));
-    }
-
-    @Override
-    public void reinit() {
-        evaluation = 0;
-        endors.clear();
-        friends.clear();
-        knownMarkets.clear();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringValue = new StringBuilder();
-
-        for (int i = 0; i < attribute.size(); ++i) {
-            stringValue.append(attribute.getName(i)).append("[").append(attribute.getValue(i)).append("], ");
+            //adding data
+            data.addData(period, endors.getSelectedMarket(period).getID());
+            Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), evaluation));
         }
-
-        return "Buyer{" +
-                "ID=" + ID +
-                ", attribute=" + stringValue +
-                '}';
     }
 
     public void setCurrentEvaluation(double evaluation) {
@@ -133,6 +113,38 @@ public class Buyer implements Step, FlyWeight {
                 endor.getAttributeName(), endor.getValue())));
 
         return endorsData;
+    }
+
+    public Market getLastSelectMarked(int period) {
+      return endors.getSelectedMarket(period);
+    }
+
+    @Override
+    public void reinit() {
+        evaluation = 0;
+        endors.clear();
+        friends.clear();
+        knownMarkets.clear();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder attributeValue = new StringBuilder();
+        StringBuilder knowMks = new StringBuilder();
+
+        for (int i = 0; i < attribute.size(); ++i) {
+            attributeValue.append(attribute.getName(i)).append("[").append(attribute.getValue(i)).append("]");
+        }
+
+        for (Market knownMarket : knownMarkets) {
+            knowMks.append(knownMarket.getName()).append(",");
+        }
+
+        return "Buyer{" +
+                "ID=" + ID +
+                ", attribute=" + attributeValue +
+                ", knownMarkets={" + knowMks + "}" +
+                '}';
     }
 }
 
