@@ -23,11 +23,9 @@ public class Interaction {
     private static Market selectMarket(int period, Buyer buyer, List<Market> markets) {
         Map<Integer, Double> evaluations = new HashMap<>();
 
-        //double[] evaluations = new double[markets.size()];
         for (Market market : markets) {
             Endorsements endors = buyer.getEndorsements().filterByMarket(market).filterByMemory(period);
             double eval = evaluateMarket(endors.toArray());
-            //evaluations[market.getID()] = eval;
             evaluations.put(market.getID(), eval);
 
             reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), eval));

@@ -12,7 +12,7 @@ public class Console {
         if (logger == null) {
             BasicConfigurator.configure();
             logger = LogManager.getRootLogger();
-            logger.setLevel(Level.DEBUG);
+            logger.setLevel(Level.INFO);
         }
     }
 

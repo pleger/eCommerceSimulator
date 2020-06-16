@@ -9,9 +9,26 @@ import java.util.function.BiFunction;
 
 public class EndorsementEvalStrategies {
 
+    public static double[] evaluate(AttributesMarket amarkets, AttributesBuyer abuyer, BiFunction<Double[], Double, Double> strategy) {
+        int attributesNumber = amarkets.size();
+        double[] results = new double[attributesNumber];
+
+        Console.setAssert(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
+
+        for (int i = 0; i < attributesNumber; ++i) {
+            String nameAtt = amarkets.getName(i);
+            Double[] valuesMarket = amarkets.getValues(nameAtt);
+            Double valueBuyer = abuyer.getValue(nameAtt);
+
+            results[i] = strategy.apply(valuesMarket, valueBuyer);
+        }
+        return results;
+    }
+
+
     public static Double BY_MAX(Double @NotNull [] attributes, Double mean) {
         int index = -1;
-        double max = -1;
+        double max = Double.MAX_VALUE*-1;
 
         for (int i = 0; i < Configuration.LEVELS; ++i) {
             if (max < attributes[i]) {
@@ -62,22 +79,5 @@ public class EndorsementEvalStrategies {
 
         //System.out.println("Values. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
         return result;
-    }
-
-    public static double[] evaluate(AttributesMarket amarkets, AttributesBuyer abuyer, BiFunction<Double[], Double, Double> strategy) {
-        int attributesNumber = amarkets.size();
-        double[] results = new double[attributesNumber];
-
-        Console.setAssert(Configuration.ATTRIBUTES_M == attributesNumber, "EndorsementEvaluation: Wrong number of attributes of market");
-
-        //test values
-        for (int i = 0; i < attributesNumber; ++i) {
-            String nameAtt = amarkets.getName(i);
-            Double[] valuesMarket = amarkets.getValues(nameAtt);
-            Double valueBuyer = abuyer.getValue(nameAtt);
-
-            results[i] = strategy.apply(valuesMarket, valueBuyer);
-        }
-        return results;
     }
 }

@@ -23,6 +23,7 @@ public class Reporter {
     private static final List<EndorsementData> endorsData = new ArrayList<>();
     private static final List<MarketEvaluationData> marketEvaluationData = new ArrayList<>();
     private static final List<SalesPerMarketData> salesPerMarketData = new ArrayList<>();
+    private static final List<SalesUniquePerMarketData> salesUniquePerMarketData = new ArrayList<>();
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -32,16 +33,20 @@ public class Reporter {
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
         writeResults(workbook.createSheet("Results"));
-        writeSalesPerMarket(workbook.createSheet("SalesPerMarket"));
+        writeSalesPerMarket(workbook.createSheet("SalesPerMarket"), salesPerMarketData);
+        writeSalesPerMarket(workbook.createSheet("SalesUniquePerMarket"), salesUniquePerMarketData);
+
         if (Configuration.SAVED_DETAILED_RESULTS) writeDetailedResults(workbook.createSheet("DetailedResult"));
+        else marketEvaluationData.clear();
         if (Configuration.SAVED_ENDORSEMENTS) writeEndorsements(workbook.createSheet("Endorsements"));
+        else endorsData.clear();
 
         Console.info("Reporter: Writing to the disk");
         writeDisk(workbook);
     }
 
-    private static void writeSalesPerMarket(XSSFSheet salesPerMarket) {
-        Console.info("Reporter: Adding Sales Per Market: " + salesPerMarketData.size());
+    private static void writeSalesPerMarket(XSSFSheet salesPerMarket, List<? extends SalesPerMarketData> sales) {
+        Console.info("Reporter: Adding Sales Per Market: " + sales.size());
         Row headRow = salesPerMarket.createRow(0);
 
         int column = 0;
@@ -52,7 +57,7 @@ public class Reporter {
         }
 
         int rowIndex = 1;
-        for (SalesPerMarketData oneRow : salesPerMarketData) {
+        for (SalesPerMarketData oneRow : sales) {
             Row dataRow = salesPerMarket.createRow(rowIndex);
             dataRow.createCell(0).setCellValue(oneRow.simulationId);
             dataRow.createCell(1).setCellValue(oneRow.period);
@@ -66,7 +71,7 @@ public class Reporter {
     }
 
     private static void writeDetailedResults(Sheet detailedResults) {
-        Console.info("Reporter: Adding Detailed Results: " +  marketEvaluationData.size());
+        Console.info("Reporter: Adding Detailed Results: " + marketEvaluationData.size());
         Row headRow = detailedResults.createRow(0);
 
         int column = 0;
@@ -124,26 +129,12 @@ public class Reporter {
         salesPerMarketData.add(oneRow);
     }
 
-    private static void writeDisk(XSSFWorkbook workbook) {
-        String fileName = Configuration.FILE_NAME + "_reporter_";
-        try {
-            DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
-            fileName += df.format(new Date()) + ".xlsx";
-
-            FileOutputStream file = new FileOutputStream("output/" + fileName);
-            workbook.write(file);
-            file.close();
-            Console.info("Reporter: File saved.");
-        } catch (IOException ex) {
-            Console.error("Input cannot be open: " + fileName);
-            Console.error("ERROR: " + ex);
-            ex.printStackTrace();
-            System.exit(1);
-        }
+    public static void addSalesUniqueByMarketData(SalesUniquePerMarketData oneRow) {
+        salesUniquePerMarketData.add(oneRow);
     }
 
-    public static List<SalesPerMarketData> getSalesPerMarketData() {
-        return salesPerMarketData;
+    public static List<? extends SalesPerMarketData> getSalesPerMarketData() {
+        return salesUniquePerMarketData;
     }
 
     private static void writeEndorsements(Sheet results) {
@@ -171,7 +162,7 @@ public class Reporter {
     }
 
     private static void writeResults(Sheet results) {
-        Console.info("Reporter: Adding Results: " +  iterationData.size());
+        Console.info("Reporter: Adding Results: " + iterationData.size());
         Row headRow = results.createRow(0);
 
         int column = 0;
@@ -208,4 +199,26 @@ public class Reporter {
             ++rowIndex;
         }
     }
+
+    private static void writeDisk(XSSFWorkbook workbook) {
+        System.gc(); //call garbage collector (memory leaks?)
+        
+        String fullFileName = Configuration.OUTPUT_DIRECTORY + "/" + Configuration.FILE_NAME;
+        try {
+            DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
+            fullFileName += df.format(new Date()) + ".xlsx";
+
+            FileOutputStream file = new FileOutputStream(fullFileName);
+            workbook.write(file);
+            file.close();
+            Console.info("Reporter: File saved.");
+        } catch (IOException ex) {
+            Console.error("Input cannot be created: " + fullFileName);
+            Console.error("ERROR: " + ex);
+            ex.printStackTrace();
+            System.exit(1);
+        }
+    }
 }
+
+

@@ -37,12 +37,12 @@ public class DataSaleChart {
         ArrayList<Integer>[] xData = new ArrayList[markets.size()];
         ArrayList<Integer>[] yData = new ArrayList[markets.size()];
 
-        List<SalesPerMarketData> data = Reporter.getSalesPerMarketData();
+        List<? extends SalesPerMarketData> data = Reporter.getSalesPerMarketData();
 
         for (int i = 0; i < markets.size(); ++i) {
             name[i] = markets.get(i).getName();
-            xData[i] = new ArrayList<Integer>();
-            yData[i] = new ArrayList<Integer>();
+            xData[i] = new ArrayList<>();
+            yData[i] = new ArrayList<>();
         }
 
         data.iterator().forEachRemaining(sales -> {

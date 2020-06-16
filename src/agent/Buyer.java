@@ -1,6 +1,7 @@
 package agent;
 
 import endorsement.AttributesBuyer;
+import endorsement.Endorsement;
 import endorsement.EndorsementFactory;
 import endorsement.Endorsements;
 import gui.DataChart;
@@ -16,7 +17,9 @@ import simulation.Simulation;
 import simulation.Step;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Buyer implements Step, FlyWeight {
     private static int counter = 0;
@@ -28,7 +31,7 @@ public class Buyer implements Step, FlyWeight {
     private List<Market> knownMarkets;
 
     private final DataChart data;
-    private double evaluation;
+    private double currentMarketEvaluation;
 
     Buyer(@NotNull InnerBuyer ib) {
         this.ID = counter++;
@@ -83,8 +86,11 @@ public class Buyer implements Step, FlyWeight {
         return data;
     }
 
+    public double getCurrentMarketEvaluation() {
+        return currentMarketEvaluation;
+    }
+
     public void setInitialEndorsements() {
-        endors.clear();
         knownMarkets.iterator().forEachRemaining(market -> endors.addAll(EndorsementFactory.createInitial(-1, this, market)));
     }
 
@@ -99,12 +105,12 @@ public class Buyer implements Step, FlyWeight {
 
             //adding data
             data.addData(period, endors.getSelectedMarket(period).getID());
-            Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), evaluation));
+            Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), currentMarketEvaluation));
         }
     }
 
     public void setCurrentEvaluation(double evaluation) {
-        this.evaluation = evaluation;
+        this.currentMarketEvaluation = evaluation;
     }
 
     public ArrayList<EndorsementData> getEndorsementData() {
@@ -115,13 +121,40 @@ public class Buyer implements Step, FlyWeight {
         return endorsData;
     }
 
+    public void receiveRecommendation(int period) {
+        //System.out.println("---->RECEIVED RECOMMENDATION buyer:" + getID() + " known markets:" + knownMarkets.size() + " period:" + period);
+
+        Map<Integer, Double> currentEvaluations = new HashMap<>();
+        Market recommendedMk;
+
+        friends.iterator().forEachRemaining(friend -> {
+            Market market = friend.getLastSelectMarked(period);
+            if (market != null) {
+                currentEvaluations.put(market.getID(), friend.getCurrentMarketEvaluation());
+            }
+        });
+
+        int selectedId = MarketSelectionStrategies.BY_MAX(currentEvaluations);
+        recommendedMk = MarketFactory.getMarket(knownMarkets, selectedId);
+        if (recommendedMk == null) {
+            //System.out.println("ADDING NOTHING:" + MarketFactory.getMarket(selectedId).getName()+ " c_eval:"+currentEvaluations.size() + " getID:"+ID+ " period:"+period);
+            recommendedMk = MarketFactory.getMarket(selectedId);
+            knownMarkets.add(recommendedMk);
+        }
+
+        String attName = "WORD OF MOUTH";
+        double mean = attribute.getValue(attName)/(5);
+        //mean = 0;
+        endors.add(new Endorsement(period + 1, recommendedMk, attName, mean));
+    }
+
     public Market getLastSelectMarked(int period) {
-      return endors.getSelectedMarket(period);
+        return endors.getSelectedMarket(period);
     }
 
     @Override
     public void reinit() {
-        evaluation = 0;
+        currentMarketEvaluation = Double.MAX_VALUE * -1;
         endors.clear();
         friends.clear();
         knownMarkets.clear();
@@ -144,6 +177,7 @@ public class Buyer implements Step, FlyWeight {
                 "ID=" + ID +
                 ", attribute=" + attributeValue +
                 ", knownMarkets={" + knowMks + "}" +
+                ", currentEvaluation={" + currentMarketEvaluation + "}" +
                 '}';
     }
 }

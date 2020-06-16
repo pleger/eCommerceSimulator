@@ -16,14 +16,17 @@ public class Main {
     private static List<Buyer> buyers;
     private static List<Market> markets;
 
-    private static void loadDataFromFile() {
-        Loader.read(FILE_NAME);
+    private static void loadDataFromFile(String file) {
+        file = file.equals("") ? FILE_NAME : file;
+        Configuration.setPath(file);
+        Loader.read();
+
         buyers = BuyerFactory.createFromInput();
         markets = MarketFactory.createFromInput();
     }
 
     public static void main(String[] args) {
-        loadDataFromFile();
+        loadDataFromFile(args.length > 0 ? args[0] : "");
 
         Console.info("MAIN: Configuration loaded -> {" + Configuration.toStringConfiguration() + " }");
         Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);

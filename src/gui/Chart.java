@@ -27,8 +27,8 @@ public class Chart {
         createXChartDriverSales();
 
         DataSaleChart[] sales = DataSaleChart.createDataSaleChart(markets);
-        for (int i = 0; i < sales.length; ++i) {
-            registerSeries2(sales[i]);
+        for (DataSaleChart sale : sales) {
+            registerSeries2(sale);
         }
 
         if (Configuration.REPETITIONS == 0) drawChart();
@@ -74,13 +74,13 @@ public class Chart {
     }
 
     private static void saveChart() {
-        String fileName = Configuration.FILE_NAME + "_Simulation_" + Simulation.ID + "_";
+        String fileName = Configuration.OUTPUT_DIRECTORY + "/Simulation_" + Simulation.ID + "_";
         DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
         fileName += df.format(new Date()) + ".png";
 
         try {
             Console.info("Chart: Saving chart");
-            BitmapEncoder.saveBitmap(chart, "output/" + fileName, BitmapEncoder.BitmapFormat.PNG);
+            BitmapEncoder.saveBitmap(chart, fileName, BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException ex) {
             Console.error("Image cannot be saved: " + fileName);
             Console.error("ERROR: " + ex);

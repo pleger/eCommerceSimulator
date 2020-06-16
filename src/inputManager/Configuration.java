@@ -2,6 +2,10 @@ package inputManager;
 
 import logger.Console;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +22,11 @@ public class Configuration {
     private final static boolean D_SAVED_ENDORSEMENTS = false;
     private final static boolean D_SAVED_DETAILED_RESULTS = false;
     private final static boolean D_MARKET_QUOTA = false;
+    private final static boolean D_FRIEND_RECOMMENDATION = false;
 
     public static String FILE_NAME;
+    public static String OUTPUT_DIRECTORY;
+
     public static int MARKETS;
     public static int ATTRIBUTES_M;
     public static int ATTRIBUTES_B;
@@ -36,6 +43,7 @@ public class Configuration {
     public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
     public static boolean SAVED_DETAILED_RESULTS = D_SAVED_DETAILED_RESULTS;
     public static boolean MARKET_QUOTA = D_MARKET_QUOTA;
+    public static boolean FRIEND_RECOMMENDATION = D_FRIEND_RECOMMENDATION;
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -52,10 +60,27 @@ public class Configuration {
         SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
         SAVED_DETAILED_RESULTS = conf.get("SAVED_DETAILED_RESULTS") != null ? conf.get("SAVED_DETAILED_RESULTS") == 1 : D_SAVED_DETAILED_RESULTS;
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
+        FRIEND_RECOMMENDATION = conf.get("FRIEND_RECOMMENDATION") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_FRIEND_RECOMMENDATION;
     }
 
-    public static void setFile(String name) {
-        FILE_NAME = name;
+    public static void setPath(String fileName) {
+        FILE_NAME = fileName;
+        DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
+        OUTPUT_DIRECTORY = "output/" + fileName + df.format(new Date());
+
+        //making directory
+        try {
+            if (new File(OUTPUT_DIRECTORY).mkdir()) {
+                Console.info("Directory was created: " + OUTPUT_DIRECTORY);
+            } else {
+                Console.error("Directory was NOT create: " + OUTPUT_DIRECTORY);
+            }
+        } catch (SecurityException se) {
+            Console.error("Directory cannot be created: " + OUTPUT_DIRECTORY);
+            Console.error("ERROR: " + se);
+            se.printStackTrace();
+            System.exit(1);
+        }
     }
 
     public static void setAttributes(int markets, int buyers) {
@@ -114,6 +139,9 @@ public class Configuration {
             case "MARKET_QUOTA":
                 MARKET_QUOTA = value == 1;
                 break;
+            case "FRIEND_RECOMMENDATION":
+                FRIEND_RECOMMENDATION = value == 1;
+                break;
             default:
                 Console.error("CONFIGURATOR.SET: Wrong Parameter");
         }
@@ -156,6 +184,9 @@ public class Configuration {
         if (conf.get("MARKET_QUOTA") == null) {
             Console.warn("MARKET_QUOTA is missing.");
         }
+        if (conf.get("FRIEND_RECOMMENDATION") == null) {
+            Console.warn("FRIEND_RECOMMENDATION is missing.");
+        }
     }
 
     public static Map<String, Double> toMap() {
@@ -172,6 +203,7 @@ public class Configuration {
         conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
         conf.put("SAVED_DETAILED_RESULTS", SAVED_DETAILED_RESULTS ? 1.0 : 0.0);
         conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
+        conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
 
         return conf;
     }

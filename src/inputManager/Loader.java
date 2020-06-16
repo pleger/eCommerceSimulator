@@ -16,9 +16,7 @@ public class Loader {
     private static Sheet markets;
     private static Sheet buyers;
 
-    public static void read(String fileName) {
-        Configuration.setFile(fileName);
-        
+    public static void read() {
         File file = new File("input/" + Configuration.FILE_NAME + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);

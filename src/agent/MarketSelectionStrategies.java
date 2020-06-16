@@ -17,7 +17,7 @@ public class MarketSelectionStrategies {
             }
         }
 
-        Console.setAssert(selected != -1, "MarketSelectionStrategies.BY_MAX: no market selected info{size:"+evaluations.size()+",acc:"+max+"}");
+        Console.setAssert(selected != -1, "MarketSelectionStrategies.BY_MAX: no market selected info{size:" + evaluations.size() + ",max:" + max + "}");
         return selected;
     }
 
@@ -27,12 +27,12 @@ public class MarketSelectionStrategies {
         double sum = 0;
         double acc = 0;
 
-        for(Map.Entry<Integer,Double> entry: evaluations.entrySet()) {
+        for (Map.Entry<Integer, Double> entry : evaluations.entrySet()) {
             sum += entry.getValue();
         }
 
-        for(Map.Entry<Integer,Double> entry: evaluations.entrySet()) {
-            acc += entry.getValue()/sum;
+        for (Map.Entry<Integer, Double> entry : evaluations.entrySet()) {
+            acc += entry.getValue() / sum;
 
             if (acc >= random) {
                 selected = entry.getKey();
@@ -40,7 +40,7 @@ public class MarketSelectionStrategies {
             }
         }
 
-        Console.setAssert(selected != -1, "MarketSelectionStrategies.BY_PROBABILITY: no market selected, info{size:"+evaluations.size()+",acc:"+acc+",random:"+random+"}");
+        Console.setAssert(selected != -1, "MarketSelectionStrategies.BY_PROBABILITY: no market selected, info{size:" + evaluations.size() + ",acc:" + acc + ",random:" + random + "}");
         return selected;
     }
 }

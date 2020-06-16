@@ -7,10 +7,10 @@ import inputManager.Configuration;
 import logger.Console;
 import reporter.Reporter;
 import reporter.SalesPerMarketData;
+import reporter.SalesUniquePerMarketData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Simulation implements FlyWeight, Step {
     public static int ID = 0;
@@ -35,6 +35,7 @@ public class Simulation implements FlyWeight, Step {
         buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
         buyers.iterator().forEachRemaining(buyer -> buyer.setKnowMarkets(filterQuota(markets)));
         buyers.iterator().forEachRemaining(Buyer::setInitialEndorsements);
+        markets.iterator().forEachRemaining(Market::reinit);
     }
 
     private List<Market> filterQuota(List<Market> markets) {
@@ -44,8 +45,9 @@ public class Simulation implements FlyWeight, Step {
 
         List<Market> filteredMarket = new ArrayList<>();
 
-        double random = Math.random();
+        double random;
         for (Market mk: markets) {
+            random = Math.random();
             if (random < mk.getQuota()) {
                 filteredMarket.add(mk);
             }
@@ -56,12 +58,21 @@ public class Simulation implements FlyWeight, Step {
 
     private void generateSalesPerData(int period) {
         int[] sales = new int[markets.size()];
+        int[] uniqueSales = new int[markets.size()];
+
         buyers.iterator().forEachRemaining(buyer -> {
             Market selectedMarket = buyer.getLastSelectMarked(period);
-            if (selectedMarket != null)
+
+            if (selectedMarket != null) {
+                selectedMarket.addBuyers(buyer.getID());
                 sales[selectedMarket.getID()]++;
+            }
         });
+
+        markets.iterator().forEachRemaining(market -> uniqueSales[market.getID()] = market.getUniqueSales());
+
         Reporter.addSalesByMarketData(new SalesPerMarketData(ID, period, sales));
+        Reporter.addSalesUniqueByMarketData(new SalesUniquePerMarketData(ID, period, uniqueSales));
     }
 
     public void run() {
@@ -70,6 +81,12 @@ public class Simulation implements FlyWeight, Step {
             doStep(period);
             Console.debug("Simulation: Period " + period);
             generateSalesPerData(period);
+
+            if (Configuration.FRIEND_RECOMMENDATION) {
+               for (Buyer buyer: buyers) {
+                   buyer.receiveRecommendation(period);
+               }
+            }
         }
 
         if (Configuration.GUI) {
@@ -83,9 +100,7 @@ public class Simulation implements FlyWeight, Step {
 
     @Override
     public void doStep(int period) {
-        buyers.iterator().forEachRemaining(buyer -> {
-            buyer.doStep(period);
-        });
+        buyers.iterator().forEachRemaining(buyer -> buyer.doStep(period));
     }
 
     @Override

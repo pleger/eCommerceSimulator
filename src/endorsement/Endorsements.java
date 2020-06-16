@@ -52,6 +52,10 @@ public class Endorsements {
         return filter(endor -> endor.getMarket().getName().equals(market.getName()));
     }
 
+    public Endorsements removeByAttribute (String attName)  {
+        return filter(endor -> !endor.getAttributeName().equals(attName));
+    }
+
     public double[] toArray() {
         double[] values = new double[endors.size()];
 
@@ -62,8 +66,10 @@ public class Endorsements {
     }
 
     public Market getSelectedMarket(int period){
-        List<Endorsement> periodTransaction = filterByPeriod(period).endors;
-        return periodTransaction.size() > 0? periodTransaction.get(0).getMarket() : null;
+        List<Endorsement> periodTransaction = filterByPeriod(period).removeByAttribute("WORD OF MOUTH").endors;
+        //System.out.println("getSelectedMarket:"+periodTransaction.get(0).getMarket().getName());
+
+        return periodTransaction.size() > 0? periodTransaction.get(0).getMarket(): null;
     }
 
     public int size() {
