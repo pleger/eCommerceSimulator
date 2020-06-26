@@ -10,7 +10,6 @@ import inputManager.InnerBuyer;
 import logger.Console;
 import org.jetbrains.annotations.NotNull;
 import reporter.Reporter;
-import reporter.IterationData;
 import reporter.EndorsementData;
 import simulation.FlyWeight;
 import simulation.Simulation;
@@ -105,7 +104,7 @@ public class Buyer implements Step, FlyWeight {
 
             //adding data
             data.addData(period, endors.getSelectedMarket(period).getID());
-            Reporter.addIterationData(new IterationData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), currentMarketEvaluation));
+            Reporter.addAgentDecisionData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), currentMarketEvaluation);
         }
     }
 
@@ -143,7 +142,7 @@ public class Buyer implements Step, FlyWeight {
         }
 
         String attName = "WORD OF MOUTH";
-        double mean = attribute.getValue(attName)/(5);
+        double mean = attribute.getValue(attName)/(2);
         //mean = 0;
         endors.add(new Endorsement(period + 1, recommendedMk, attName, mean));
     }

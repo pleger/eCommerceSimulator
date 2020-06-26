@@ -4,7 +4,6 @@ import endorsement.EndorsementFactory;
 import endorsement.Endorsements;
 import inputManager.Configuration;
 import logger.Console;
-import reporter.MarketEvaluationData;
 import simulation.Simulation;
 
 import java.util.HashMap;
@@ -28,7 +27,7 @@ public class Interaction {
             double eval = evaluateMarket(endors.toArray());
             evaluations.put(market.getID(), eval);
 
-            reporter.Reporter.addMarketEvaluationData(new MarketEvaluationData(Simulation.ID, period, buyer.getID(), market.getName(), eval));
+            reporter.Reporter.addDetailedAgentDecisionData(Simulation.ID, period, buyer.getID(), market.getName(), eval);
         }
         
         int idSelected = MarketSelectionStrategies.BY_PROBABILITY(evaluations);

@@ -19,10 +19,12 @@ public class Configuration {
     private final static boolean D_GUI = false; //could be removed
     private final static double D_BASE = 1.2;
     private final static int D_MEMORY = -1;    //-1 infinite
-    private final static boolean D_SAVED_ENDORSEMENTS = false;
-    private final static boolean D_SAVED_DETAILED_RESULTS = false;
     private final static boolean D_MARKET_QUOTA = false;
     private final static boolean D_FRIEND_RECOMMENDATION = false;
+    private final static boolean D_SAVED_ENDORSEMENTS = false;
+    private final static boolean D_SAVED_AGENT_DECISIONS = false;
+    private final static boolean D_SAVED_DETAILED_AGENT_DECISIONS = false;
+    private final static boolean D_SAVED_SALES_PER_MARKET = false;
 
     public static String FILE_NAME;
     public static String OUTPUT_DIRECTORY;
@@ -40,10 +42,14 @@ public class Configuration {
     public static boolean GUI = D_GUI;
     public static double BASE = D_BASE;
     public static int MEMORY = D_MEMORY;
-    public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
-    public static boolean SAVED_DETAILED_RESULTS = D_SAVED_DETAILED_RESULTS;
     public static boolean MARKET_QUOTA = D_MARKET_QUOTA;
     public static boolean FRIEND_RECOMMENDATION = D_FRIEND_RECOMMENDATION;
+
+    public static boolean SAVED_SALES_PER_MARKET = D_SAVED_SALES_PER_MARKET;
+    public static boolean SAVED_DETAILED_AGENT_DECISIONS = D_SAVED_DETAILED_AGENT_DECISIONS;
+    public static boolean SAVED_AGENT_DECISIONS = D_SAVED_AGENT_DECISIONS;
+    public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
+
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -57,10 +63,12 @@ public class Configuration {
         GUI = conf.get("GUI") != null ? conf.get("GUI") == 1 : D_GUI;
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
-        SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
-        SAVED_DETAILED_RESULTS = conf.get("SAVED_DETAILED_RESULTS") != null ? conf.get("SAVED_DETAILED_RESULTS") == 1 : D_SAVED_DETAILED_RESULTS;
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
         FRIEND_RECOMMENDATION = conf.get("FRIEND_RECOMMENDATION") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_FRIEND_RECOMMENDATION;
+        SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
+        SAVED_AGENT_DECISIONS = conf.get("SAVED_AGENT_DECISIONS") != null ? conf.get("SAVED_AGENT_DECISIONS") == 1 : D_SAVED_AGENT_DECISIONS;
+        SAVED_DETAILED_AGENT_DECISIONS = conf.get("SAVED_DETAILED_AGENT_DECISIONS") != null ? conf.get("SAVED_DETAILED_AGENT_DECISIONS") == 1 : D_SAVED_DETAILED_AGENT_DECISIONS;
+        SAVED_SALES_PER_MARKET = conf.get("SAVED_SALES_PER_MARKET") != null ? conf.get("SAVED_SALES_PER_MARKET") == 1 : D_SAVED_SALES_PER_MARKET;
     }
 
     public static void setPath(String fileName) {
@@ -133,8 +141,14 @@ public class Configuration {
             case "SAVED_ENDORSEMENT":
                 SAVED_ENDORSEMENTS = value == 1;
                 break;
-            case "SAVED_DETAILED_RESULTS":
-                SAVED_DETAILED_RESULTS = value == 1;
+            case "SAVED_DETAILED_AGENT_DECISIONS":
+                SAVED_DETAILED_AGENT_DECISIONS = value == 1;
+                break;
+            case "SAVED_AGENT_DECISIONS":
+                SAVED_AGENT_DECISIONS = value == 1;
+                break;
+            case "SAVED_SALES_PER_MARKET":
+                SAVED_SALES_PER_MARKET = value == 1;
                 break;
             case "MARKET_QUOTA":
                 MARKET_QUOTA = value == 1;
@@ -178,8 +192,14 @@ public class Configuration {
         if (conf.get("SAVED_ENDORSEMENTS") == null) {
             Console.warn("SAVED_ENDORSEMENTS is missing.");
         }
-        if (conf.get("SAVED_DETAILED_RESULTS") == null) {
-            Console.warn("SAVED_DETAILED_RESULTS is missing.");
+        if (conf.get("SAVED_SALES_PER_MARKET") == null) {
+            Console.warn("SAVED_SALES_PER_MARKET is missing.");
+        }
+        if (conf.get("SAVED_DETAILED_AGENT_DECISIONS") == null) {
+            Console.warn("SAVED_DETAILED_AGENT_DECISIONS is missing.");
+        }
+        if (conf.get("SAVED_AGENT_DECISIONS") == null) {
+            Console.warn("SAVED_AGENT_DECISIONS is missing.");
         }
         if (conf.get("MARKET_QUOTA") == null) {
             Console.warn("MARKET_QUOTA is missing.");
@@ -201,7 +221,9 @@ public class Configuration {
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
         conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
-        conf.put("SAVED_DETAILED_RESULTS", SAVED_DETAILED_RESULTS ? 1.0 : 0.0);
+        conf.put("SAVED_DETAILED_AGENT_DECISIONS", SAVED_DETAILED_AGENT_DECISIONS ? 1.0 : 0.0);
+        conf.put("SAVED_AGENT_DECISIONS", SAVED_AGENT_DECISIONS ? 1.0 : 0.0);
+        conf.put("SAVED_SALES_PER_MARKET", SAVED_SALES_PER_MARKET? 1.0: 0.0);
         conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
         conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
 

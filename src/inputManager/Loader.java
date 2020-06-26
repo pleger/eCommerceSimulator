@@ -25,6 +25,7 @@ public class Loader {
             buyers = workbook.getSheet("buyers");
 
             Configuration.set(readConfiguration(workbook.getSheet("configuration")));
+
             Markets.set(readMarketAttributes(markets, Configuration.LEVELS),
                     readMarketNames(markets, Configuration.LEVELS),
                     readMarketQuota(workbook.getSheet("marketQuota")));

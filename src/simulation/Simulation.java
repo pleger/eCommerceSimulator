@@ -6,8 +6,6 @@ import gui.Chart;
 import inputManager.Configuration;
 import logger.Console;
 import reporter.Reporter;
-import reporter.SalesPerMarketData;
-import reporter.SalesUniquePerMarketData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class Simulation implements FlyWeight, Step {
         this.markets = markets;
 
         reinit();
-        Console.info("Simulation: created with "+buyers.size()+" buyers and "+ markets.size()+ " markets");
+        Console.info("Simulation: created with " + buyers.size() + " buyers and " + markets.size() + " markets");
     }
 
     @Override
@@ -36,6 +34,7 @@ public class Simulation implements FlyWeight, Step {
         buyers.iterator().forEachRemaining(buyer -> buyer.setKnowMarkets(filterQuota(markets)));
         buyers.iterator().forEachRemaining(Buyer::setInitialEndorsements);
         markets.iterator().forEachRemaining(Market::reinit);
+        System.gc(); //clean memory
     }
 
     private List<Market> filterQuota(List<Market> markets) {
@@ -46,13 +45,13 @@ public class Simulation implements FlyWeight, Step {
         List<Market> filteredMarket = new ArrayList<>();
 
         double random;
-        for (Market mk: markets) {
+        for (Market mk : markets) {
             random = Math.random();
             if (random < mk.getQuota()) {
                 filteredMarket.add(mk);
             }
         }
-        
+
         return filteredMarket;
     }
 
@@ -71,21 +70,23 @@ public class Simulation implements FlyWeight, Step {
 
         markets.iterator().forEachRemaining(market -> uniqueSales[market.getID()] = market.getUniqueSales());
 
-        Reporter.addSalesByMarketData(new SalesPerMarketData(ID, period, sales));
-        Reporter.addSalesUniqueByMarketData(new SalesUniquePerMarketData(ID, period, uniqueSales));
+        Reporter.addSalesByMarketData(ID, period, sales);
+        Reporter.addSalesUniqueByMarketData(ID, period, uniqueSales);
     }
 
     public void run() {
         Console.info("Simulation: Starting " + Simulation.ID);
+
         for (int period = 1; period <= periods; ++period) {
             doStep(period);
             Console.debug("Simulation: Period " + period);
-            generateSalesPerData(period);
+
+            if (period > 100) generateSalesPerData(period);
 
             if (Configuration.FRIEND_RECOMMENDATION) {
-               for (Buyer buyer: buyers) {
-                   buyer.receiveRecommendation(period);
-               }
+                for (Buyer buyer : buyers) {
+                    buyer.receiveRecommendation(period);
+                }
             }
         }
 

@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Reporter {
-    private static final List<IterationData> iterationData = new ArrayList<>();
+    private static final List<AgentDecisionData> agentDecisionData = new ArrayList<>();
+    private static final List<DetailedAgentDecisionData> detailedAgentDecisionData = new ArrayList<>();
     private static final List<EndorsementData> endorsData = new ArrayList<>();
-    private static final List<MarketEvaluationData> marketEvaluationData = new ArrayList<>();
     private static final List<SalesPerMarketData> salesPerMarketData = new ArrayList<>();
     private static final List<SalesUniquePerMarketData> salesUniquePerMarketData = new ArrayList<>();
 
@@ -29,20 +29,43 @@ public class Reporter {
         XSSFWorkbook workbook = new XSSFWorkbook();
 
         Console.info("Reporter: Adding sheets");
+
         writeConfiguration(workbook.createSheet("Configuration"));
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
-        writeResults(workbook.createSheet("Results"));
+
         writeSalesPerMarket(workbook.createSheet("SalesPerMarket"), salesPerMarketData);
         writeSalesPerMarket(workbook.createSheet("SalesUniquePerMarket"), salesUniquePerMarketData);
-
-        if (Configuration.SAVED_DETAILED_RESULTS) writeDetailedResults(workbook.createSheet("DetailedResult"));
-        else marketEvaluationData.clear();
-        if (Configuration.SAVED_ENDORSEMENTS) writeEndorsements(workbook.createSheet("Endorsements"));
-        else endorsData.clear();
+        writeAgentDecision(workbook.createSheet("Results"));
+        writeDetailedAgentDecision(workbook.createSheet("DetailedResult"));
+        writeEndorsements(workbook.createSheet("Endorsements"));
 
         Console.info("Reporter: Writing to the disk");
         writeDisk(workbook);
+    }
+
+    public static void addEndorsementData(ArrayList<EndorsementData> endors) {
+        if (Configuration.SAVED_ENDORSEMENTS) endorsData.addAll(endors);
+    }
+
+    public static void addAgentDecisionData(int simulationId, int period, int buyerId, String marketName, double evaluation) {
+        if (Configuration.SAVED_AGENT_DECISIONS)
+            agentDecisionData.add(new AgentDecisionData(simulationId, period, buyerId, marketName, evaluation));
+    }
+
+    public static void addDetailedAgentDecisionData(int simulationId, int period, int buyerId, String marketName, double evaluation) {
+        if (Configuration.SAVED_DETAILED_AGENT_DECISIONS)
+            detailedAgentDecisionData.add(new DetailedAgentDecisionData(simulationId, period, buyerId, marketName, evaluation));
+    }
+
+    public static void addSalesByMarketData(int simulationId, int period, int[] sales) {
+        if (Configuration.SAVED_SALES_PER_MARKET)
+            salesPerMarketData.add(new SalesPerMarketData(simulationId, period, sales));
+    }
+
+    public static void addSalesUniqueByMarketData(int simulationId, int period, int[] sales) {
+        if (Configuration.SAVED_SALES_PER_MARKET)
+            salesUniquePerMarketData.add(new SalesUniquePerMarketData(simulationId,period,sales));
     }
 
     private static void writeSalesPerMarket(XSSFSheet salesPerMarket, List<? extends SalesPerMarketData> sales) {
@@ -70,19 +93,19 @@ public class Reporter {
         }
     }
 
-    private static void writeDetailedResults(Sheet detailedResults) {
-        Console.info("Reporter: Adding Detailed Results: " + marketEvaluationData.size());
+    private static void writeDetailedAgentDecision(Sheet detailedResults) {
+        Console.info("Reporter: Adding Detailed Agent Decisions: " + detailedAgentDecisionData.size());
         Row headRow = detailedResults.createRow(0);
 
         int column = 0;
-        for (String head : MarketEvaluationData.getHeader()) {
+        for (String head : DetailedAgentDecisionData.getHeader()) {
             Cell cell = headRow.createCell(column);
             cell.setCellValue(head);
             ++column;
         }
 
         int rowIndex = 1;
-        for (MarketEvaluationData oneRow : marketEvaluationData) {
+        for (DetailedAgentDecisionData oneRow : detailedAgentDecisionData) {
             Row dataRow = detailedResults.createRow(rowIndex);
             dataRow.createCell(0).setCellValue(oneRow.simulationId);
             dataRow.createCell(1).setCellValue(oneRow.period);
@@ -113,26 +136,6 @@ public class Reporter {
         }
     }
 
-    public static void addEndorsementData(ArrayList<EndorsementData> endors) {
-        endorsData.addAll(endors);
-    }
-
-    public static void addIterationData(IterationData oneRow) {
-        iterationData.add(oneRow);
-    }
-
-    public static void addMarketEvaluationData(MarketEvaluationData oneRow) {
-        marketEvaluationData.add(oneRow);
-    }
-
-    public static void addSalesByMarketData(SalesPerMarketData oneRow) {
-        salesPerMarketData.add(oneRow);
-    }
-
-    public static void addSalesUniqueByMarketData(SalesUniquePerMarketData oneRow) {
-        salesUniquePerMarketData.add(oneRow);
-    }
-
     public static List<? extends SalesPerMarketData> getSalesPerMarketData() {
         return salesUniquePerMarketData;
     }
@@ -161,19 +164,19 @@ public class Reporter {
         }
     }
 
-    private static void writeResults(Sheet results) {
-        Console.info("Reporter: Adding Results: " + iterationData.size());
+    private static void writeAgentDecision(Sheet results) {
+        Console.info("Reporter: Adding Agent Decisions: " + agentDecisionData.size());
         Row headRow = results.createRow(0);
 
         int column = 0;
-        for (String head : IterationData.getHeader()) {
+        for (String head : AgentDecisionData.getHeader()) {
             Cell cell = headRow.createCell(column);
             cell.setCellValue(head);
             ++column;
         }
 
         int rowIndex = 1;
-        for (IterationData oneRow : iterationData) {
+        for (AgentDecisionData oneRow : agentDecisionData) {
             Row dataRow = results.createRow(rowIndex);
             dataRow.createCell(0).setCellValue(oneRow.simulationId);
             dataRow.createCell(1).setCellValue(oneRow.period);
@@ -202,7 +205,7 @@ public class Reporter {
 
     private static void writeDisk(XSSFWorkbook workbook) {
         System.gc(); //call garbage collector (memory leaks?)
-        
+
         String fullFileName = Configuration.OUTPUT_DIRECTORY + "/" + Configuration.FILE_NAME;
         try {
             DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");

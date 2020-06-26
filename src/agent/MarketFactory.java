@@ -2,8 +2,6 @@ package agent;
 
 import inputManager.InnerMarket;
 import inputManager.Markets;
-import logger.Console;
-import sun.jvm.hotspot.oops.Mark;
 
 import java.util.ArrayList;
 import java.util.List;
