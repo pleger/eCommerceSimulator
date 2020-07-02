@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
+    private static final int D_SCENARIO = -1;
     private final static int D_PERIODS = 30;
     private final static int D_AGENTS = 10;
     private final static int D_CONTACTS = 17;
@@ -19,6 +20,7 @@ public class Configuration {
     private final static boolean D_GUI = false; //could be removed
     private final static double D_BASE = 1.2;
     private final static int D_MEMORY = -1;    //-1 infinite
+    private final static int D_LEARNING_PERIODS = 100;
     private final static boolean D_MARKET_QUOTA = false;
     private final static boolean D_FRIEND_RECOMMENDATION = false;
     private final static boolean D_SAVED_ENDORSEMENTS = false;
@@ -44,12 +46,13 @@ public class Configuration {
     public static int MEMORY = D_MEMORY;
     public static boolean MARKET_QUOTA = D_MARKET_QUOTA;
     public static boolean FRIEND_RECOMMENDATION = D_FRIEND_RECOMMENDATION;
+    public static int SCENARIO = D_SCENARIO;
+    public static int LEARNING_PERIODS = D_LEARNING_PERIODS;
 
     public static boolean SAVED_SALES_PER_MARKET = D_SAVED_SALES_PER_MARKET;
     public static boolean SAVED_DETAILED_AGENT_DECISIONS = D_SAVED_DETAILED_AGENT_DECISIONS;
     public static boolean SAVED_AGENT_DECISIONS = D_SAVED_AGENT_DECISIONS;
     public static boolean SAVED_ENDORSEMENTS = D_SAVED_ENDORSEMENTS;
-
 
     public static void set(HashMap<String, Double> conf) {
         checkConfigurationInput(conf);
@@ -65,6 +68,9 @@ public class Configuration {
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
         FRIEND_RECOMMENDATION = conf.get("FRIEND_RECOMMENDATION") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_FRIEND_RECOMMENDATION;
+        SCENARIO = conf.get("SCENARIO") != null ? conf.get("SCENARIO").intValue() : D_SCENARIO;
+        LEARNING_PERIODS = conf.get("LEARNING_PERIODS") != null ? conf.get("LEARNING_PERIODS").intValue() : D_LEARNING_PERIODS;
+
         SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
         SAVED_AGENT_DECISIONS = conf.get("SAVED_AGENT_DECISIONS") != null ? conf.get("SAVED_AGENT_DECISIONS") == 1 : D_SAVED_AGENT_DECISIONS;
         SAVED_DETAILED_AGENT_DECISIONS = conf.get("SAVED_DETAILED_AGENT_DECISIONS") != null ? conf.get("SAVED_DETAILED_AGENT_DECISIONS") == 1 : D_SAVED_DETAILED_AGENT_DECISIONS;
@@ -138,6 +144,18 @@ public class Configuration {
             case "MEMORY":
                 MEMORY = (int) value;
                 break;
+            case "MARKET_QUOTA":
+                MARKET_QUOTA = value == 1;
+                break;
+            case "FRIEND_RECOMMENDATION":
+                FRIEND_RECOMMENDATION = value == 1;
+                break;
+            case "SCENARIO":
+                SCENARIO = (int) value;
+                break;
+            case "LEARNING_PERIODS":
+                LEARNING_PERIODS = (int) value;
+                break;
             case "SAVED_ENDORSEMENT":
                 SAVED_ENDORSEMENTS = value == 1;
                 break;
@@ -150,62 +168,20 @@ public class Configuration {
             case "SAVED_SALES_PER_MARKET":
                 SAVED_SALES_PER_MARKET = value == 1;
                 break;
-            case "MARKET_QUOTA":
-                MARKET_QUOTA = value == 1;
-                break;
-            case "FRIEND_RECOMMENDATION":
-                FRIEND_RECOMMENDATION = value == 1;
-                break;
             default:
-                Console.error("CONFIGURATOR.SET: Wrong Parameter");
+                Console.error("CONFIGURATOR.SET: Wrong Parameter: " + name.toUpperCase());
         }
     }
 
     private static void checkConfigurationInput(HashMap<String, Double> conf) {
-        if (conf.get("PERIODS") == null) {
-            Console.warn("PERIODS is missing.");
-        }
-        if (conf.get("AGENTS") == null) {
-            Console.warn("AGENTS is missing.");
-        }
-        if (conf.get("CONTACTS") == null) {
-            Console.warn("CONTACTS is missing.");
-        }
-        if (conf.get("FRIENDS") == null) {
-            Console.warn("LEVELS is missing.");
-        }
-        if (conf.get("LEVELS") == null) {
-            Console.warn("LEVELS is missing.");
-        }
-        if (conf.get("REPETITIONS") == null) {
-            Console.warn("REPETITIONS is missing.");
-        }
-        if (conf.get("GUI") == null) {
-            Console.warn("GUI is missing.");
-        }
-        if (conf.get("BASE") == null) {
-            Console.warn("BASE is missing.");
-        }
-        if (conf.get("MEMORY") == null) {
-            Console.warn("MEMORY is missing.");
-        }
-        if (conf.get("SAVED_ENDORSEMENTS") == null) {
-            Console.warn("SAVED_ENDORSEMENTS is missing.");
-        }
-        if (conf.get("SAVED_SALES_PER_MARKET") == null) {
-            Console.warn("SAVED_SALES_PER_MARKET is missing.");
-        }
-        if (conf.get("SAVED_DETAILED_AGENT_DECISIONS") == null) {
-            Console.warn("SAVED_DETAILED_AGENT_DECISIONS is missing.");
-        }
-        if (conf.get("SAVED_AGENT_DECISIONS") == null) {
-            Console.warn("SAVED_AGENT_DECISIONS is missing.");
-        }
-        if (conf.get("MARKET_QUOTA") == null) {
-            Console.warn("MARKET_QUOTA is missing.");
-        }
-        if (conf.get("FRIEND_RECOMMENDATION") == null) {
-            Console.warn("FRIEND_RECOMMENDATION is missing.");
+        String[] parameters = new String[]{"PERIODS", "AGENTS", "CONTACTS", "FRIENDS", "LEVELS", "REPETITIONS", "GUI",
+                "BASE", "MEMORY", "MARKET_QUOTA", "FRIEND_RECOMMENDATION", "SCENARIO", "LEARNING_PERIODS", "SAVED_ENDORSEMENTS",
+                "SAVED_SALES_PER_MARKET", "SAVED_DETAILED_AGENT_DECISIONS", "SAVED_AGENT_DECISIONS"};
+
+        for (String param : parameters) {
+            if (conf.get(param) == null) {
+                Console.warn(param + " is missing.");
+            }
         }
     }
 
@@ -220,12 +196,15 @@ public class Configuration {
         conf.put("GUI", GUI ? 1.0 : 0.0);
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
+        conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
+        conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
+        conf.put("SCENARIO", (double) SCENARIO);
+        conf.put("LEARNING_PERIODS", (double) LEARNING_PERIODS);
+        
         conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
         conf.put("SAVED_DETAILED_AGENT_DECISIONS", SAVED_DETAILED_AGENT_DECISIONS ? 1.0 : 0.0);
         conf.put("SAVED_AGENT_DECISIONS", SAVED_AGENT_DECISIONS ? 1.0 : 0.0);
-        conf.put("SAVED_SALES_PER_MARKET", SAVED_SALES_PER_MARKET? 1.0: 0.0);
-        conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
-        conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
+        conf.put("SAVED_SALES_PER_MARKET", SAVED_SALES_PER_MARKET ? 1.0 : 0.0);
 
         return conf;
     }

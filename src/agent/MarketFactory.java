@@ -2,6 +2,7 @@ package agent;
 
 import inputManager.InnerMarket;
 import inputManager.Markets;
+import logger.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,25 @@ public class MarketFactory {
                 return mk;
             }
         }
-
         return null;
     }
 
     public static Market getMarket(int id) {
         return getMarket(markets, id);
+    }
+
+    public static Market getMarket(List<Market> markets, String name) {
+        int id = -1;
+        for (Market mk : markets) {
+            if (mk.getName().equals(name)) {
+                id = mk.getID();
+            }
+        }
+        Console.setAssert(id != -1, "ERROR. MarketFactory: no market found:"+ name);
+        return getMarket(markets, id);
+    }
+
+    public static Market getMarket(String name) {
+        return getMarket(markets, name);
     }
 }

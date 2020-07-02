@@ -15,14 +15,16 @@ public class Market implements FlyWeight {
     private final int ID;
     private final String name;
     private final double quota;
-    private final AttributesMarket attributes;
+    private final InnerMarket innerMarket;
+    private AttributesMarket attributes;
     private Set<Integer> uniqueBuyers;
-    
+
     Market(@NotNull InnerMarket innerMarket) {
         this.ID = counter++;
         this.name = innerMarket.name;
         this.quota = innerMarket.quota;
         this.attributes = new AttributesMarket(innerMarket.attributeNames, innerMarket.attributeValues);
+        this.innerMarket = innerMarket;
         reinit();
         Console.info("Market:" + this);
     }
@@ -51,9 +53,14 @@ public class Market implements FlyWeight {
         uniqueBuyers.add(idBuyer);
     }
 
+    public void setAttributes(AttributesMarket attributes) {
+        this.attributes = attributes;
+    }
+
     @Override
     public void reinit() {
-        uniqueBuyers = new HashSet<>();
+        this.uniqueBuyers = new HashSet<>();
+        this.attributes = new AttributesMarket(innerMarket.attributeNames, innerMarket.attributeValues);
     }
 
     @Override

@@ -9,6 +9,7 @@ import inputManager.Configuration;
 import inputManager.InnerBuyer;
 import logger.Console;
 import org.jetbrains.annotations.NotNull;
+import reporter.ReportRegister;
 import reporter.Reporter;
 import reporter.EndorsementData;
 import simulation.FlyWeight;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Buyer implements Step, FlyWeight {
+public class Buyer implements Step, FlyWeight, ReportRegister {
     private static int counter = 0;
 
     private final int ID;
@@ -101,10 +102,10 @@ public class Buyer implements Step, FlyWeight {
     public void doStep(int period) {
         if (knownMarkets.size() > 0) { //buyer could not ignore all markets
             endors.addAll(Interaction.interact(period, this, knownMarkets));
+            report(period);
 
-            //adding data
+            //adding data to draw (should be removed later)
             data.addData(period, endors.getSelectedMarket(period).getID());
-            Reporter.addAgentDecisionData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), currentMarketEvaluation);
         }
     }
 
@@ -112,9 +113,10 @@ public class Buyer implements Step, FlyWeight {
         this.currentMarketEvaluation = evaluation;
     }
 
-    public ArrayList<EndorsementData> getEndorsementData() {
+    public ArrayList<EndorsementData> getEndorsementData(int period) {
+        Endorsements currentEndors = endors.filterByPeriod(period);
         ArrayList<EndorsementData> endorsData = new ArrayList<>();
-        endors.forEach(endor -> endorsData.add(new EndorsementData(Simulation.ID, endor.getPeriod(), ID, endor.getMarket().getName(),
+        currentEndors.forEach(endor -> endorsData.add(new EndorsementData(Simulation.ID, endor.getPeriod(), ID, endor.getMarket().getName(),
                 endor.getAttributeName(), endor.getValue())));
 
         return endorsData;
@@ -143,7 +145,6 @@ public class Buyer implements Step, FlyWeight {
 
         String attName = "WORD OF MOUTH";
         double mean = attribute.getValue(attName)/(2);
-        //mean = 0;
         endors.add(new Endorsement(period + 1, recommendedMk, attName, mean));
     }
 
@@ -157,6 +158,11 @@ public class Buyer implements Step, FlyWeight {
         endors.clear();
         friends.clear();
         knownMarkets.clear();
+    }
+
+    @Override
+    public void report(int period) {
+        Reporter.addAgentDecisionData(Simulation.ID, period, getID(), getLastSelectMarked(period).getName(), this.currentMarketEvaluation);
     }
 
     @Override

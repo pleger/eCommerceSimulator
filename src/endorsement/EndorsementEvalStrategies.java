@@ -37,7 +37,6 @@ public class EndorsementEvalStrategies {
             }
         }
         Console.setAssert(index != -1, "Endorsement Evaluation: MAX index not found");
-
         return calculateEndorsementFormula(index + 1, mean, Configuration.LEVELS);
     }
 
@@ -77,7 +76,6 @@ public class EndorsementEvalStrategies {
             result = mean * k * (1.0 / div);
         }
 
-        //System.out.println("Values. k:" + k + " mean:" + mean + " levels:" + levels + " index:" + index + " result:"+result);
         return result;
     }
 }

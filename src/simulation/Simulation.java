@@ -5,12 +5,14 @@ import agent.Market;
 import gui.Chart;
 import inputManager.Configuration;
 import logger.Console;
+import reporter.ReportRegister;
 import reporter.Reporter;
+import scenarios.Scenario;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Simulation implements FlyWeight, Step {
+public class Simulation implements FlyWeight, Step, ReportRegister {
     public static int ID = 0;
 
     private final int periods;
@@ -81,7 +83,8 @@ public class Simulation implements FlyWeight, Step {
             doStep(period);
             Console.debug("Simulation: Period " + period);
 
-            if (period > 100) generateSalesPerData(period);
+            Scenario.apply(period);
+            report(period);
 
             if (Configuration.FRIEND_RECOMMENDATION) {
                 for (Buyer buyer : buyers) {
@@ -95,13 +98,19 @@ public class Simulation implements FlyWeight, Step {
             Chart.displaySales(markets);
         }
 
-        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData()));
         reinit();
     }
+
 
     @Override
     public void doStep(int period) {
         buyers.iterator().forEachRemaining(buyer -> buyer.doStep(period));
+    }
+
+    @Override
+    public void report(int period) {
+       if (period > Configuration.LEARNING_PERIODS) generateSalesPerData(period);
+        buyers.iterator().forEachRemaining(buyer -> Reporter.addEndorsementData(buyer.getEndorsementData(period)));
     }
 
     @Override

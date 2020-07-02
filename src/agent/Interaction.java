@@ -27,7 +27,7 @@ public class Interaction {
             double eval = evaluateMarket(endors.toArray());
             evaluations.put(market.getID(), eval);
 
-            reporter.Reporter.addDetailedAgentDecisionData(Simulation.ID, period, buyer.getID(), market.getName(), eval);
+            report(period, buyer, market, eval);
         }
         
         int idSelected = MarketSelectionStrategies.BY_PROBABILITY(evaluations);
@@ -51,5 +51,9 @@ public class Interaction {
             result += value > 0 ? Math.pow(Configuration.BASE, value) : -1 * Math.pow(Configuration.BASE, Math.abs(value));
         }
         return result;
+    }
+
+    private static void report(int period, Buyer buyer, Market market, double eval) {
+        reporter.Reporter.addDetailedAgentDecisionData(Simulation.ID, period, buyer.getID(), market.getName(), eval);
     }
 }
