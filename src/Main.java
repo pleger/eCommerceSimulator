@@ -11,7 +11,7 @@ import simulation.Simulation;
 import java.util.List;
 
 public class Main {
-    public static final String FILE_NAME = "TEST";
+    public static final String FILE_NAME = "SCENARIO";
 
     private static List<Buyer> buyers;
     private static List<Market> markets;

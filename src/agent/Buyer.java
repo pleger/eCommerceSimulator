@@ -171,7 +171,7 @@ public class Buyer implements Step, FlyWeight, ReportRegister {
         StringBuilder knowMks = new StringBuilder();
 
         for (int i = 0; i < attribute.size(); ++i) {
-            attributeValue.append(attribute.getName(i)).append("[").append(attribute.getValue(i)).append("]");
+            attributeValue.append(attribute.getName(i)).append("[").append(attribute.getValue(i)).append("], ");
         }
 
         for (Market knownMarket : knownMarkets) {

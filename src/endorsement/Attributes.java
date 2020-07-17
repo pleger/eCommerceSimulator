@@ -52,20 +52,15 @@ public class Attributes {
         }
     }
 
-    public Attributes replace(String name, Double[] newValues) {
-        ArrayList<String> resultNames = new ArrayList<>();
-        ArrayList<Double[]> resultValues = new ArrayList<>();
-
-        forEach((attrName, attrValues) -> {
-            resultNames.add(name);
-            if (attrName.equals(name)) {
-                resultValues.add(newValues);
-            } else {
-                resultValues.add(attrValues);
+    public boolean contains(String[] names) {
+        for (String name: names) {
+            boolean isNot = false;
+            if (!this.names.contains(name)) {
+                Console.error(name + " is not found");
+                return false;
             }
-        });
-
-        return new Attributes(resultNames, resultValues);
+        }
+        return true;
     }
 
 
