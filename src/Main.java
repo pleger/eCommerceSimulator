@@ -20,6 +20,7 @@ public class Main {
         file = file.equals("") ? FILE_NAME : file;
         Configuration.setPath(file);
         Loader.read();
+        
 
         buyers = BuyerFactory.createFromInput();
         markets = MarketFactory.createFromInput();
