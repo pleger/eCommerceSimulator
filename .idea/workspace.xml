@@ -4,9 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.42439026" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +213,7 @@
       <workItem from="1594604978721" duration="1181000" />
       <workItem from="1594849618126" duration="2265000" />
       <workItem from="1595003848258" duration="43000" />
-      <workItem from="1595003949578" duration="1975000" />
+      <workItem from="1595003949578" duration="2321000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
