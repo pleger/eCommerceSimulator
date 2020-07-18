@@ -4,9 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.42439026" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +213,7 @@
       <workItem from="1594604978721" duration="1181000" />
       <workItem from="1594849618126" duration="2265000" />
       <workItem from="1595003848258" duration="43000" />
-      <workItem from="1595003949578" duration="888000" />
+      <workItem from="1595003949578" duration="1276000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -434,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595004011903</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="final version for testing">
+      <created>1595034362151</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1595034362151</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,13 +556,14 @@
     <state x="479" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588035291322" />
     <state x="502" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/34.23.1406.877/1440.23.1360.745@34.23.1406.877" timestamp="1593206945482" />
     <state x="503" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/36.23.1404.877@36.23.1404.877" timestamp="1589504259428" />
-    <state x="286" y="23" key="CommitChangelistDialog2" timestamp="1595004011569">
-      <screen x="33" y="23" width="1407" height="877" />
+    <state x="284" y="23" key="CommitChangelistDialog2" timestamp="1595034361932">
+      <screen x="30" y="23" width="1410" height="877" />
     </state>
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1588281300776" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663974028" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588211295771" />
     <state x="286" y="23" key="CommitChangelistDialog2/1440.23.1360.745/33.23.1407.877@33.23.1407.877" timestamp="1595004011569" />
+    <state x="284" y="23" key="CommitChangelistDialog2/30.23.1410.877@30.23.1410.877" timestamp="1595034361932" />
     <state x="1684" y="23" key="CommitChangelistDialog2/34.23.1406.877/1440.23.1360.745@1440.23.1360.745" timestamp="1593198855223" />
     <state x="288" y="23" key="CommitChangelistDialog2/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1593211783938" />
     <state x="288" y="23" key="CommitChangelistDialog2/36.23.1404.877@36.23.1404.877" timestamp="1593726738086" />
@@ -706,13 +712,14 @@
     <state x="241" y="63" key="SettingsEditor/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586991605466" />
     <state x="241" y="63" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1587776804427" />
     <state x="271" y="63" key="SettingsEditor/36.23.1404.877@36.23.1404.877" timestamp="1592187602010" />
-    <state x="328" y="168" key="Vcs.Push.Dialog.v2" timestamp="1595004013754">
-      <screen x="33" y="23" width="1407" height="877" />
+    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2" timestamp="1595034396972">
+      <screen x="30" y="23" width="1410" height="877" />
     </state>
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1588281307731" />
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663977640" />
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588211299456" />
     <state x="328" y="168" key="Vcs.Push.Dialog.v2/1440.23.1360.745/33.23.1407.877@33.23.1407.877" timestamp="1595004013754" />
+    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2/30.23.1410.877@30.23.1410.877" timestamp="1595034396972" />
     <state x="330" y="168" key="Vcs.Push.Dialog.v2/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1593211789589" />
     <state x="330" y="168" key="Vcs.Push.Dialog.v2/36.23.1404.877@36.23.1404.877" timestamp="1593726741930" />
     <state x="102" y="123" width="1200" height="637" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587785123538">
