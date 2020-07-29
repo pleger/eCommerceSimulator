@@ -4,7 +4,10 @@
     <option name="SPLITTER_PROPORTION" value="0.42439026" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="" />
+    <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/input/~$SCENARIO.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +71,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -116,6 +119,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.OLD_Main" />
@@ -126,6 +140,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -213,7 +228,9 @@
       <workItem from="1594604978721" duration="1181000" />
       <workItem from="1594849618126" duration="2265000" />
       <workItem from="1595003848258" duration="43000" />
-      <workItem from="1595003949578" duration="2321000" />
+      <workItem from="1595003949578" duration="2779000" />
+      <workItem from="1595862776212" duration="1331000" />
+      <workItem from="1596045093104" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -446,11 +463,25 @@
       <option name="project" value="LOCAL" />
       <updated>1595034451643</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="final version for testing">
+      <created>1595035503509</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1595035503509</updated>
+    </task>
+    <task id="LOCAL-00035" summary="final version for testing">
+      <created>1595035763471</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1595035763471</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -525,22 +556,6 @@
     <state x="478" y="189" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1588122925354" />
     <state x="502" y="189" key="#com.intellij.ide.util.MemberChooser/1440.23.1360.745/36.23.1404.877@36.23.1404.877" timestamp="1593522982162" />
     <state x="502" y="189" key="#com.intellij.ide.util.MemberChooser/36.23.1404.877@36.23.1404.877" timestamp="1592270016277" />
-    <state x="440" y="224" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587003442989">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="440" y="224" key="#com.intellij.ide.util.PackageChooserDialog/0.23.1440.877@0.23.1440.877" timestamp="1587003442989" />
-    <state x="439" y="238" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586988715452">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="439" y="238" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586988715452" />
-    <state x="428" y="226" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586524893182">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="428" y="226" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586524893182" />
-    <state x="504" y="371" width="471" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586492750804">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="504" y="371" width="471" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.877@0.23.1440.877" timestamp="1586492750804" />
     <state x="448" y="245" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1589735061242">
       <screen x="36" y="23" width="1404" height="877" />
     </state>
@@ -563,14 +578,14 @@
     <state x="479" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.877@0.23.1440.877" timestamp="1588035291322" />
     <state x="502" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/34.23.1406.877/1440.23.1360.745@34.23.1406.877" timestamp="1593206945482" />
     <state x="503" y="338" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/36.23.1404.877@36.23.1404.877" timestamp="1589504259428" />
-    <state x="284" y="23" key="CommitChangelistDialog2" timestamp="1595034451417">
+    <state x="284" y="23" key="CommitChangelistDialog2" timestamp="1595035763269">
       <screen x="30" y="23" width="1410" height="877" />
     </state>
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1588281300776" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663974028" />
     <state x="258" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588211295771" />
     <state x="286" y="23" key="CommitChangelistDialog2/1440.23.1360.745/33.23.1407.877@33.23.1407.877" timestamp="1595004011569" />
-    <state x="284" y="23" key="CommitChangelistDialog2/30.23.1410.877@30.23.1410.877" timestamp="1595034451417" />
+    <state x="284" y="23" key="CommitChangelistDialog2/30.23.1410.877@30.23.1410.877" timestamp="1595035763269" />
     <state x="1684" y="23" key="CommitChangelistDialog2/34.23.1406.877/1440.23.1360.745@1440.23.1360.745" timestamp="1593198855223" />
     <state x="288" y="23" key="CommitChangelistDialog2/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1593211783938" />
     <state x="288" y="23" key="CommitChangelistDialog2/36.23.1404.877@36.23.1404.877" timestamp="1593726738086" />
@@ -586,6 +601,10 @@
       <screen x="36" y="23" width="1404" height="877" />
     </state>
     <state x="526" y="210" key="FileChooserDialogImpl/36.23.1404.877@36.23.1404.877" timestamp="1591937049431" />
+    <state x="583" y="371" key="Github.Dialog.Accounts.Choose" timestamp="1595035928254">
+      <screen x="30" y="23" width="1410" height="877" />
+    </state>
+    <state x="583" y="371" key="Github.Dialog.Accounts.Choose/30.23.1410.877@30.23.1410.877" timestamp="1595035928254" />
     <state width="676" height="319" key="GridCell.Tab.0.bottom" timestamp="1594940010545">
       <screen x="33" y="23" width="1407" height="877" />
     </state>
@@ -709,24 +728,21 @@
     <state x="355" y="223" key="IDE.errors.dialog" timestamp="1593268948906">
       <screen x="36" y="23" width="1404" height="877" />
     </state>
-    <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1587131863987" />
     <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587664017457" />
-    <state x="328" y="223" key="IDE.errors.dialog/0.23.1440.877@0.23.1440.877" timestamp="1586568725752" />
     <state x="355" y="223" key="IDE.errors.dialog/36.23.1404.877@36.23.1404.877" timestamp="1593268948906" />
-    <state x="271" y="63" key="SettingsEditor" timestamp="1592187602010">
+    <state x="271" y="63" key="SettingsEditor" timestamp="1596045664352">
       <screen x="36" y="23" width="1404" height="877" />
     </state>
-    <state x="241" y="63" key="SettingsEditor/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586991605466" />
     <state x="241" y="63" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1587776804427" />
-    <state x="271" y="63" key="SettingsEditor/36.23.1404.877@36.23.1404.877" timestamp="1592187602010" />
-    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2" timestamp="1595034454705">
+    <state x="271" y="63" key="SettingsEditor/36.23.1404.877@36.23.1404.877" timestamp="1596045664352" />
+    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2" timestamp="1595035767199">
       <screen x="30" y="23" width="1410" height="877" />
     </state>
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1588281307731" />
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1587663977640" />
     <state x="302" y="168" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588211299456" />
     <state x="328" y="168" key="Vcs.Push.Dialog.v2/1440.23.1360.745/33.23.1407.877@33.23.1407.877" timestamp="1595004013754" />
-    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2/30.23.1410.877@30.23.1410.877" timestamp="1595034454705" />
+    <state x="243" y="150" width="1089" height="546" key="Vcs.Push.Dialog.v2/30.23.1410.877@30.23.1410.877" timestamp="1595035767199" />
     <state x="330" y="168" key="Vcs.Push.Dialog.v2/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1593211789589" />
     <state x="330" y="168" key="Vcs.Push.Dialog.v2/36.23.1404.877@36.23.1404.877" timestamp="1593726741930" />
     <state x="102" y="123" width="1200" height="637" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587785123538">
@@ -737,21 +753,13 @@
       <screen x="36" y="23" width="1404" height="877" />
     </state>
     <state x="180" y="123" width="1160" height="545" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/36.23.1404.877@36.23.1404.877" timestamp="1593654163988" />
-    <state x="455" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1586524072795">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586524072794" />
-    <state x="455" y="346" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1586405363988" />
     <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587776803158">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="402" y="300" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586990847516" />
     <state x="450" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877@0.23.1440.877" timestamp="1587776803158" />
     <state x="546" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591886335230">
       <screen x="36" y="23" width="1404" height="877" />
     </state>
-    <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/1440.23.1360.745@0.23.1440.877" timestamp="1586986547711" />
-    <state x="523" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1586807968273" />
     <state x="546" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1591886335229" />
     <state x="426" y="77" width="590" height="729" key="find.popup" timestamp="1592324600690">
       <screen x="36" y="23" width="1404" height="877" />
@@ -759,6 +767,10 @@
     <state x="400" y="77" width="604" height="729" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1587784627720" />
     <state x="425" y="77" width="590" height="729" key="find.popup/35.23.1405.877/1440.23.1360.745@35.23.1405.877" timestamp="1591913278589" />
     <state x="426" y="77" width="590" height="729" key="find.popup/36.23.1404.877/1440.23.1360.745@36.23.1404.877" timestamp="1592324600690" />
+    <state x="494" y="330" key="git4idea.rebase.GitRebaseDialog" timestamp="1595035861101">
+      <screen x="30" y="23" width="1410" height="877" />
+    </state>
+    <state x="494" y="330" key="git4idea.rebase.GitRebaseDialog/30.23.1410.877@30.23.1410.877" timestamp="1595035861101" />
     <state width="427" height="244" key="javadoc.popup.new" timestamp="1594604486970">
       <screen x="36" y="23" width="1404" height="877" />
     </state>
