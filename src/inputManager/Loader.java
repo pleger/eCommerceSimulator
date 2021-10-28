@@ -16,8 +16,8 @@ public class Loader {
     private static Sheet markets;
     private static Sheet buyers;
 
-    public static void read() {
-        File file = new File("input/" + Configuration.FILE_NAME + ".xlsx");
+    public static void read(String folder) {
+        File file = new File(folder + "/" + Configuration.FILE_NAME + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
@@ -37,8 +37,13 @@ public class Loader {
         } catch (Exception ex) {
             Console.error("Input cannot be open: " + file.getAbsolutePath());
             Console.error("ERROR: " + ex);
-            ex.printStackTrace();
-            System.exit(1);
+            Console.info("Trying the root folder");
+            Loader.read(".");
+            
+            if (!folder.equals("input")) {
+                ex.printStackTrace();
+                System.exit(1);
+            }
         }
     }
 

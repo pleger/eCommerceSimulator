@@ -11,7 +11,7 @@ import simulation.Simulation;
 import java.util.List;
 
 public class Main {
-    public static final String FILE_NAME = "SCENARIO";
+    public static final String FILE_NAME = "AMAZON_SCENARIO_8";
 
     private static List<Buyer> buyers;
     private static List<Market> markets;
@@ -19,7 +19,7 @@ public class Main {
     private static void loadDataFromFile(String file) {
         file = file.equals("") ? FILE_NAME : file;
         Configuration.setPath(file);
-        Loader.read();
+        Loader.read("input");
         
 
         buyers = BuyerFactory.createFromInput();

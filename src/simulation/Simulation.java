@@ -7,7 +7,7 @@ import inputManager.Configuration;
 import logger.Console;
 import reporter.ReportRegister;
 import reporter.Reporter;
-import scenarios.Scenario;
+import scenarios.ScenarioManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,7 @@ public class Simulation implements FlyWeight, Step, ReportRegister {
         buyers.iterator().forEachRemaining(buyer -> buyer.setFriends(buyers));
         buyers.iterator().forEachRemaining(buyer -> buyer.setKnowMarkets(filterQuota(markets)));
         buyers.iterator().forEachRemaining(Buyer::setInitialEndorsements);
+
         markets.iterator().forEachRemaining(Market::reinit);
         System.gc(); //clean memory
     }
@@ -83,7 +84,7 @@ public class Simulation implements FlyWeight, Step, ReportRegister {
             doStep(period);
             Console.debug("Simulation: Period " + period);
 
-            Scenario.apply(period);
+            ScenarioManager.apply(period);
             report(period);
 
             if (Configuration.FRIEND_RECOMMENDATION) {

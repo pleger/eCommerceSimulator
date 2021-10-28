@@ -27,6 +27,8 @@ public class Attributes {
         return getValues(getIndex(name));
     }
 
+    public String[] getNames() {return this.names.toArray(new String[0]);}
+
     public String getName(int i) {
         return this.names.get(i);
     }
@@ -54,7 +56,6 @@ public class Attributes {
 
     public boolean contains(String[] names) {
         for (String name: names) {
-            boolean isNot = false;
             if (!this.names.contains(name)) {
                 Console.error(name + " is not found");
                 return false;

@@ -3,6 +3,8 @@ package inputManager;
 import logger.Console;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
-    private static final int D_SCENARIO = -1;
+
     private final static int D_PERIODS = 30;
     private final static int D_AGENTS = 10;
     private final static int D_CONTACTS = 17;
@@ -23,6 +25,10 @@ public class Configuration {
     private final static int D_LEARNING_PERIODS = 100;
     private final static boolean D_MARKET_QUOTA = false;
     private final static boolean D_FRIEND_RECOMMENDATION = false;
+    private final static int D_SCENARIO = -1;
+    private final static int D_SCENARIO_START = 100;
+
+    private static final boolean D_COMPRESSED_RESULTS = false;
     private final static boolean D_SAVED_ENDORSEMENTS = false;
     private final static boolean D_SAVED_AGENT_DECISIONS = false;
     private final static boolean D_SAVED_DETAILED_AGENT_DECISIONS = false;
@@ -35,6 +41,7 @@ public class Configuration {
     public static int ATTRIBUTES_M;
     public static int ATTRIBUTES_B;
 
+    public final static int DISABLED = -1;
     public static int PERIODS = D_PERIODS;
     public static int AGENTS = D_AGENTS;
     public static int CONTACTS = D_CONTACTS;
@@ -48,7 +55,10 @@ public class Configuration {
     public static boolean FRIEND_RECOMMENDATION = D_FRIEND_RECOMMENDATION;
     public static int SCENARIO = D_SCENARIO;
     public static int LEARNING_PERIODS = D_LEARNING_PERIODS;
+    public static int SCENARIO_START = D_SCENARIO_START;
 
+    //debug to save informaction
+    public static boolean COMPRESSED_RESULTS = D_COMPRESSED_RESULTS;
     public static boolean SAVED_SALES_PER_MARKET = D_SAVED_SALES_PER_MARKET;
     public static boolean SAVED_DETAILED_AGENT_DECISIONS = D_SAVED_DETAILED_AGENT_DECISIONS;
     public static boolean SAVED_AGENT_DECISIONS = D_SAVED_AGENT_DECISIONS;
@@ -69,19 +79,40 @@ public class Configuration {
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
         FRIEND_RECOMMENDATION = conf.get("FRIEND_RECOMMENDATION") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_FRIEND_RECOMMENDATION;
         SCENARIO = conf.get("SCENARIO") != null ? conf.get("SCENARIO").intValue() : D_SCENARIO;
+        SCENARIO_START = conf.get("SCENARIO_START") != null ? conf.get("LEARNING_PERIODS").intValue() : D_SCENARIO_START;
         LEARNING_PERIODS = conf.get("LEARNING_PERIODS") != null ? conf.get("LEARNING_PERIODS").intValue() : D_LEARNING_PERIODS;
 
+        COMPRESSED_RESULTS = conf.get("COMPRESSED_RESULTS") != null ? conf.get("COMPRESSED_RESULTS") == 1 : D_COMPRESSED_RESULTS;
         SAVED_ENDORSEMENTS = conf.get("SAVED_ENDORSEMENTS") != null ? conf.get("SAVED_ENDORSEMENTS") == 1 : D_SAVED_ENDORSEMENTS;
         SAVED_AGENT_DECISIONS = conf.get("SAVED_AGENT_DECISIONS") != null ? conf.get("SAVED_AGENT_DECISIONS") == 1 : D_SAVED_AGENT_DECISIONS;
         SAVED_DETAILED_AGENT_DECISIONS = conf.get("SAVED_DETAILED_AGENT_DECISIONS") != null ? conf.get("SAVED_DETAILED_AGENT_DECISIONS") == 1 : D_SAVED_DETAILED_AGENT_DECISIONS;
         SAVED_SALES_PER_MARKET = conf.get("SAVED_SALES_PER_MARKET") != null ? conf.get("SAVED_SALES_PER_MARKET") == 1 : D_SAVED_SALES_PER_MARKET;
     }
 
+    private static void creatingOutputFolder(String output) {
+        try {
+            if (new File(output).mkdir()) {
+                Console.info("Directory was created: " + output);
+            } else {
+                Console.error("Directory was NOT create: " + output);
+            }
+        } catch (SecurityException se) {
+            Console.error("Directory cannot be created: " + output);
+            Console.error("ERROR: " + se);
+            se.printStackTrace();
+            System.exit(1);
+        }
+    }
+
     public static void setPath(String fileName) {
         FILE_NAME = fileName;
         DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
-        OUTPUT_DIRECTORY = "output/" + fileName + df.format(new Date());
+        OUTPUT_DIRECTORY = "output/" + fileName + "_" + df.format(new Date());
 
+        //checking and creating the output folder
+        if (Files.notExists(Paths.get("output"))) {
+            creatingOutputFolder("output");
+        }
         //making directory
         try {
             if (new File(OUTPUT_DIRECTORY).mkdir()) {
@@ -153,8 +184,14 @@ public class Configuration {
             case "SCENARIO":
                 SCENARIO = (int) value;
                 break;
+            case "SCENARIO_START":
+                SCENARIO_START = (int) value;
+                break;
             case "LEARNING_PERIODS":
                 LEARNING_PERIODS = (int) value;
+                break;
+            case "COMPRESSED_RESULTS":
+                COMPRESSED_RESULTS = value == 1;
                 break;
             case "SAVED_ENDORSEMENT":
                 SAVED_ENDORSEMENTS = value == 1;
@@ -175,8 +212,8 @@ public class Configuration {
 
     private static void checkConfigurationInput(HashMap<String, Double> conf) {
         String[] parameters = new String[]{"PERIODS", "AGENTS", "CONTACTS", "FRIENDS", "LEVELS", "REPETITIONS", "GUI",
-                "BASE", "MEMORY", "MARKET_QUOTA", "FRIEND_RECOMMENDATION", "SCENARIO", "LEARNING_PERIODS", "SAVED_ENDORSEMENTS",
-                "SAVED_SALES_PER_MARKET", "SAVED_DETAILED_AGENT_DECISIONS", "SAVED_AGENT_DECISIONS"};
+                "BASE", "MEMORY", "MARKET_QUOTA", "FRIEND_RECOMMENDATION", "SCENARIO", "SCENARIO_START", "LEARNING_PERIODS", "SAVED_ENDORSEMENTS",
+                "SAVED_SALES_PER_MARKET", "SAVED_DETAILED_AGENT_DECISIONS", "SAVED_AGENT_DECISIONS", "COMPRESSED_RESULTS"};
 
         for (String param : parameters) {
             if (conf.get(param) == null) {
@@ -199,8 +236,10 @@ public class Configuration {
         conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
         conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
         conf.put("SCENARIO", (double) SCENARIO);
+        conf.put("SCENARIO_START", (double) SCENARIO_START);
         conf.put("LEARNING_PERIODS", (double) LEARNING_PERIODS);
-        
+
+        conf.put("COMPRESSED_RESULTS", COMPRESSED_RESULTS ? 1.0 : 0.0);
         conf.put("SAVED_ENDORSEMENTS", SAVED_ENDORSEMENTS ? 1.0 : 0.0);
         conf.put("SAVED_DETAILED_AGENT_DECISIONS", SAVED_DETAILED_AGENT_DECISIONS ? 1.0 : 0.0);
         conf.put("SAVED_AGENT_DECISIONS", SAVED_AGENT_DECISIONS ? 1.0 : 0.0);

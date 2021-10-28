@@ -8,7 +8,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.zeroturnaround.zip.ZipUtil;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -203,18 +205,26 @@ public class Reporter {
         }
     }
 
+    private static void compressFolder() {
+        if (Configuration.COMPRESSED_RESULTS) {
+            ZipUtil.pack(new File(Configuration.OUTPUT_DIRECTORY), new File(Configuration.OUTPUT_DIRECTORY + ".zip"));
+            Console.info("Reporter: Folder compressed.");
+        }
+    }
+
     private static void writeDisk(XSSFWorkbook workbook) {
         System.gc(); //call garbage collector (memory leaks?)
 
         String fullFileName = Configuration.OUTPUT_DIRECTORY + "/" + Configuration.FILE_NAME;
         try {
             DateFormat df = new SimpleDateFormat("dd-MM-yy(HH-mm-ss)");
-            fullFileName += df.format(new Date()) + ".xlsx";
+            fullFileName += "_" + df.format(new Date()) + ".xlsx";
 
             FileOutputStream file = new FileOutputStream(fullFileName);
             workbook.write(file);
             file.close();
             Console.info("Reporter: File saved.");
+            compressFolder();
         } catch (IOException ex) {
             Console.error("Input cannot be created: " + fullFileName);
             Console.error("ERROR: " + ex);

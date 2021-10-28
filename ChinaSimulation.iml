@@ -25,5 +25,6 @@
     <orderEntry type="library" name="commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="log4j:log4j:1.2.13" level="project" />
     <orderEntry type="library" name="poi-ooxml-3.17" level="project" />
+    <orderEntry type="library" name="zeroturnaround.zt.zip" level="project" />
   </component>
 </module>
