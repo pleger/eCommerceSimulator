@@ -22,7 +22,6 @@ public class Scenario {
 
     public void apply() {
         copyAttributes(MarketFactory.getMarket(from), MarketFactory.getMarket(to), atts);
-        System.out.println("----->MARKET TO:"+ MarketFactory.getMarket(to));
     }
 
     public int getId() {

@@ -46,4 +46,6 @@ public class MarketFactory {
     public static Market getMarket(String name) {
         return getMarket(markets, name);
     }
+
+    public static ArrayList<Market> getMarkets() {return markets;}
 }

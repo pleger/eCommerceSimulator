@@ -20,7 +20,7 @@ public class ScenarioFactory {
     private final static int FROM_AMAZON_TO_ALIEXPRESS_1 = 8;
     private final static int FROM_AMAZON_TO_ALIEXPRESS_2 = 9;
 
-    private final static List<Scenario> scenarios = new ArrayList<Scenario>();
+    private final static List<Scenario> scenarios = new ArrayList<>();
 
     public static Scenario get(int id) {
         if (scenarios.size() == 0) {

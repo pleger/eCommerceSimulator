@@ -1,6 +1,4 @@
-import agent.Buyer;
 import agent.BuyerFactory;
-import agent.Market;
 import agent.MarketFactory;
 import inputManager.Configuration;
 import inputManager.Loader;
@@ -8,34 +6,43 @@ import logger.Console;
 import reporter.Reporter;
 import simulation.Simulation;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Main {
     public static final String FILE_NAME = "AMAZON_SCENARIO_8";
 
-    private static List<Buyer> buyers;
-    private static List<Market> markets;
+    private static String getInputFileName(String[] args) {
+        String inputFileName;
+        String potentialName = "";
+
+        try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+            potentialName = br.readLine();
+        } catch (Exception e) {
+            System.out.println("MAIN: input.txt not found");
+        }
+
+        inputFileName = args.length > 0? args[0]: potentialName.equals("")? FILE_NAME: potentialName;
+        return inputFileName;
+    }
 
     private static void loadDataFromFile(String file) {
-        file = file.equals("") ? FILE_NAME : file;
         Configuration.setPath(file);
+        Console.info("Reading input from:" + file);
         Loader.read("input");
-        
-
-        buyers = BuyerFactory.createFromInput();
-        markets = MarketFactory.createFromInput();
     }
 
     public static void main(String[] args) {
-        loadDataFromFile(args.length > 0 ? args[0] : "");
+        loadDataFromFile(getInputFileName(args));
 
         Console.info("MAIN: Configuration loaded -> {" + Configuration.toStringConfiguration() + " }");
-        Simulation s = new Simulation(buyers, markets, Configuration.PERIODS);
+        Simulation s = new Simulation(BuyerFactory.createFromInput(), MarketFactory.createFromInput(), Configuration.PERIODS);
         for (int i = 1; i <= Configuration.REPETITIONS + 1; ++i) {
             Console.info(s);
             s.run();
         }
+
         Reporter.write();
-        Console.info("Main: End.");
+        Console.end("Main: End.");
     }
 }

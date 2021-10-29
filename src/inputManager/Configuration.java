@@ -24,7 +24,7 @@ public class Configuration {
     private final static int D_MEMORY = -1;    //-1 infinite
     private final static int D_LEARNING_PERIODS = 100;
     private final static boolean D_MARKET_QUOTA = false;
-    private final static boolean D_FRIEND_RECOMMENDATION = false;
+    private final static boolean D_WOM = false;
     private final static int D_SCENARIO = -1;
     private final static int D_SCENARIO_START = 100;
 
@@ -52,7 +52,7 @@ public class Configuration {
     public static double BASE = D_BASE;
     public static int MEMORY = D_MEMORY;
     public static boolean MARKET_QUOTA = D_MARKET_QUOTA;
-    public static boolean FRIEND_RECOMMENDATION = D_FRIEND_RECOMMENDATION;
+    public static boolean WOM = D_WOM;
     public static int SCENARIO = D_SCENARIO;
     public static int LEARNING_PERIODS = D_LEARNING_PERIODS;
     public static int SCENARIO_START = D_SCENARIO_START;
@@ -77,7 +77,7 @@ public class Configuration {
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
-        FRIEND_RECOMMENDATION = conf.get("FRIEND_RECOMMENDATION") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_FRIEND_RECOMMENDATION;
+        WOM = conf.get("WOM") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_WOM;
         SCENARIO = conf.get("SCENARIO") != null ? conf.get("SCENARIO").intValue() : D_SCENARIO;
         SCENARIO_START = conf.get("SCENARIO_START") != null ? conf.get("LEARNING_PERIODS").intValue() : D_SCENARIO_START;
         LEARNING_PERIODS = conf.get("LEARNING_PERIODS") != null ? conf.get("LEARNING_PERIODS").intValue() : D_LEARNING_PERIODS;
@@ -113,7 +113,7 @@ public class Configuration {
         if (Files.notExists(Paths.get("output"))) {
             creatingOutputFolder("output");
         }
-        //making directory
+        //making the simulation directory
         try {
             if (new File(OUTPUT_DIRECTORY).mkdir()) {
                 Console.info("Directory was created: " + OUTPUT_DIRECTORY);
@@ -178,8 +178,8 @@ public class Configuration {
             case "MARKET_QUOTA":
                 MARKET_QUOTA = value == 1;
                 break;
-            case "FRIEND_RECOMMENDATION":
-                FRIEND_RECOMMENDATION = value == 1;
+            case "WOM":
+                WOM = value == 1;
                 break;
             case "SCENARIO":
                 SCENARIO = (int) value;
@@ -212,8 +212,9 @@ public class Configuration {
 
     private static void checkConfigurationInput(HashMap<String, Double> conf) {
         String[] parameters = new String[]{"PERIODS", "AGENTS", "CONTACTS", "FRIENDS", "LEVELS", "REPETITIONS", "GUI",
-                "BASE", "MEMORY", "MARKET_QUOTA", "FRIEND_RECOMMENDATION", "SCENARIO", "SCENARIO_START", "LEARNING_PERIODS", "SAVED_ENDORSEMENTS",
-                "SAVED_SALES_PER_MARKET", "SAVED_DETAILED_AGENT_DECISIONS", "SAVED_AGENT_DECISIONS", "COMPRESSED_RESULTS"};
+                "BASE", "MEMORY", "MARKET_QUOTA", "WOM", "SCENARIO", "SCENARIO_START", "LEARNING_PERIODS",
+                "SAVED_ENDORSEMENTS", "SAVED_SALES_PER_MARKET", "SAVED_DETAILED_AGENT_DECISIONS",
+                "SAVED_AGENT_DECISIONS", "COMPRESSED_RESULTS"};
 
         for (String param : parameters) {
             if (conf.get(param) == null) {
@@ -234,7 +235,7 @@ public class Configuration {
         conf.put("BASE", BASE);
         conf.put("MEMORY", (double) MEMORY);
         conf.put("MARKET_QUOTA", MARKET_QUOTA ? 1.0 : 0.0);
-        conf.put("FRIEND_RECOMMENDATION", FRIEND_RECOMMENDATION ? 1.0 : 0.0);
+        conf.put("WOM", WOM ? 1.0 : 0.0);
         conf.put("SCENARIO", (double) SCENARIO);
         conf.put("SCENARIO_START", (double) SCENARIO_START);
         conf.put("LEARNING_PERIODS", (double) LEARNING_PERIODS);

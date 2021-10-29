@@ -1,5 +1,7 @@
 package reporter;
 
+import agent.Market;
+import agent.MarketFactory;
 import inputManager.Configuration;
 import inputManager.Loader;
 import logger.Console;
@@ -9,16 +11,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.zeroturnaround.zip.ZipUtil;
+import scenarios.ScenarioFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Reporter {
     private static final List<AgentDecisionData> agentDecisionData = new ArrayList<>();
@@ -29,7 +29,6 @@ public class Reporter {
 
     public static void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
-
         Console.info("Reporter: Adding sheets");
 
         writeConfiguration(workbook.createSheet("Configuration"));
@@ -41,9 +40,51 @@ public class Reporter {
         writeAgentDecision(workbook.createSheet("Results"));
         writeDetailedAgentDecision(workbook.createSheet("DetailedResult"));
         writeEndorsements(workbook.createSheet("Endorsements"));
+        writeScenarioChanges(workbook.createSheet("ScenarioChanges"));
 
         Console.info("Reporter: Writing to the disk");
         writeDisk(workbook);
+    }
+
+    private static void writeScenarioChanges(XSSFSheet scenarios) {
+        boolean enabled = Configuration.SCENARIO != Configuration.DISABLED;
+        Console.info("Reporter: Information of Scenario Changes: " + enabled);
+
+        if (enabled) {
+            ScenarioFactory.get(Configuration.SCENARIO).apply();
+            ArrayList<Market> markets = MarketFactory.getMarkets();
+
+            Row headRow = scenarios.createRow(0);
+            headRow.createCell(0).setCellValue("MARKET_NAME");
+            headRow.createCell(1).setCellValue("MARKET_ID");
+            headRow.createCell(2).setCellValue("MARKET_QUOTE");
+
+            int column = 3;
+            for (String attribute : markets.get(0).getAttributes().getNames()) {
+                headRow.createCell(column).setCellValue(attribute);
+                ++column;
+            }
+
+            int rowIndex = 1;
+            for (Market mk : markets) {
+                Row dataRow = scenarios.createRow(rowIndex);
+                dataRow.createCell(0).setCellValue(mk.getName());
+                dataRow.createCell(1).setCellValue(mk.getID());
+                dataRow.createCell(2).setCellValue(mk.getQuota());
+
+                column = 3;
+                for (String attributeName : mk.getAttributes().getNames()) {
+                    Double[] vals = mk.getAttributes().getValues(attributeName);
+                    dataRow.createCell(column).setCellValue(Arrays.toString(vals));
+                    ++column;
+                }
+                ++rowIndex;
+            }
+
+            for (int i = 0; i < 3 + markets.get(0).getAttributes().getNames().length; ++i) {
+                scenarios.autoSizeColumn(i);
+            }
+        }
     }
 
     public static void addEndorsementData(ArrayList<EndorsementData> endors) {
@@ -203,6 +244,9 @@ public class Reporter {
             valueCell.setCellValue(value);
             ++rowIndex;
         }
+
+        conf.autoSizeColumn(0);
+        conf.autoSizeColumn(1);
     }
 
     private static void compressFolder() {

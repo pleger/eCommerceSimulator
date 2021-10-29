@@ -87,7 +87,7 @@ public class Simulation implements FlyWeight, Step, ReportRegister {
             ScenarioManager.apply(period);
             report(period);
 
-            if (Configuration.FRIEND_RECOMMENDATION) {
+            if (Configuration.WOM) {
                 for (Buyer buyer : buyers) {
                     buyer.receiveRecommendation(period);
                 }
