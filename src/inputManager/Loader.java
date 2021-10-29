@@ -17,7 +17,8 @@ public class Loader {
     private static Sheet buyers;
 
     public static void read(String folder) {
-        File file = new File(folder + "/" + Configuration.FILE_NAME + ".xlsx");
+        folder = folder.equals("") ? "" : folder + "/";
+        File file = new File(folder + Configuration.FILE_NAME + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
@@ -35,13 +36,14 @@ public class Loader {
             Configuration.setAttributes(Markets.attributeSize(), Buyers.attributeSize());
             Configuration.setMarkets(Markets.getInnerMarkets().size());
         } catch (Exception ex) {
-            Console.error("Input cannot be open: " + file.getAbsolutePath());
-            Console.error("ERROR: " + ex);
-            Console.info("Trying the root folder");
-            Loader.read(".");
-            
-            if (!folder.equals("input")) {
-                ex.printStackTrace();
+            Console.error("Loader.read: Input cannot be open: " + file.getAbsolutePath());
+            Console.error("Loader.read: ERROR: " + ex);
+            Console.info("Loader: Trying the root folder");
+            ex.printStackTrace();
+
+            if (folder.equals("input")) {
+                Loader.read("");
+            } else {
                 System.exit(1);
             }
         }
@@ -51,7 +53,7 @@ public class Loader {
         HashMap<String, Double> quota = new HashMap<>();
 
         for (Row row : marketQuota) {
-            quota.put(row.getCell(0).getStringCellValue().toUpperCase(), row.getCell(1).getNumericCellValue()/100.0);
+            quota.put(row.getCell(0).getStringCellValue().toUpperCase(), row.getCell(1).getNumericCellValue() / 100.0);
         }
         return quota;
     }

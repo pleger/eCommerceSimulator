@@ -77,7 +77,7 @@ public class Configuration {
         BASE = conf.get("BASE") != null ? conf.get("BASE") : D_BASE;
         MEMORY = conf.get("MEMORY") != null ? conf.get("MEMORY").intValue() : D_MEMORY;
         MARKET_QUOTA = conf.get("MARKET_QUOTA") != null ? conf.get("MARKET_QUOTA") == 1 : D_MARKET_QUOTA;
-        WOM = conf.get("WOM") != null ? conf.get("FRIEND_RECOMMENDATION") == 1 : D_WOM;
+        WOM = conf.get("WOM") != null ? conf.get("WOM") == 1 : D_WOM;
         SCENARIO = conf.get("SCENARIO") != null ? conf.get("SCENARIO").intValue() : D_SCENARIO;
         SCENARIO_START = conf.get("SCENARIO_START") != null ? conf.get("LEARNING_PERIODS").intValue() : D_SCENARIO_START;
         LEARNING_PERIODS = conf.get("LEARNING_PERIODS") != null ? conf.get("LEARNING_PERIODS").intValue() : D_LEARNING_PERIODS;
@@ -116,13 +116,13 @@ public class Configuration {
         //making the simulation directory
         try {
             if (new File(OUTPUT_DIRECTORY).mkdir()) {
-                Console.info("Directory was created: " + OUTPUT_DIRECTORY);
+                Console.info("Configuration.setPath: Directory was created: " + OUTPUT_DIRECTORY);
             } else {
-                Console.error("Directory was NOT create: " + OUTPUT_DIRECTORY);
+                Console.error("Configuration.setPath: Directory was NOT create: " + OUTPUT_DIRECTORY);
             }
         } catch (SecurityException se) {
-            Console.error("Directory cannot be created: " + OUTPUT_DIRECTORY);
-            Console.error("ERROR: " + se);
+            Console.error("Configuration.setPath: Directory cannot be created: " + OUTPUT_DIRECTORY);
+            Console.error("Configuration.setPath: ERROR: " + se);
             se.printStackTrace();
             System.exit(1);
         }

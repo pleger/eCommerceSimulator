@@ -47,7 +47,7 @@ public class Buyer implements Step, FlyWeight, ReportRegister {
         attribute = new AttributesBuyer(ib.attributeNames, values);
         data = new DataChart(Integer.toString(ID));
 
-        Console.info("Buyer:" + this);
+        Console.info("Buyer: " + this);
     }
 
     public void setFriends(List<Buyer> buyers) {

@@ -13,18 +13,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f0ae29f-1e71-475f-aa58-52238cccec92" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ChinaSimulation_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/eCommerceSimulator_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/AMAZON_SCENARIO_9.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/AMAZON_BASE.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/input/AMAZON_BASE.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/AMAZON_SCENARIO_10.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/input/AMAZON_SCENARIO_8.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/input/AMAZON_SCENARIO_8.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/~$AMAZON_SCENARIO_10.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/~$SCENARIO_110.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/MarketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/MarketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/Market.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inputManager/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputManager/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logger/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reporter/Reporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reporter/Reporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/Scenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenarios/Scenario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/ScenarioFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenarios/ScenarioFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputManager/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputManager/Loader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +252,7 @@
       <workItem from="1634928848552" duration="3271000" />
       <workItem from="1635214686259" duration="1876000" />
       <workItem from="1635253733193" duration="3699000" />
-      <workItem from="1635293271817" duration="37417000" />
+      <workItem from="1635293271817" duration="41620000" />
     </task>
     <task id="LOCAL-00001" summary="Added Agent interface, buyer class and market class">
       <created>1560288864576</created>
@@ -505,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635396151791</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="new version">
+      <created>1635475048177</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1635475048177</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

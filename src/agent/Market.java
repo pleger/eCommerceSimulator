@@ -26,7 +26,7 @@ public class Market implements FlyWeight {
         this.attributes = new AttributesMarket(innerMarket.attributeNames, innerMarket.attributeValues);
         this.innerMarket = innerMarket;
         reinit();
-        Console.info("Market:" + this);
+        Console.info("Market: " + this);
     }
 
     public int getID() {

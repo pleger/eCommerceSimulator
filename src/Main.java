@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Main {
-    public static final String FILE_NAME = "AMAZON_SCENARIO_8";
+    public static final String FILE_NAME = "AMAZON_SCENARIO_9";
 
     private static String getInputFileName(String[] args) {
         String inputFileName;
@@ -28,7 +28,7 @@ public class Main {
 
     private static void loadDataFromFile(String file) {
         Configuration.setPath(file);
-        Console.info("Reading input from:" + file);
+        Console.info("Main: Reading input from: " + file);
         Loader.read("input");
     }
 
