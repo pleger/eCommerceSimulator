@@ -34,6 +34,7 @@ public class Reporter {
         writeConfiguration(workbook.createSheet("Configuration"));
         addSheet(workbook, Loader.getMarkets());
         addSheet(workbook, Loader.getBuyers());
+        addSheet(workbook, Loader.getMarketQuote());
 
         writeSalesPerMarket(workbook.createSheet("SalesPerMarket"), salesPerMarketData);
         writeSalesPerMarket(workbook.createSheet("SalesUniquePerMarket"), salesUniquePerMarketData);

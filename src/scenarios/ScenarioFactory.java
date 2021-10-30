@@ -19,6 +19,7 @@ public class ScenarioFactory {
     private final static int ALL_FROM_LIGHTINTHEBOX = 7;
     private final static int FROM_AMAZON_TO_ALIEXPRESS_1 = 8;
     private final static int FROM_AMAZON_TO_ALIEXPRESS_2 = 9;
+    private final static int FROM_AMAZON_TO_ALIEXPRESS_3 = 10;
 
     private final static List<Scenario> scenarios = new ArrayList<>();
 
@@ -57,6 +58,8 @@ public class ScenarioFactory {
         scenarios.add(new Scenario(ALL_FROM_LIGHTINTHEBOX, "LIGHTINTHEBOX", to, MarketFactory.getMarket(to).getAttributes().getNames()));
         scenarios.add(new Scenario(FROM_AMAZON_TO_ALIEXPRESS_1, "AMAZON", "ALIEXPRESS", new String[]{"PRODUCTS OFFERING", "PRODUCT QUALITY", "SERVICE QUALITY"}));
         scenarios.add(new Scenario(FROM_AMAZON_TO_ALIEXPRESS_2, "AMAZON", "ALIEXPRESS", new String[]{"WEBSITE APPEARANCE", "WEBSITE CONTENT QUALITY",
+                "WEBSITE TECHNICAL QUALITY", "SECURITY OF THE WEB", "PRIVACY"}));
+        scenarios.add(new Scenario(FROM_AMAZON_TO_ALIEXPRESS_3, "AMAZON", "ALIEXPRESS", new String[]{"PRODUCTS OFFERING", "PRODUCT QUALITY", "SERVICE QUALITY","WEBSITE APPEARANCE", "WEBSITE CONTENT QUALITY",
                 "WEBSITE TECHNICAL QUALITY", "SECURITY OF THE WEB", "PRIVACY"}));
     }
 }
