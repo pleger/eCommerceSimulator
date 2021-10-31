@@ -7,29 +7,40 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Loader {
     private static Sheet markets;
     private static Sheet buyers;
+    private static Sheet marketQuota;
 
-    public static void read(String folder) {
+    public static void load(String file) {
+        file = determineInputFileName(file);
+        Configuration.setPath(file);
+        Console.info("Loader: Reading input from: " + file);
+        read("input");
+    }
+
+    private static void read(String folder) {
         folder = folder.equals("") ? "" : folder + "/";
         File file = new File(folder + Configuration.FILE_NAME + ".xlsx");
         try {
             FileInputStream fileStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileStream);
-            markets = workbook.getSheet("markets");
-            buyers = workbook.getSheet("buyers");
+            markets = workbook.getSheet("Markets");
+            buyers = workbook.getSheet("Buyers");
+            marketQuota = workbook.getSheet("MarketQuota");
 
             Configuration.set(readConfiguration(workbook.getSheet("configuration")));
 
             Markets.set(readMarketAttributes(markets, Configuration.LEVELS),
                     readMarketNames(markets, Configuration.LEVELS),
-                    readMarketQuota(workbook.getSheet("marketQuota")));
+                    readMarketQuota(marketQuota));
 
             Buyers.set(readBuyers(buyers));
 
@@ -119,11 +130,29 @@ public class Loader {
         return buyers;
     }
 
+    private static String determineInputFileName(String inputFileName) {
+        inputFileName = inputFileName.equals("") ? "" : inputFileName;
+
+        if (inputFileName.equals("")) {
+            try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+                inputFileName = br.readLine();
+            } catch (Exception e) {
+                System.out.println("MAIN: input.txt not found");
+            }
+        }
+
+        return inputFileName.equals("")? Configuration.DEFAULT_FILE_NAME: inputFileName;
+    }
+
     public static Sheet getBuyers() {
         return buyers;
     }
 
     public static Sheet getMarkets() {
         return markets;
+    }
+
+    public static Sheet getMarketQuote() {
+        return marketQuota;
     }
 }

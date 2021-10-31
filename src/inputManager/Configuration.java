@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
+    public final static String DEFAULT_FILE_NAME = "AMAZON_SCENARIO_10";
+    public final static int DISABLED = -1;
 
     private final static int D_PERIODS = 30;
     private final static int D_AGENTS = 10;
@@ -28,7 +30,7 @@ public class Configuration {
     private final static int D_SCENARIO = -1;
     private final static int D_SCENARIO_START = 100;
 
-    private static final boolean D_COMPRESSED_RESULTS = false;
+    private final static boolean D_COMPRESSED_RESULTS = false;
     private final static boolean D_SAVED_ENDORSEMENTS = false;
     private final static boolean D_SAVED_AGENT_DECISIONS = false;
     private final static boolean D_SAVED_DETAILED_AGENT_DECISIONS = false;
@@ -41,7 +43,6 @@ public class Configuration {
     public static int ATTRIBUTES_M;
     public static int ATTRIBUTES_B;
 
-    public final static int DISABLED = -1;
     public static int PERIODS = D_PERIODS;
     public static int AGENTS = D_AGENTS;
     public static int CONTACTS = D_CONTACTS;

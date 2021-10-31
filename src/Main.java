@@ -6,43 +6,28 @@ import logger.Console;
 import reporter.Reporter;
 import simulation.Simulation;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.time.Duration;
+import java.time.Instant;
 
 public class Main {
-    public static final String FILE_NAME = "AMAZON_SCENARIO_9";
-
-    private static String getInputFileName(String[] args) {
-        String inputFileName;
-        String potentialName = "";
-
-        try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
-            potentialName = br.readLine();
-        } catch (Exception e) {
-            System.out.println("MAIN: input.txt not found");
-        }
-
-        inputFileName = args.length > 0? args[0]: potentialName.equals("")? FILE_NAME: potentialName;
-        return inputFileName;
-    }
-
-    private static void loadDataFromFile(String file) {
-        Configuration.setPath(file);
-        Console.info("Main: Reading input from: " + file);
-        Loader.read("input");
-    }
 
     public static void main(String[] args) {
-        loadDataFromFile(getInputFileName(args));
+        Loader.load(args.length > 0 ? args[0] : "");
 
         Console.info("MAIN: Configuration loaded -> {" + Configuration.toStringConfiguration() + " }");
-        Simulation s = new Simulation(BuyerFactory.createFromInput(), MarketFactory.createFromInput(), Configuration.PERIODS);
+        Simulation s = new Simulation(BuyerFactory.createFromInput(), MarketFactory.createFromInput(),
+                Configuration.PERIODS);
+
+        Instant start = Instant.now();
         for (int i = 1; i <= Configuration.REPETITIONS + 1; ++i) {
             Console.info(s);
             s.run();
         }
+        Instant end = Instant.now();
 
         Reporter.write();
+        Duration timeElapsed = Duration.between(start, end);
+        Console.info("Main: Simulation executions took " + timeElapsed.toMinutes() + " mins");
         Console.end("Main: End.");
     }
 }
